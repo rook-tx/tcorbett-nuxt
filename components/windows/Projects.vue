@@ -1,13 +1,22 @@
+<script setup>
+const { client } = usePrismic() // eslint-disable-line no-undef
+const { data: projects } = await useAsyncData('projects', () => client.getSingle('projects')) // eslint-disable-line no-undef
+</script>
+
 <template>
   <div class="projects">
-    <div class="wrap">
+    <div
+      v-if="projects?.data"
+      class="wrap"
+    >
       <prismic-rich-text
         class="blurb"
-        :field="pageData.blurb"
+        :field="projects.data.blurb"
       />
+
       <ol class="project-list">
         <li
-          v-for="project in pageData.projects"
+          v-for="project in projects.data.projects"
           :key="project.project_link.url"
           class="project"
         >
@@ -64,30 +73,6 @@
     </div>
   </div>
 </template>
-
-<script>
-
-export default {
-  data() {
-    return {
-      pageData: {}
-    }
-  },
-
-  mounted() {
-    this.getContent()
-  },
-
-  methods: {
-    getContent() {
-      this.$prismic.client.getSingle('projects')
-        .then((document) => {
-          this.pageData = document.data
-        })
-    }
-  }
-}
-</script>
 
 <style lang="stylus">
 

@@ -1,3 +1,8 @@
+<script setup>
+const { client } = usePrismic() // eslint-disable-line no-undef
+const { data: home } = await useAsyncData('home', () => client.getSingle('home')) // eslint-disable-line no-undef
+</script>
+
 <template>
   <div
     class="body-about"
@@ -11,7 +16,7 @@
       </div>
 
       <div
-        v-for="(slide, idx) in pageData.slide"
+        v-for="(slide, idx) in home.data.slide"
         :key="idx"
         ref="slides"
         :class="[ 'slide', { active: sidx === idx }]"
@@ -26,7 +31,7 @@
         >
       </div>
 
-      <tldr :data="pageData" />
+      <slices-tldr />
 
       <div
         v-if="active"
@@ -46,15 +51,10 @@
 
 import { mapState } from 'pinia'
 import { useDeviceStore } from '../../stores/device'
-import Tldr from '../slices/Tldr.vue'
 
 import cushions from '/images/cushions.jpg'
 
 export default {
-
-  components: {
-    Tldr
-  },
 
   props: {
     active: {

@@ -1,3 +1,8 @@
+<script setup>
+const { client } = usePrismic() // eslint-disable-line no-undef
+const { data: projects } = await useAsyncData('projects', () => client.getSingle('projects')) // eslint-disable-line no-undef
+</script>
+
 <template>
   <div class="labs">
     <div
@@ -6,9 +11,10 @@
       <div>
         <p>Live. Lab. Love.<br>Creative coding for the interactive in-browser connoisseur.</p>
       </div>
-      <ol>
+
+      <ol v-if="projects?.data">
         <li
-          v-for="lab in pageData.labs"
+          v-for="lab in projects.data.labs"
           :key="lab.lab_id"
           class="lab"
         >
@@ -89,46 +95,6 @@
     </div>
   </div>
 </template>
-
-<script>
-
-export default {
-
-  props: {
-    slug: {
-      type: String,
-      default: null
-    }
-  },
-
-  data() {
-    return {
-      pageData: {}
-    }
-  },
-
-  computed: {
-    labName() {
-      return this.slug ? this.slug.replace(/^.|-./g, (x) => x[x.length - 1].toUpperCase()) : null
-    }
-  },
-
-  mounted() {
-    this.getContent()
-  },
-
-  methods: {
-    getContent() {
-      this.$prismic.client.getSingle('projects')
-        .then((document) => {
-          this.pageData = document.data
-        })
-    }
-  },
-
-}
-
-</script>
 
 <style lang="stylus">
 
