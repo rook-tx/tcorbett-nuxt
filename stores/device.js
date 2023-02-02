@@ -5,10 +5,10 @@ export const useDeviceStore = defineStore('device', {
   state: () => ({
     device: {
       win: {
-        x: window.innerWidth,
-        y: window.innerHeight
+        x: 1440,
+        y: 800
       },
-      portrait: window.innerWidth < window.innerHeight,
+      portrait: 1440 < 800,
       keys: null,
       mouse: null,
       touch: null

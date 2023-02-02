@@ -32,7 +32,7 @@ export default {
     }
   },
 
-  created() {
+  mounted() {
     window.addEventListener('mousemove', this.mousestart, { passive: true })
     window.addEventListener('resize', this.resize, { passive: true })
   },
