@@ -1,4 +1,3 @@
-
 precision highp float;
 precision highp sampler2D;
 
@@ -13,7 +12,7 @@ uniform float curl;
 uniform float dt;
 
 void main () {
-        float L = texture2D(uCurl, vL).x;
+    float L = texture2D(uCurl, vL).x;
     float R = texture2D(uCurl, vR).x;
     float T = texture2D(uCurl, vT).x;
     float B = texture2D(uCurl, vB).x;

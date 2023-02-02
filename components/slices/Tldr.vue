@@ -221,11 +221,9 @@ const { data: home } = await useAsyncData('home', () => client.getSingle('home')
     color lighten($bgry,20%)
     cursor pointer
     font-family $lato
-    // font-size ($pc/$p)*1em
     fs(mp(-3))
     font-weight 700
     letter-spacing .2em
-    // line-height $letc
     mgn(1,0)
     pad(0,2)
     padding-top 2px

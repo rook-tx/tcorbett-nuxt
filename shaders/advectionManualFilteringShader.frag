@@ -1,4 +1,3 @@
-
 precision highp float;
 precision highp sampler2D;
 
@@ -11,7 +10,7 @@ uniform float dt;
 uniform float dissipation;
 
 vec4 bilerp (sampler2D sam, vec2 uv, vec2 tsize) {
-        vec2 st = uv / tsize - 0.5;
+    vec2 st = uv / tsize - 0.5;
         
     vec2 iuv = floor(st);
     vec2 fuv = fract(st);
@@ -26,7 +25,7 @@ vec4 bilerp (sampler2D sam, vec2 uv, vec2 tsize) {
 }
 
 void main () {
-        vec2 coord = vUv - dt * bilerp(uVelocity, vUv, texelSize).xy * texelSize;
+    vec2 coord = vUv - dt * bilerp(uVelocity, vUv, texelSize).xy * texelSize;
     gl_FragColor = dissipation * bilerp(uSource, coord, dyeTexelSize);
     gl_FragColor.a = 1.0;
 }

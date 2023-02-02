@@ -1,4 +1,3 @@
-
 precision highp float;
 precision highp sampler2D;
 
@@ -14,7 +13,7 @@ uniform vec2 ditherScale;
 uniform vec2 texelSize;
 
 void main () {
-	    vec3 L = texture2D(uTexture, vL).rgb;
+    vec3 L = texture2D(uTexture, vL).rgb;
     vec3 R = texture2D(uTexture, vR).rgb;
     vec3 T = texture2D(uTexture, vT).rgb;
     vec3 B = texture2D(uTexture, vB).rgb;

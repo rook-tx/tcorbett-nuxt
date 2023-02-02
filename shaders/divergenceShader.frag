@@ -1,4 +1,3 @@
-
 precision mediump float;
 precision mediump sampler2D;
 
@@ -10,7 +9,7 @@ varying highp vec2 vB;
 uniform sampler2D uVelocity;
 
 void main () {
-        float L = texture2D(uVelocity, vL).x;
+    float L = texture2D(uVelocity, vL).x;
     float R = texture2D(uVelocity, vR).x;
     float T = texture2D(uVelocity, vT).y;
     float B = texture2D(uVelocity, vB).y;

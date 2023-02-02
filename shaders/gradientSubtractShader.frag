@@ -1,4 +1,3 @@
-
 precision mediump float;
 precision mediump sampler2D;
 
@@ -11,13 +10,13 @@ uniform sampler2D uPressure;
 uniform sampler2D uVelocity;
 
 vec2 boundary (vec2 uv) {
-        return uv;
+    return uv;
     // uv = min(max(uv, 0.0), 1.0);
     // return uv;
 }
 
 void main () {
-        float L = texture2D(uPressure, boundary(vL)).x;
+    float L = texture2D(uPressure, boundary(vL)).x;
     float R = texture2D(uPressure, boundary(vR)).x;
     float T = texture2D(uPressure, boundary(vT)).x;
     float B = texture2D(uPressure, boundary(vB)).x;
