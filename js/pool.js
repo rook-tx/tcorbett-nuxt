@@ -19,12 +19,12 @@ const config = {
   BACK_COLOR: { r: 252, g: 250, b: 254 },
   TARGET_COLOR: { r: 252, g: 250, b: 254 },
   TRANSPARENT: false,
-  BLOOM: false,
-  BLOOM_ITERATIONS: 6,
-  BLOOM_RESOLUTION: 64,
-  BLOOM_INTENSITY: 0.1, // 0.1, 2.0
-  BLOOM_THRESHOLD: 0.99, // 0.0, 1.0
-  BLOOM_SOFT_KNEE: 0.6
+  // BLOOM: false,
+  // BLOOM_ITERATIONS: 6,
+  // BLOOM_RESOLUTION: 64,
+  // BLOOM_INTENSITY: 0.1, // 0.1, 2.0
+  // BLOOM_THRESHOLD: 0.99, // 0.0, 1.0
+  // BLOOM_SOFT_KNEE: 0.6
 }
 
 class pointerPrototype {
@@ -42,7 +42,7 @@ class pointerPrototype {
 
 const pointers = []
 const splatStack = []
-const bloomFramebuffers = []
+// const bloomFramebuffers = []
 pointers.push(new pointerPrototype())
 
 let ref = { gl: null, ext: null }
@@ -193,8 +193,8 @@ let backgroundShader // = compileShader(gl.FRAGMENT_SHADER, backgroundShaderJS)
 import displayShaderJS from '@/shaders/displayShader.frag?raw'
 let displayShader // = compileShader(gl.FRAGMENT_SHADER, displayShaderJS)
 
-import displayBloomShaderJS from '@/shaders/displayBloomShader.frag?raw'
-let displayBloomShader // = compileShader(gl.FRAGMENT_SHADER, displayBloomShaderJS)
+// import displayBloomShaderJS from '@/shaders/displayBloomShader.frag?raw'
+// let displayBloomShader // = compileShader(gl.FRAGMENT_SHADER, displayBloomShaderJS)
 
 // import displayShadingShaderJS from '@/shaders/displayShadingShader.frag?raw'
 // let displayShadingShader // = compileShader(gl.FRAGMENT_SHADER, displayShadingShaderJS)
@@ -259,7 +259,7 @@ let velocity
 let divergence
 let curl
 let pressure
-let bloom
+// let bloom
 
 // import dith from '/images/LDR_RGB1_0.png'
 
@@ -269,7 +269,7 @@ let clearProgram // = new GLProgram(baseVertexShader, clearShader)
 let colorProgram // = new GLProgram(baseVertexShader, colorShader)
 let backgroundProgram // = new GLProgram(baseVertexShader, backgroundShader)
 let displayProgram // = new GLProgram(baseVertexShader, displayShader)
-let displayBloomProgram // = new GLProgram(baseVertexShader, displayBloomShader)
+// let displayBloomProgram // = new GLProgram(baseVertexShader, displayBloomShader)
 // let displayShadingProgram // = new GLProgram(baseVertexShader, displayShadingShader)
 // let displayBloomShadingProgram // = new GLProgram(baseVertexShader, displayBloomShadingShader)
 // let bloomPrefilterProgram // = new GLProgram(baseVertexShader, bloomPrefilterShader)
@@ -314,30 +314,30 @@ function initFramebuffers() {
   curl = createFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST)
   pressure = createDoubleFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST)
 
-  initBloomFramebuffers()
+  // initBloomFramebuffers()
 }
 
-function initBloomFramebuffers() {
-  const res = getResolution(config.BLOOM_RESOLUTION)
+// function initBloomFramebuffers() {
+//   const res = getResolution(config.BLOOM_RESOLUTION)
 
-  const texType = ext.halfFloatTexType
-  const rgba = ext.formatRGBA
-  const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST
+//   const texType = ext.halfFloatTexType
+//   const rgba = ext.formatRGBA
+//   const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST
 
-  bloom = createFBO(res.width, res.height, rgba.internalFormat, rgba.format, texType, filtering)
+//   // bloom = createFBO(res.width, res.height, rgba.internalFormat, rgba.format, texType, filtering)
 
-  bloomFramebuffers.length = 0
+//   bloomFramebuffers.length = 0
 
-  for (let i = 0; i < config.BLOOM_ITERATIONS; i++) {
-    const width = res.width >> i + 1
-    const height = res.height >> i + 1
+//   for (let i = 0; i < config.BLOOM_ITERATIONS; i++) {
+//     const width = res.width >> i + 1
+//     const height = res.height >> i + 1
 
-    if (width < 2 || height < 2) { break }
+//     if (width < 2 || height < 2) { break }
 
-    const fbo = createFBO(width, height, rgba.internalFormat, rgba.format, texType, filtering)
-    bloomFramebuffers.push(fbo)
-  }
-}
+//     const fbo = createFBO(width, height, rgba.internalFormat, rgba.format, texType, filtering)
+//     bloomFramebuffers.push(fbo)
+//   }
+// }
 
 function createFBO(w, h, internalFormat, format, type, param) {
   gl.activeTexture(gl.TEXTURE0)
@@ -576,7 +576,7 @@ function render(target) {
   //     gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y)
   //   }
   // } else {
-  const program$1 = config.BLOOM ? displayBloomProgram : displayProgram
+  const program$1 = /*config.BLOOM ? displayBloomProgram : */ displayProgram
   program$1.bind()
   gl.uniform1i(program$1.uniforms.uTexture, density.read.attach(0))
   // if (config.BLOOM) {
@@ -860,7 +860,7 @@ export function init(el) {
   colorShader = compileShader(gl.FRAGMENT_SHADER, colorShaderJS)
   backgroundShader = compileShader(gl.FRAGMENT_SHADER, backgroundShaderJS)
   displayShader = compileShader(gl.FRAGMENT_SHADER, displayShaderJS)
-  displayBloomShader = compileShader(gl.FRAGMENT_SHADER, displayBloomShaderJS)
+  // displayBloomShader = compileShader(gl.FRAGMENT_SHADER, displayBloomShaderJS)
   // displayShadingShader = compileShader(gl.FRAGMENT_SHADER, displayShadingShaderJS)
   // displayBloomShadingShader = compileShader(gl.FRAGMENT_SHADER, displayBloomShadingShaderJS)
   // bloomPrefilterShader = compileShader(gl.FRAGMENT_SHADER, bloomPrefilterShaderJS)
@@ -895,7 +895,7 @@ export function init(el) {
   colorProgram = new GLProgram(baseVertexShader, colorShader)
   backgroundProgram = new GLProgram(baseVertexShader, backgroundShader)
   displayProgram = new GLProgram(baseVertexShader, displayShader)
-  displayBloomProgram = new GLProgram(baseVertexShader, displayBloomShader)
+  // displayBloomProgram = new GLProgram(baseVertexShader, displayBloomShader)
   // displayShadingProgram = new GLProgram(baseVertexShader, displayShadingShader)
   // displayBloomShadingProgram = new GLProgram(baseVertexShader, displayBloomShadingShader)
   // bloomPrefilterProgram = new GLProgram(baseVertexShader, bloomPrefilterShader)
