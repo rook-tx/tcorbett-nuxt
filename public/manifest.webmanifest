@@ -1,0 +1,23 @@
+{
+  "name": "T Corbett",
+  "short_name": "T Corbett",
+  "description": "Portfolio site of Tom Corbett, UI developer based in Toronto",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "scope": "/",
+  "theme_color": "#b096da",
+  "lang": "en",
+  "icons": [
+    {
+      "sizes": "1024x1024",
+      "src": "/apple-touch-icon.png",
+      "type": "image/png"
+    },
+    {
+      "src": "./favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

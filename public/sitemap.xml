@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://tcorbett.co.uk/</loc>
+		<lastmod>2022-12-04</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>https://tcorbett.co.uk/about</loc>
+		<lastmod>2022-12-04</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>https://tcorbett.co.uk/projects</loc>
+		<lastmod>2022-12-04</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>https://tcorbett.co.uk/labs</loc>
+		<lastmod>2022-12-04</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+</urlset>

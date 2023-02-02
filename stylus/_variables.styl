@@ -1,0 +1,89 @@
+// ----------
+// Colour
+// ----------
+
+$b          = #000
+$dblk       = #181120
+$blk        = #333140
+$nblk       = lighten($blk,9%)
+$nblk       = lighten($blk,20%)
+$bgry       = #ced8dd
+$dgry       = shade($bgry,20%)
+$mgry       = shade($bgry,10%)
+$lgry       = shade($bgry,6%)
+$bdr        = lighten($bgry,30%)
+$gry        = lighten($bgry,50%)
+$nw         = lighten($bgry,75%)
+$hw         = lighten($bgry,85%)
+$w          = #fff
+
+$bg         = rgb(252, 250, 254)
+$prpl       = #b096da
+$blu        = #7ca3dc
+
+
+// ----------
+// Font
+// ----------
+
+$lato       = 'Lato', system-ui, sans-serif
+$merriweather = 'Merriweather', system-ui, serif
+
+font-smoothing()
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+
+// ----------
+// Breakpoints
+// ----------
+
+$mobile     = 600
+$tablet     = 800
+$notebook   = 1024
+$laptop	    = 1300
+$desktop    = 1600
+$ultra	    = 1920
+
+
+// ----------
+// Grid
+// ----------
+
+@import '_type'
+
+$width      = (($pwidth * 2) + ($let * 3)) * $p
+$tablet     = (($pwidth * 1.382) + ($let * 2)) * $p
+$mobile     = (($pwidth * 1) + ($let * 2)) * $p
+
+
+above($size)
+  @media screen and (min-width: ($size + 1) * 1px)
+    {block}
+
+below($size)
+  @media screen and (max-width: ($size) * 1px)
+    {block}
+
+aboveAspect($height, $width)
+  @media screen and (min-height: $height + 1) and (min-width: $width + 1)
+    {block}
+
+belowAspect($height, $width)
+  @media screen and (max-height: $height) and (max-width: $width)
+    {block}
+
+
+// ----------
+// Project
+// ----------
+
+$ls         = .12em
+
+
+// ----------
+// Imports
+// ----------
+
+@import '_ease'
+@import '_mixins'
