@@ -176,7 +176,6 @@ export default {
   +above($mobile)
     display block
 
-
 // ----------
 // Frame
 // ----------
@@ -247,7 +246,7 @@ export default {
     top -1px
 
 .frame-display
-  background url(/src/assets/cushions.jpg) no-repeat center
+  background url(/images/cushions.jpg) no-repeat center
   background-size cover
   bottom 0
   transition background .2s, transform 1s $easeOutCubic

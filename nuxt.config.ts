@@ -44,6 +44,7 @@ export default defineNuxtConfig({ // eslint-disable-line no-undef
 
   prismic: {
     endpoint: 'tcorbett',
+    preview: false,
     toolbar: false
   }
 })
