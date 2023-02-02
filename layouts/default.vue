@@ -2,8 +2,6 @@
   <div class="ui">
     <app-header />
 
-    <slot />
-
     <div
       :class="[ 'desktop', { dragging: draggingWindow }, { open: activeWindow }]"
       @touchend.passive="draggingWindow = false"
@@ -38,7 +36,9 @@
       </div>
     </transition>
 
-    <canvas />
+    <slot />
+
+    <app-pool />
 
     <app-footer />
   </div>
@@ -140,7 +140,6 @@ export default {
     },
 
     winWidth: {
-      immediate: true,
       handler() {
         this.layoutWindows()
       }
@@ -219,6 +218,12 @@ export default {
 .header, .footer {
   position fixed
   z-index 2
+}
+
+.desktop {
+  height 100%
+  position relative
+  z-index 1
 }
 
 </style>

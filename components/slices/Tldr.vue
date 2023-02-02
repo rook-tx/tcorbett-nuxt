@@ -1,11 +1,11 @@
 <script setup>
-const { client } = usePrismic()
-const { data: home } = await useAsyncData('home', () => client.geSingle('home'))
+const { client } = usePrismic() // eslint-disable-line no-undef
+const { data: home } = await useAsyncData('home', () => client.getSingle('home')) // eslint-disable-line no-undef
 </script>
 
 <template>
   <div
-    v-if="pageData"
+    v-if="home"
     class="tldr-content"
   >
     <h2 class="tldr-title">
@@ -18,7 +18,7 @@ const { data: home } = await useAsyncData('home', () => client.geSingle('home'))
 
     <ol>
       <li
-        v-for="link in projectList"
+        v-for="link in home.data.project"
         :key="link.project_url.url"
       >
         <a
@@ -38,7 +38,7 @@ const { data: home } = await useAsyncData('home', () => client.geSingle('home'))
 
     <prismic-rich-text
       class="tldr-skills"
-      :field="skillContent"
+      :field="home.data.skills"
     />
 
     <div class="email-icon">
@@ -51,42 +51,6 @@ const { data: home } = await useAsyncData('home', () => client.geSingle('home'))
     </div>
   </div>
 </template>
-
-<script>
-
-export default {
-
-  data() {
-    return {
-      pageData: {}
-    }
-  },
-
-  computed: {
-    projectList() {
-      return this.pageData.project
-    },
-
-    skillContent() {
-      return this.pageData.skills
-    },
-  },
-
-  mounted() {
-    this.getContent()
-  },
-
-  methods: {
-    getContent() {
-      this.$prismic.client.getSingle('home')
-        .then((document) => {
-          this.pageData = document.data
-        })
-    }
-  }
-}
-
-</script>
 
 <style lang="stylus">
 

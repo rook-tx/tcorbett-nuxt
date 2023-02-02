@@ -38,13 +38,22 @@ export default defineNuxtConfig({ // eslint-disable-line no-undef
   ],
 
   modules: [
-    '@pinia/nuxt',
-    '@nuxtjs/prismic'
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/prismic',
+    '@pinia/nuxt'
   ],
+
+  googleFonts: {
+    families: {
+      Lato: [ 100, 300, 400, 700, 900 ],
+      Merriweather: [ 300, 400 ],
+    },
+    // subsets: 'latin'
+  },
 
   prismic: {
     endpoint: 'tcorbett',
     preview: false,
     toolbar: false
-  }
+  },
 })

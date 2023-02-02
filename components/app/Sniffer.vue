@@ -35,6 +35,7 @@ export default {
   mounted() {
     window.addEventListener('mousemove', this.mousestart, { passive: true })
     window.addEventListener('resize', this.resize, { passive: true })
+    this.$nextTick(this.resize)
   },
 
   beforeUnmount() {

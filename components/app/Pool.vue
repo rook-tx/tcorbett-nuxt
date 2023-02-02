@@ -1,49 +1,40 @@
 <template>
-  <div class="pool" />
+  <div class="pool">
+    <canvas
+      ref="canvas"
+      class="pool-canvas"
+    />
+  </div>
 </template>
 
 <script>
 
-import { multipleSplats, update, playPause } from '../../js/pool'
+import { init, update } from '@/js/pool'
 
 export default {
 
-  data() {
-    return {
-      init: false,
-      playing: true
-    }
-  },
-
-  watch: {
-    $route: {
-      immediate: true,
-      handler({ name }) {
-        if ([ 'labs', 'linktree' ].includes(name)) {
-          if (this.playing) {
-            playPause()
-            this.playing = false
-          }
-        } else {
-          if (!this.playing) {
-            playPause()
-            this.playing = true
-          }
-        }
-
-        if (this.init) {return}
-        this.init = true
-        multipleSplats(parseInt(Math.random() * 20, 10) + 5)
-        update()
-      }
-    }
-  },
-
-  methods: {
-    toggleCanvas() {
-      playPause()
-    }
+  mounted() {
+    init(this.$refs.canvas)
+    update()
   }
+
 }
 
 </script>
+
+<style lang="stylus">
+
+@import "../../stylus/_variables"
+
+.pool-canvas {
+  height 104%
+  width 104%
+  left -2%
+  top -2%
+  pointer-events none
+  overflow hidden
+  position absolute
+  z-index 0
+}
+
+</style>
