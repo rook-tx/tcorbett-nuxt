@@ -5,7 +5,7 @@
 <script>
 
 import { mapActions } from 'pinia'
-import { useDeviceStore } from '../../stores/device'
+import { useDeviceStore } from '@/stores/device'
 
 export default {
 
@@ -15,7 +15,8 @@ export default {
         x: 1440,
         y: 800,
       },
-      mouse: false
+      mouse: false,
+      touch: false
     }
 
     return {
@@ -33,6 +34,7 @@ export default {
   },
 
   mounted() {
+    window.addEventListener('touchstart', this.touchstart, { passive: true })
     window.addEventListener('mousemove', this.mousestart, { passive: true })
     window.addEventListener('resize', this.resize, { passive: true })
     this.$nextTick(this.resize)
@@ -47,6 +49,11 @@ export default {
     ...mapActions(useDeviceStore, [
       'updateDevice'
     ]),
+
+    touchstart() {
+      this.device.touch = true
+      window.removeEventListener('touchmove', this.touchstart, { passive: true })
+    },
 
     mousestart() {
       this.device.mouse = true

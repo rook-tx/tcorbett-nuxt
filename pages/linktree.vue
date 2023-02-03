@@ -1,9 +1,9 @@
 <script setup>
-definePageMeta({
+definePageMeta({ // eslint-disable-line no-undef
   layout: 'linktree',
 })
-const { client } = usePrismic()
-const { data: doc } = await useAsyncData('linktree', () => client.getSingle('linktree'))
+const { client } = usePrismic() // eslint-disable-line no-undef
+const { data: doc } = await useAsyncData('linktree', () => client.getSingle('linktree')) // eslint-disable-line no-undef
 </script>
 
 <template>

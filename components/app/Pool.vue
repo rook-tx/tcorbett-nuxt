@@ -26,15 +26,20 @@ export default {
 
 @import "../../stylus/_variables"
 
+.pool {
+  abs()
+  overflow hidden
+  pointer-events none
+  z-index 0
+}
+
 .pool-canvas {
   height 104%
   width 104%
   left -2%
   top -2%
-  pointer-events none
   overflow hidden
   position absolute
-  z-index 0
 }
 
 </style>

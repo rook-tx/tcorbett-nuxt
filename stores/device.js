@@ -19,6 +19,8 @@ export const useDeviceStore = defineStore('device', {
     win: (state) => state.device.win,
     winWidth: (state) => state.device.win.x,
     winHeight: (state) => state.device.win.y,
+
+    mobile: (state) => state.device.win.x < 768
   },
 
   actions: {

@@ -1,42 +1,43 @@
+<script setup>
+
+const links = [
+  {
+    id: 'tcorb',
+    label: 'T Corbett',
+  },
+  {
+    id: 'about',
+    label: 'About',
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+  },
+  {
+    id: 'labs',
+    label: 'Labs',
+  }
+]
+
+</script>
+
 <template>
   <header class="header">
     <div class="header-wrap">
       <nav class="mnav">
         <ul class="mnav-ul">
-          <li class="mnav-li mnav-tcorb">
-            <router-link
+          <li
+            v-for="link in links"
+            :key="link.id"
+            :class="['mnav-li', `mnav-${link.id}`]"
+          >
+            <nuxt-link
               class="mnav-a"
-              to="/"
+              :to="link.id === 'tcorb' ? '/' : `/${link.id}`"
+              @click.left="toggleTldr(false)"
             >
-              T Corbett
-            </router-link>
-          </li>
-
-          <li class="mnav-li mnav-about">
-            <router-link
-              class="mnav-a"
-              to="/about/"
-            >
-              About
-            </router-link>
-          </li>
-
-          <li class="mnav-li mnav-projects">
-            <router-link
-              class="mnav-a"
-              to="/projects/"
-            >
-              Projects
-            </router-link>
-          </li>
-
-          <li class="mnav-li mnav-labs">
-            <router-link
-              class="mnav-a"
-              to="/labs/"
-            >
-              Labs
-            </router-link>
+              {{ link.label }}
+            </nuxt-link>
           </li>
         </ul>
       </nav>
@@ -69,7 +70,7 @@
 <script>
 
 import { mapActions } from 'pinia'
-import { useAppStore } from '../../stores/app'
+import { useAppStore } from '@/stores/app'
 
 export default {
 
@@ -90,7 +91,7 @@ export default {
     ...mapActions(useAppStore, [
       'toggleTldr'
     ]),
-  }
+  },
 }
 
 </script>
@@ -187,9 +188,6 @@ $borderhov    = $nw
   +above($mobile)
     margin-right auto
 
-    &-ul
-      font-size 0
-
   +below($mobile)
     flex-grow 1
 
@@ -272,8 +270,12 @@ button.mnav-a
   color $nblk
   font-weight 700
   pad(0, .5)
-  mgn(1, 1)
+  mgn(1, .5, 1, 1)
   outline 0
   cursor pointer
+
+  +above($mobile) {
+    mgn(1, 1)
+  }
 
 </style>

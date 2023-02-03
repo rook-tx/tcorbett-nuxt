@@ -50,7 +50,7 @@ const { data: home } = await useAsyncData('home', () => client.getSingle('home')
 <script>
 
 import { mapState } from 'pinia'
-import { useDeviceStore } from '../../stores/device'
+import { useDeviceStore } from '@/stores/device'
 
 import cushions from '/images/cushions.jpg'
 

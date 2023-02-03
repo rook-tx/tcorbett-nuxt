@@ -85,7 +85,8 @@ const { data: projects } = await useAsyncData('projects', () => client.getSingle
   }
 
   .wrap {
-    height 100%
+    min-height 100%
+    overflow hidden
   }
 
   .two-col {

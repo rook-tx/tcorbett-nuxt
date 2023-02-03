@@ -108,9 +108,12 @@ const { data: projects } = await useAsyncData('projects', () => client.getSingle
     background $b
     color $w
 
-  .sec,
-  .wrap
+  .sec
     height 100%
+
+  .wrap
+    pad(0, 1, 3)
+    min-height 100%
 
   .one-col
     height 100%

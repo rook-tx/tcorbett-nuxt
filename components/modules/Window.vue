@@ -2,8 +2,6 @@
   <div
     :class="[ 'window', { active: active }]"
     :style="pos"
-    @touchstart.passive="$emit('dragging', $event)"
-    @mousedown.passive="$emit('dragging', $event)"
   >
     <div
       class="window-header"
@@ -73,11 +71,12 @@
 
 <script>
 
+import { mapState } from 'pinia'
+import { useDeviceStore } from '@/stores/device'
+
 import About from '../windows/About.vue'
 import Projects from '../windows/Projects.vue'
 import Labs from '../windows/Labs.vue'
-import { mapState } from 'pinia'
-import { useDeviceStore } from '../../stores/device'
 
 export default {
 
@@ -94,8 +93,8 @@ export default {
         id: '',
         title: '',
         pos: {
-          x: 0,
-          y: 0
+          x: 720,
+          y: 400
         }
       })
     },
@@ -111,28 +110,36 @@ export default {
     }
   },
 
-  emits: [
-    'dragging'
-  ],
-
   computed: {
     ...mapState(useDeviceStore, [
-      'win'
+      'win',
+      'mobile'
     ]),
 
     pos() {
       if (this.active) {
-        return {
-          left: `${this.win.x / 2}px`,
+        return this.data.id === 'about' ? {
+          left: `${this.mobile ? 10 : (this.win.x * 0.5)}px`,
           top: '50px',
           zIndex: this.z
+        } : {
+          left: 0,
+          top: 0,
+          transform: `translateX(${this.mobile ? 10 : this.win.x * 0.382}px) translateY(50px) translateZ(0)`,
+          zIndex: this.z
         }
-      }
+      } else
+      if (this.data.pos) {
+        const { x, y } = this.data.pos
 
-      if (this.data && this.data.pos) {
-        return {
-          left: `${this.data.pos.x}px`,
-          top: `${this.data.pos.y}px`,
+        return this.data.id === 'about' ? {
+          left: `${x}px`,
+          top: `${y}px`,
+          zIndex: this.z
+        } : {
+          left: 0,
+          top: 0,
+          transform: `translateX(${x}px) translateY(${y}px) translateZ(0)`,
           zIndex: this.z
         }
       }
@@ -165,17 +172,21 @@ export default {
   position absolute
   transition max-height 500ms $easeInOutQuint 0ms
   transition-property left, right, top, width, max-height, opacity
+  transition-property left, top, transform, width, max-height, opacity
   max-width $pwidth * 1.618 * 1rem
   width 61.8vw
   z-index 0
 
   +above($tablet)
     height 90%
-    max-height 0.618 * 33vw
+    // max-height 0.618 * 33vw
+    max-height 21vw
     width 33vw
 
   +above($laptop)
-    min-height 24 * 0.618em
+    // min-height 24 * 0.618em
+    min-height 13.5em
+    max-height 23vw
     min-width 24em
 
   .dragging &
@@ -255,7 +266,7 @@ export default {
 
     +below($tablet)
       right $gut * .5em
-      left $gut * 2em !important
+      left $gut * 2em // !important
       width auto
 
   .open &

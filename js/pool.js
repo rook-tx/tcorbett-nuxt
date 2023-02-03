@@ -1,7 +1,3 @@
-// function isMobile() {
-//   return /Mobi|Android/i.test(navigator.userAgent)
-// }
-
 let canvas
 
 const config = {
@@ -19,12 +15,6 @@ const config = {
   BACK_COLOR: { r: 252, g: 250, b: 254 },
   TARGET_COLOR: { r: 252, g: 250, b: 254 },
   TRANSPARENT: false,
-  // BLOOM: false,
-  // BLOOM_ITERATIONS: 6,
-  // BLOOM_RESOLUTION: 64,
-  // BLOOM_INTENSITY: 0.1, // 0.1, 2.0
-  // BLOOM_THRESHOLD: 0.99, // 0.0, 1.0
-  // BLOOM_SOFT_KNEE: 0.6
 }
 
 class pointerPrototype {
@@ -42,7 +32,6 @@ class pointerPrototype {
 
 const pointers = []
 const splatStack = []
-// const bloomFramebuffers = []
 pointers.push(new pointerPrototype())
 
 let ref = { gl: null, ext: null }
@@ -84,15 +73,6 @@ function getSupportedFormat(gl, internalFormat, format, type) {
   }
 }
 
-// if (isMobile()) { config.SHADING = false }
-
-// if (!ext.supportLinearFiltering) {
-//   config.SHADING = false
-//   config.BLOOM = false
-// }
-
-// startGUI();
-
 function getWebGLContext(canvasCtx) {
   const params = { alpha: false, depth: false, stencil: false, antialias: false, preserveDrawingBuffer: false }
 
@@ -126,12 +106,6 @@ function getWebGLContext(canvasCtx) {
     formatRG = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType)
     formatR = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType)
   }
-
-  // if (formatRGBA === null) {
-  //   ga('send', 'event', isWebGL2 ? 'webgl2' : 'webgl', 'not supported');
-  // } else {
-  //   ga('send', 'event', isWebGL2 ? 'webgl2' : 'webgl', 'supported');
-  // }
 
   return {
     gl,
@@ -193,24 +167,6 @@ let backgroundShader // = compileShader(gl.FRAGMENT_SHADER, backgroundShaderJS)
 import displayShaderJS from '@/shaders/displayShader.frag?raw'
 let displayShader // = compileShader(gl.FRAGMENT_SHADER, displayShaderJS)
 
-// import displayBloomShaderJS from '@/shaders/displayBloomShader.frag?raw'
-// let displayBloomShader // = compileShader(gl.FRAGMENT_SHADER, displayBloomShaderJS)
-
-// import displayShadingShaderJS from '@/shaders/displayShadingShader.frag?raw'
-// let displayShadingShader // = compileShader(gl.FRAGMENT_SHADER, displayShadingShaderJS)
-
-// import displayBloomShadingShaderJS from '@/shaders/displayBloomShadingShader.frag?raw'
-// let displayBloomShadingShader // = compileShader(gl.FRAGMENT_SHADER, displayBloomShadingShaderJS)
-
-// import bloomPrefilterShaderJS from '@/shaders/bloomPrefilterShader.frag?raw'
-// let bloomPrefilterShader // = compileShader(gl.FRAGMENT_SHADER, bloomPrefilterShaderJS)
-
-// import bloomBlurShaderJS from '@/shaders/bloomBlurShader.frag?raw'
-// let bloomBlurShader // = compileShader(gl.FRAGMENT_SHADER, bloomBlurShaderJS)
-
-// import bloomFinalShaderJS from '@/shaders/bloomFinalShader.frag?raw'
-// let bloomFinalShader // = compileShader(gl.FRAGMENT_SHADER, bloomFinalShaderJS)
-
 import splatShaderJS from '@/shaders/splatShader.frag?raw'
 let splatShader // = compileShader(gl.FRAGMENT_SHADER, splatShaderJS)
 
@@ -236,19 +192,6 @@ import gradientSubtractShaderJS from '@/shaders/gradientSubtractShader.frag?raw'
 let gradientSubtractShader // = compileShader(gl.FRAGMENT_SHADER, gradientSubtractShaderJS)
 
 let blit
-// = (() => {
-//   gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
-//   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ -1, -1, -1, 1, 1, 1, 1, -1 ]), gl.STATIC_DRAW)
-//   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer())
-//   gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([ 0, 1, 2, 0, 2, 3 ]), gl.STATIC_DRAW)
-//   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0)
-//   gl.enableVertexAttribArray(0)
-
-//   return (destination) => {
-//     gl.bindFramebuffer(gl.FRAMEBUFFER, destination)
-//     gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0)
-//   }
-// })()
 
 let simWidth
 let simHeight
@@ -259,22 +202,11 @@ let velocity
 let divergence
 let curl
 let pressure
-// let bloom
-
-// import dith from '/images/LDR_RGB1_0.png'
-
-// let ditheringTexture // = createTextureAsync(dith)
 
 let clearProgram // = new GLProgram(baseVertexShader, clearShader)
 let colorProgram // = new GLProgram(baseVertexShader, colorShader)
 let backgroundProgram // = new GLProgram(baseVertexShader, backgroundShader)
 let displayProgram // = new GLProgram(baseVertexShader, displayShader)
-// let displayBloomProgram // = new GLProgram(baseVertexShader, displayBloomShader)
-// let displayShadingProgram // = new GLProgram(baseVertexShader, displayShadingShader)
-// let displayBloomShadingProgram // = new GLProgram(baseVertexShader, displayBloomShadingShader)
-// let bloomPrefilterProgram // = new GLProgram(baseVertexShader, bloomPrefilterShader)
-// let bloomBlurProgram // = new GLProgram(baseVertexShader, bloomBlurShader)
-// let bloomFinalProgram // = new GLProgram(baseVertexShader, bloomFinalShader)
 let splatProgram // = new GLProgram(baseVertexShader, splatShader)
 let advectionProgram // = new GLProgram(baseVertexShader, ext.supportLinearFiltering ? advectionShader : advectionManualFilteringShader)
 let divergenceProgram // = new GLProgram(baseVertexShader, divergenceShader)
@@ -313,31 +245,7 @@ function initFramebuffers() {
   divergence = createFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST)
   curl = createFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST)
   pressure = createDoubleFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST)
-
-  // initBloomFramebuffers()
 }
-
-// function initBloomFramebuffers() {
-//   const res = getResolution(config.BLOOM_RESOLUTION)
-
-//   const texType = ext.halfFloatTexType
-//   const rgba = ext.formatRGBA
-//   const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST
-
-//   // bloom = createFBO(res.width, res.height, rgba.internalFormat, rgba.format, texType, filtering)
-
-//   bloomFramebuffers.length = 0
-
-//   for (let i = 0; i < config.BLOOM_ITERATIONS; i++) {
-//     const width = res.width >> i + 1
-//     const height = res.height >> i + 1
-
-//     if (width < 2 || height < 2) { break }
-
-//     const fbo = createFBO(width, height, rgba.internalFormat, rgba.format, texType, filtering)
-//     bloomFramebuffers.push(fbo)
-//   }
-// }
 
 function createFBO(w, h, internalFormat, format, type, param) {
   gl.activeTexture(gl.TEXTURE0)
@@ -407,41 +315,6 @@ function resizeDoubleFBO(target, w, h, internalFormat, format, type, param) {
   target.write = createFBO(w, h, internalFormat, format, type, param)
   return target
 }
-
-// function createTextureAsync(url) {
-//   const texture = gl.createTexture()
-//   gl.bindTexture(gl.TEXTURE_2D, texture)
-//   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
-//   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
-//   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT)
-//   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT)
-//   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 1, 1, 0, gl.RGB, gl.UNSIGNED_BYTE, new Uint8Array([ 255, 255, 255 ]))
-
-//   const obj = {
-//     texture,
-//     width: 1,
-//     height: 1,
-//     attach(id) {
-//       gl.activeTexture(gl.TEXTURE0 + id)
-//       gl.bindTexture(gl.TEXTURE_2D, texture)
-//       return id
-//     }
-//   }
-
-//   const image = new Image()
-//   image.onload = () => {
-//     obj.width = image.width
-//     obj.height = image.height
-//     gl.bindTexture(gl.TEXTURE_2D, texture)
-//     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image)
-//   }
-//   image.src = url
-
-//   return obj
-// }
-
-// initFramebuffers()
-// multipleSplats(parseInt(Math.random() * 20, 10) + 5)
 
 let lastColorChangeTime // = Date.now()
 
@@ -532,8 +405,6 @@ function step(dt) {
 }
 
 function render(target) {
-  // if (config.BLOOM) { applyBloom(density.read, bloom) }
-
   if (target === null || !config.TRANSPARENT) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
     gl.enable(gl.BLEND)
@@ -563,29 +434,9 @@ function render(target) {
     gl.uniform1f(backgroundProgram.uniforms.aspectRatio, canvas.width / canvas.height)
     blit(null)
   }
-
-  // if (config.SHADING) {
-  //   const program = config.BLOOM ? displayBloomShadingProgram : displayShadingProgram
-  //   program.bind()
-  //   gl.uniform2f(program.uniforms.texelSize, 1.0 / width, 1.0 / height)
-  //   gl.uniform1i(program.uniforms.uTexture, density.read.attach(0))
-  //   if (config.BLOOM) {
-  //     gl.uniform1i(program.uniforms.uBloom, bloom.attach(1))
-  //     gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2))
-  //     const scale = getTextureScale(ditheringTexture, width, height)
-  //     gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y)
-  //   }
-  // } else {
-  const program$1 = /*config.BLOOM ? displayBloomProgram : */ displayProgram
+  const program$1 = displayProgram
   program$1.bind()
   gl.uniform1i(program$1.uniforms.uTexture, density.read.attach(0))
-  // if (config.BLOOM) {
-  //   gl.uniform1i(program$1.uniforms.uBloom, bloom.attach(1))
-  //   gl.uniform1i(program$1.uniforms.uDithering, ditheringTexture.attach(2))
-  //   const scale$1 = getTextureScale(ditheringTexture, width, height)
-  //   gl.uniform2f(program$1.uniforms.ditherScale, scale$1.x, scale$1.y)
-  // }
-  // }
 
   blit(target)
 }
@@ -597,8 +448,6 @@ export function update() {
   render(null)
   requestAnimationFrame(update)
 }
-
-// update();
 
 function HSVtoRGB(h, s, v) {
   let r
@@ -656,54 +505,6 @@ function generateColor() {
   return c
 }
 
-// function applyBloom(source, destination) {
-//   if (bloomFramebuffers.length < 2) { return }
-
-//   let last = destination
-
-//   gl.disable(gl.BLEND)
-//   bloomPrefilterProgram.bind()
-//   const knee = config.BLOOM_THRESHOLD * config.BLOOM_SOFT_KNEE + 0.0001
-//   const curve0 = config.BLOOM_THRESHOLD - knee
-//   const curve1 = knee * 2
-//   const curve2 = 0.25 / knee
-//   gl.uniform3f(bloomPrefilterProgram.uniforms.curve, curve0, curve1, curve2)
-//   gl.uniform1f(bloomPrefilterProgram.uniforms.threshold, config.BLOOM_THRESHOLD)
-//   gl.uniform1i(bloomPrefilterProgram.uniforms.uTexture, source.attach(0))
-//   gl.viewport(0, 0, last.width, last.height)
-//   blit(last.fbo)
-
-//   bloomBlurProgram.bind()
-//   for (var i = 0; i < bloomFramebuffers.length; i++) {
-//     var dest = bloomFramebuffers[i]
-//     gl.uniform2f(bloomBlurProgram.uniforms.texelSize, 1.0 / last.width, 1.0 / last.height)
-//     gl.uniform1i(bloomBlurProgram.uniforms.uTexture, last.attach(0))
-//     gl.viewport(0, 0, dest.width, dest.height)
-//     blit(dest.fbo)
-//     last = dest
-//   }
-
-//   gl.blendFunc(gl.ONE, gl.ONE)
-//   gl.enable(gl.BLEND)
-
-//   for (let i$1 = bloomFramebuffers.length - 2; i$1 >= 0; i$1--) {
-//     const baseTex = bloomFramebuffers[i$1]
-//     gl.uniform2f(bloomBlurProgram.uniforms.texelSize, 1.0 / last.width, 1.0 / last.height)
-//     gl.uniform1i(bloomBlurProgram.uniforms.uTexture, last.attach(0))
-//     gl.viewport(0, 0, baseTex.width, baseTex.height)
-//     blit(baseTex.fbo)
-//     last = baseTex
-//   }
-
-//   gl.disable(gl.BLEND)
-//   bloomFinalProgram.bind()
-//   gl.uniform2f(bloomFinalProgram.uniforms.texelSize, 1.0 / last.width, 1.0 / last.height)
-//   gl.uniform1i(bloomFinalProgram.uniforms.uTexture, last.attach(0))
-//   gl.uniform1f(bloomFinalProgram.uniforms.intensity, config.BLOOM_INTENSITY)
-//   gl.viewport(0, 0, destination.width, destination.height)
-//   blit(destination.fbo)
-// }
-
 function splat(x, y, dx, dy, color) {
   gl.viewport(0, 0, simWidth, simHeight)
   splatProgram.bind()
@@ -744,13 +545,88 @@ function resizeCanvas() {
   }
 }
 
-// window.addEventListener('mousemove', (e) => {
-//   pointers[0].moved = pointers[0].down
-//   pointers[0].dx = (e.clientX - pointers[0].x) * 5.0
-//   pointers[0].dy = (e.clientY - pointers[0].y) * 5.0
-//   pointers[0].x = e.clientX
-//   pointers[0].y = e.clientY
-// }, { passive: true })
+export function playPause() {
+  config.PAUSED = !config.PAUSED
+}
+
+function getResolution(resolution) {
+  let aspectRatio = gl.drawingBufferWidth / gl.drawingBufferHeight
+  if (aspectRatio < 1) { aspectRatio = 1.0 / aspectRatio }
+
+  const max = Math.round(resolution * aspectRatio)
+  const min = Math.round(resolution)
+
+  if (gl.drawingBufferWidth > gl.drawingBufferHeight) { return { width: max, height: min } }
+  return { width: min, height: max }
+}
+
+export function init(el) {
+  canvas = el ?? document.getElementsByTagName('canvas')[0]
+  canvas.width = canvas.clientWidth
+  canvas.height = canvas.clientHeight
+
+  ref = getWebGLContext(canvas)
+  gl = ref.gl
+  ext = ref.ext
+
+  window.addEventListener('mousemove', (e) => {
+    pointers[0].moved = pointers[0].down
+    pointers[0].dx = (e.clientX - pointers[0].x) * 5.0
+    pointers[0].dy = (e.clientY - pointers[0].y) * 5.0
+    pointers[0].x = e.clientX
+    pointers[0].y = e.clientY
+  }, { passive: true })
+
+  // window.addEventListener('mousedown', () => {
+  //   pointers[0].color = generateColor()
+  // }, { passive: true })
+
+  pointers[0].down = true
+  lastColorChangeTime = Date.now()
+
+  baseVertexShader = compileShader(gl.VERTEX_SHADER, baseVertexShaderJS)
+  clearShader = compileShader(gl.FRAGMENT_SHADER, clearShaderJS)
+  colorShader = compileShader(gl.FRAGMENT_SHADER, colorShaderJS)
+  backgroundShader = compileShader(gl.FRAGMENT_SHADER, backgroundShaderJS)
+  displayShader = compileShader(gl.FRAGMENT_SHADER, displayShaderJS)
+  splatShader = compileShader(gl.FRAGMENT_SHADER, splatShaderJS)
+  advectionManualFilteringShader = compileShader(gl.FRAGMENT_SHADER, advectionManualFilteringShaderJS)
+  advectionShader = compileShader(gl.FRAGMENT_SHADER, advectionShaderJS)
+  divergenceShader = compileShader(gl.FRAGMENT_SHADER, divergenceShaderJS)
+  curlShader = compileShader(gl.FRAGMENT_SHADER, curlShaderJS)
+  vorticityShader = compileShader(gl.FRAGMENT_SHADER, vorticityShaderJS)
+  pressureShader = compileShader(gl.FRAGMENT_SHADER, pressureShaderJS)
+  gradientSubtractShader = compileShader(gl.FRAGMENT_SHADER, gradientSubtractShaderJS)
+
+  blit = (() => {
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ -1, -1, -1, 1, 1, 1, 1, -1 ]), gl.STATIC_DRAW)
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer())
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([ 0, 1, 2, 0, 2, 3 ]), gl.STATIC_DRAW)
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0)
+    gl.enableVertexAttribArray(0)
+
+    return (destination) => {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, destination)
+      gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0)
+    }
+  })()
+
+  clearProgram = new GLProgram(baseVertexShader, clearShader)
+  colorProgram = new GLProgram(baseVertexShader, colorShader)
+  backgroundProgram = new GLProgram(baseVertexShader, backgroundShader)
+  displayProgram = new GLProgram(baseVertexShader, displayShader)
+  splatProgram = new GLProgram(baseVertexShader, splatShader)
+  advectionProgram = new GLProgram(baseVertexShader, ext.supportLinearFiltering ? advectionShader : advectionManualFilteringShader)
+  divergenceProgram = new GLProgram(baseVertexShader, divergenceShader)
+  curlProgram = new GLProgram(baseVertexShader, curlShader)
+  vorticityProgram = new GLProgram(baseVertexShader, vorticityShader)
+  pressureProgram = new GLProgram(baseVertexShader, pressureShader)
+  gradienSubtractProgram = new GLProgram(baseVertexShader, gradientSubtractShader)
+
+  initFramebuffers()
+  multipleSplats(parseInt(Math.random() * 20, 10) + 5)
+}
 
 // canvas.addEventListener('touchmove', (e) => {
 //   e.preventDefault();
@@ -801,114 +677,3 @@ function resizeCanvas() {
 //   if (e.code === 'KeyP') { config.PAUSED = !config.PAUSED }
 //   if (e.key === ' ') { splatStack.push(parseInt(Math.random() * 20, 10) + 5) }
 // }, { passive: true })
-
-export function playPause() {
-  config.PAUSED = !config.PAUSED
-}
-
-function getResolution(resolution) {
-  let aspectRatio = gl.drawingBufferWidth / gl.drawingBufferHeight
-  if (aspectRatio < 1) { aspectRatio = 1.0 / aspectRatio }
-
-  const max = Math.round(resolution * aspectRatio)
-  const min = Math.round(resolution)
-
-  if (gl.drawingBufferWidth > gl.drawingBufferHeight) { return { width: max, height: min } }
-  return { width: min, height: max }
-}
-
-// function getTextureScale(texture, width, height) {
-//   return {
-//     x: width / texture.width,
-//     y: height / texture.height
-//   }
-// }
-
-export function init(el) {
-  canvas = el ?? document.getElementsByTagName('canvas')[0]
-  canvas.width = canvas.clientWidth
-  canvas.height = canvas.clientHeight
-
-  ref = getWebGLContext(canvas)
-  gl = ref.gl
-  ext = ref.ext
-
-  // if (isMobile()) { config.SHADING = false }
-
-  // if (!ext.supportLinearFiltering) {
-  //   config.SHADING = false
-  //   config.BLOOM = false
-  // }
-
-  window.addEventListener('mousemove', (e) => {
-    pointers[0].moved = pointers[0].down
-    pointers[0].dx = (e.clientX - pointers[0].x) * 5.0
-    pointers[0].dy = (e.clientY - pointers[0].y) * 5.0
-    pointers[0].x = e.clientX
-    pointers[0].y = e.clientY
-  }, { passive: true })
-
-  window.addEventListener('mousedown', () => {
-    pointers[0].down = true
-    pointers[0].color = generateColor()
-  })
-
-  lastColorChangeTime = Date.now()
-
-  baseVertexShader = compileShader(gl.VERTEX_SHADER, baseVertexShaderJS)
-  clearShader = compileShader(gl.FRAGMENT_SHADER, clearShaderJS)
-  colorShader = compileShader(gl.FRAGMENT_SHADER, colorShaderJS)
-  backgroundShader = compileShader(gl.FRAGMENT_SHADER, backgroundShaderJS)
-  displayShader = compileShader(gl.FRAGMENT_SHADER, displayShaderJS)
-  // displayBloomShader = compileShader(gl.FRAGMENT_SHADER, displayBloomShaderJS)
-  // displayShadingShader = compileShader(gl.FRAGMENT_SHADER, displayShadingShaderJS)
-  // displayBloomShadingShader = compileShader(gl.FRAGMENT_SHADER, displayBloomShadingShaderJS)
-  // bloomPrefilterShader = compileShader(gl.FRAGMENT_SHADER, bloomPrefilterShaderJS)
-  // bloomBlurShader = compileShader(gl.FRAGMENT_SHADER, bloomBlurShaderJS)
-  // bloomFinalShader = compileShader(gl.FRAGMENT_SHADER, bloomFinalShaderJS)
-  splatShader = compileShader(gl.FRAGMENT_SHADER, splatShaderJS)
-  advectionManualFilteringShader = compileShader(gl.FRAGMENT_SHADER, advectionManualFilteringShaderJS)
-  advectionShader = compileShader(gl.FRAGMENT_SHADER, advectionShaderJS)
-  divergenceShader = compileShader(gl.FRAGMENT_SHADER, divergenceShaderJS)
-  curlShader = compileShader(gl.FRAGMENT_SHADER, curlShaderJS)
-  vorticityShader = compileShader(gl.FRAGMENT_SHADER, vorticityShaderJS)
-  pressureShader = compileShader(gl.FRAGMENT_SHADER, pressureShaderJS)
-  gradientSubtractShader = compileShader(gl.FRAGMENT_SHADER, gradientSubtractShaderJS)
-
-  blit = (() => {
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ -1, -1, -1, 1, 1, 1, 1, -1 ]), gl.STATIC_DRAW)
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer())
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([ 0, 1, 2, 0, 2, 3 ]), gl.STATIC_DRAW)
-    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0)
-    gl.enableVertexAttribArray(0)
-
-    return (destination) => {
-      gl.bindFramebuffer(gl.FRAMEBUFFER, destination)
-      gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0)
-    }
-  })()
-
-  // ditheringTexture = createTextureAsync(dith)
-
-  clearProgram = new GLProgram(baseVertexShader, clearShader)
-  colorProgram = new GLProgram(baseVertexShader, colorShader)
-  backgroundProgram = new GLProgram(baseVertexShader, backgroundShader)
-  displayProgram = new GLProgram(baseVertexShader, displayShader)
-  // displayBloomProgram = new GLProgram(baseVertexShader, displayBloomShader)
-  // displayShadingProgram = new GLProgram(baseVertexShader, displayShadingShader)
-  // displayBloomShadingProgram = new GLProgram(baseVertexShader, displayBloomShadingShader)
-  // bloomPrefilterProgram = new GLProgram(baseVertexShader, bloomPrefilterShader)
-  // bloomBlurProgram = new GLProgram(baseVertexShader, bloomBlurShader)
-  // bloomFinalProgram = new GLProgram(baseVertexShader, bloomFinalShader)
-  splatProgram = new GLProgram(baseVertexShader, splatShader)
-  advectionProgram = new GLProgram(baseVertexShader, ext.supportLinearFiltering ? advectionShader : advectionManualFilteringShader)
-  divergenceProgram = new GLProgram(baseVertexShader, divergenceShader)
-  curlProgram = new GLProgram(baseVertexShader, curlShader)
-  vorticityProgram = new GLProgram(baseVertexShader, vorticityShader)
-  pressureProgram = new GLProgram(baseVertexShader, pressureShader)
-  gradienSubtractProgram = new GLProgram(baseVertexShader, gradientSubtractShader)
-
-  initFramebuffers()
-  multipleSplats(parseInt(Math.random() * 20, 10) + 5)
-}
