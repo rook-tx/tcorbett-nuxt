@@ -37,6 +37,10 @@ const slug = route.params.slug
     strong {
       font-weight 400
     }
+
+    a {
+      border-bottom 1px solid $prpl
+    }
   }
 }
 

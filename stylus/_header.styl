@@ -1,0 +1,180 @@
+
+@import "_variables"
+
+.header
+  left 0
+  pointer-events none
+  top 0
+  pad(0, .5)
+  width 100%
+
+  &-logo
+    display block
+    height 21px
+    width 21px
+
+    +below($mobile)
+      margin-top -2px
+      margin-left -4px
+      vertical-align top
+
+    &-path
+      &-left, &-right
+        transition fill .8s $fade-in
+
+        .loading &
+          fill $nw
+
+      &-left
+        fill lighten($prpl,34%)
+
+      &-right
+        fill $prpl
+
+  &-wrap
+    align-items flex-end
+    display flex
+
+    &::before, &::after
+      content none
+
+// .mnav-home
+//   .mnav-a
+//     padding ((($lh *2.5) - 21)*.5px) 0 0 $gut * 1rem
+//     // pad(0, 1, 0, 2)
+
+//     +above($mobile)
+//       padding ((($lh*2.5) - 14)*.5px) $gut * 1rem 0 $gut * 2rem
+
+.header
+  &-line
+    background $nw
+    // bottom ($lh/2)*1px
+    height 1px
+    flex-grow 1
+    // left $gut*3em
+    overflow hidden
+    position relative
+    mgn(1,0,1,1)
+    margin-bottom: $let + .28em
+    // right $gut*1em
+    z-index 1
+
+    // +above($mobile)
+    //   bottom ($lh - 2)*1px
+    //   left $gut*4em
+
+    &-inner
+      background-image linear-gradient(90deg, $blu, $prpl)
+      border-right 2px solid $blk
+      bottom 0
+      display block
+      height 1px
+      left 0
+      opacity 1
+      position absolute
+      transform translate3d(-100%,0,0)
+      transition opacity .5s $fade-out
+      width 100%
+
+      .header:hover &, .loading &
+        opacity 0
+
+$head-trans   = .1s $fade-in
+$head-Btrans  = .1s $fade-out
+$scale        = scale(.95)
+$borderhov    = $nw
+
+.mnav
+  +above($mobile)
+    margin-right auto
+
+  +below($mobile)
+    flex-grow 1
+
+    &-ul
+      display flex
+      justify-content space-between
+
+      &::before
+        content none
+
+  &-li
+    display inline-block
+    vertical-align top
+
+  &-home
+    padding-right 0
+
+    .mnav-a
+      border 0
+      margin 0
+
+      &.router-link-exact-active
+        border-color $w
+
+  &-tcorb
+    .mnav-a
+      font-weight 400
+      color darken($prpl, 10%)
+
+      &:hover,
+      &.router-link-exact-active
+        color darken($prpl, 20%)
+        border-color $w
+
+  &-about
+    .mnav-a
+      &:hover, &.router-link-exact-active
+        border-color $blu
+        color $blu
+
+  &-projects
+    .mnav-a
+      &:hover, &.router-link-exact-active
+        border-color $prpl
+        color $prpl
+
+  &-labs
+    .mnav-a
+      &:hover, &.router-link-exact-active
+        border-color $blk
+        color $blk
+
+.mnav-a, .credit
+  border-top 3px solid transparent
+  color darken($prpl, 55%)
+  display block
+  font-family $lato
+  fs(mp(-3))
+  font-weight 400
+  letter-spacing $ls
+  mgn(0, auto)
+  pad(1, .25)
+  pointer-events all
+  text-transform uppercase
+  transform scale(1)
+  transition color $easeOutQuint
+
+  &.router-link-exact-active
+    color $prpl
+    border-color $prpl
+
+  +above($mobile)
+    pad(1, 0)
+    mgn(0, 1)
+
+button.mnav-a
+  background 0
+  border 1px solid
+  border-radius 3px
+  color $nblk
+  font-weight 700
+  pad(0, .5)
+  mgn(1, .5, 1, 1)
+  outline 0
+  cursor pointer
+
+  +above($mobile) {
+    mgn(1, 1)
+  }
