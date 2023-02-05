@@ -1,3 +1,14 @@
+<script setup>
+
+defineProps({
+  slice: {
+    type: Object,
+    default: null
+  }
+})
+
+</script>
+
 <template>
   <div class="banner-copy">
     <prismic-rich-text
@@ -6,19 +17,6 @@
     />
   </div>
 </template>
-
-<script>
-
-export default {
-  props: {
-    slice: {
-      type: Object,
-      default: null
-    }
-  }
-}
-
-</script>
 
 <style lang="stylus">
 

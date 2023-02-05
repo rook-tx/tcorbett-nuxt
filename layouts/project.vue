@@ -1,9 +1,3 @@
-<script setup>
-const route = useRoute() // eslint-disable-line no-undef
-
-const slug = route.params.slug
-</script>
-
 <template>
   <div class="project-layout">
     <project-header />
@@ -22,6 +16,7 @@ const slug = route.params.slug
 
 .project-page {
   min-height 100%
+  position relative
   overflow hidden
 }
 

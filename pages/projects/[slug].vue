@@ -46,6 +46,8 @@ function getComponent(type) {
       :current="slug"
       :projects="data.projects"
     />
+
+    <project-footer />
   </div>
 </template>
 

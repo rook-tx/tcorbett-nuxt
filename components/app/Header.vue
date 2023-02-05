@@ -42,18 +42,6 @@ const links = [
         </ul>
       </nav>
 
-      <!-- <div class="header-line">
-        <div
-          class="header-line-inner js-hline"
-          :style="{ transform: `translate3d(${pct - 100}%,0,0)` }"
-        >
-          Progress - <span
-            class="header-line-span js-hlspan"
-            v-html="Math.round(pct)"
-          />%
-        </div>
-      </div> -->
-
       <div class="mnav-li">
         <button
           type="button"
@@ -73,19 +61,6 @@ import { mapActions } from 'pinia'
 import { useAppStore } from '@/stores/app'
 
 export default {
-
-  props: {
-    progress: {
-      type: Number,
-      default: 0
-    }
-  },
-
-  computed: {
-    pct() {
-      return this.progress * 100
-    }
-  },
 
   methods: {
     ...mapActions(useAppStore, [

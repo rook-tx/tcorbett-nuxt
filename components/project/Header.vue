@@ -1,5 +1,12 @@
 <script setup>
 
+defineProps({
+  progress: {
+    type: Number,
+    default: 0
+  }
+})
+
 const links = [
   {
     id: 'tcorb',
@@ -65,13 +72,6 @@ import { mapActions } from 'pinia'
 import { useAppStore } from '@/stores/app'
 
 export default {
-
-  props: {
-    progress: {
-      type: Number,
-      default: 0
-    }
-  },
 
   computed: {
     pct() {
