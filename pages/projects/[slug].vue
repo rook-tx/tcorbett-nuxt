@@ -27,7 +27,10 @@ function getComponent(type) {
 </script>
 
 <template>
-  <div :class="[ 'project-page', `${slug}-page` ]">
+  <div
+    :key="slug"
+    :class="[ 'project-page', `${slug}-page` ]"
+  >
     <slices-project-hero
       :project="data?.project?.data"
     />

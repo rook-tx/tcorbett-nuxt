@@ -9,11 +9,11 @@ const { data: projects } = await useAsyncData('projects', () => client.getSingle
       v-if="projects?.data"
       class="wrap"
     >
-      <div class="blurb">
+      <!-- <div class="blurb">
         <nuxt-link to="/projects/list">
           See all projects
         </nuxt-link>
-      </div>
+      </div> -->
 
       <prismic-rich-text
         class="blurb"

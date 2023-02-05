@@ -1,3 +1,9 @@
+<script setup>
+const route = useRoute() // eslint-disable-line no-undef
+
+const slug = route.params.slug
+</script>
+
 <template>
   <div class="project-layout">
     <project-header />
