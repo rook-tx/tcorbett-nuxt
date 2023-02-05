@@ -101,6 +101,7 @@ export default {
     },
 
     winWidth: {
+      immediate: true,
       handler() {
         this.layoutWindows()
       }

@@ -4,12 +4,20 @@ definePageMeta({ // eslint-disable-line no-undef
 })
 const { client } = usePrismic() // eslint-disable-line no-undef
 const route = useRoute() // eslint-disable-line no-undef
-const { data: doc } = await useAsyncData('project', async () => { // eslint-disable-line no-undef
+
+const slug = route.params.slug
+
+const { data } = await useLazyAsyncData(async () => { // eslint-disable-line no-undef
   const projects = await client.getAllByType('project')
   return {
     projects,
-    project: projects.find((p) => p.uid === route.params.slug)
+    project: projects.find((p) => p.uid === slug)
   }
+}, {
+  default: () => ({
+    projects: [],
+    project: null
+  })
 })
 
 function getComponent(type) {
@@ -19,19 +27,22 @@ function getComponent(type) {
 </script>
 
 <template>
-  <div :class="$route.params.slug">
+  <div :class="[ 'project-page', `${slug}-page` ]">
     <slices-project-hero
-      :project="doc?.project?.data"
+      :project="data?.project?.data"
     />
 
     <component
       :is="getComponent(slice.slice_type)"
-      v-for="(slice, idx) in doc?.project?.data?.body"
+      v-for="(slice, idx) in data?.project?.data?.body"
       :key="idx"
       :slice="slice"
     />
 
-    <slices-project-footer />
+    <slices-project-footer
+      :current="slug"
+      :projects="data.projects"
+    />
   </div>
 </template>
 

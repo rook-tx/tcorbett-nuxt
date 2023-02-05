@@ -186,7 +186,7 @@ export default {
   +above($laptop)
     // min-height 24 * 0.618em
     min-height 13.5em
-    max-height 23vw
+    // max-height 22vw
     min-width 24em
 
   .dragging &

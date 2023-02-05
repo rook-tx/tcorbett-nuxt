@@ -25,12 +25,6 @@ export default {
 @import "../../stylus/_variables"
 
 .banner-copy {
-  .content {
-    mgn(1, auto)
-    padding: 0;
-    max-width: $pwidth * 1rem;
-    width: 100%;
-  }
 }
 
 </style>

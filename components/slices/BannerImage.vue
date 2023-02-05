@@ -1,6 +1,6 @@
 <template>
   <div class="banner-image">
-    <div class="content">
+    <div :class="[ 'content', { 'full-content': slice.primary.full }]">
       <prismic-rich-text
         :field="slice.primary.image_title"
       />
@@ -9,12 +9,14 @@
         v-for="(item, idx) in slice.items"
         :key="idx"
       >
-        <prismic-rich-text
-          :field="item.caption"
-        />
         <prismic-image
           :field="item.image"
         />
+        <div class="content caption">
+          <prismic-rich-text
+            :field="item.caption"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -38,11 +40,31 @@ export default {
 @import "../../stylus/_variables"
 
 .banner-image {
+
   .content {
-    mgn(1, auto)
-    padding: 0;
+    .caption {
+      pad(0, 0, 1)
+    }
+  }
+
+  .full-content {
+    padding 0
     max-width: $pwidth * 1.618rem;
-    width: 100%;
+
+    .caption {
+      pad(0, 1, 1)
+    }
+  }
+
+  .caption {
+    mgn(0, auto)
+    text-align right
+
+    p {
+      font-family $lato
+      fs(mp(-1))
+      max-width 100%
+    }
   }
 }
 

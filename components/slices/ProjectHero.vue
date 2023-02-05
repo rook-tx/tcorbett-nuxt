@@ -15,15 +15,59 @@ defineProps({
 
 <template>
   <div class="project-hero">
-    <prismic-rich-text
-      :field="project.project_title"
-    />
-    <span>
-      {{ dayjs(project.launch_date).format('MMMM YY') }}
-    </span>
-    <prismic-image
-      v-if="project?.project_image"
-      :field="project.project_image"
-    />
+    <div class="content">
+      <prismic-rich-text
+        class="title"
+        :field="project.project_title"
+      />
+      <h2
+        v-if="project.launch_date"
+        class="date"
+      >
+        {{ dayjs(project.launch_date).format('MMMM') }}
+        <span>{{ dayjs(project.launch_date).format('YY') }}</span>
+      </h2>
+    </div>
   </div>
 </template>
+
+<style lang="stylus">
+
+@import "../../stylus/_variables"
+
+.project-hero {
+  pad(4, 0)
+
+  .title {
+    border-bottom: 1px solid $prpl
+    pad(1, 0)
+
+    h1 {
+      fs(mp(7))
+      font-weight 100
+      margin: 0
+    }
+
+    +below($mobile) {
+      pad(1, 1)
+    }
+  }
+
+  .date {
+    font-family $lato
+    fs(mp(-3))
+    font-weight 400
+    letter-spacing .2em
+    text-transform uppercase
+    text-align right
+    mgn(1, 0, 2)
+    max-width 100%
+    color $nblk
+
+    span {
+      color $prpl
+    }
+  }
+}
+
+</style>

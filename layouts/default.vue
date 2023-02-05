@@ -1,55 +1,18 @@
 <template>
-  <div class="ui">
+  <div class="desktop-layout">
     <app-header />
 
     <slot />
 
     <app-desktop />
 
-    <transition appear>
-      <div
-        v-show="tldr"
-        class="tldr"
-      >
-        <slices-tldr />
-        <button
-          type="button"
-          class="tldr-close"
-          title="Close TL;DR panel"
-          @click.left.prevent="toggleTldr(false)"
-        >
-          Close
-        </button>
-      </div>
-    </transition>
+    <app-tldr />
 
     <app-pool />
 
     <app-footer />
   </div>
 </template>
-
-<script>
-
-import { mapActions, mapState } from 'pinia'
-import { useAppStore } from '@/stores/app'
-
-export default {
-
-  computed: {
-    ...mapState(useAppStore, [
-      'tldr'
-    ])
-  },
-
-  methods: {
-    ...mapActions(useAppStore, [
-      'toggleTldr'
-    ]),
-  }
-}
-
-</script>
 
 <style lang="stylus">
 
@@ -60,7 +23,7 @@ export default {
   z-index 2
 }
 
-.ui {
+.desktop-layout {
   height 100%
 }
 
