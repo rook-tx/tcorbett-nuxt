@@ -4,7 +4,13 @@ definePageMeta({ // eslint-disable-line no-undef
 })
 const { client } = usePrismic() // eslint-disable-line no-undef
 const route = useRoute() // eslint-disable-line no-undef
-const { data: doc } = await useAsyncData('project', () => client.getByUID('project', route.params.slug)) // eslint-disable-line no-undef
+const { data: doc } = await useAsyncData('project', async () => { // eslint-disable-line no-undef
+  const projects = await client.getAllByType('project')
+  return {
+    projects,
+    project: projects.find((p) => p.uid === route.params.slug)
+  }
+})
 
 function getComponent(type) {
   return `${type.replaceAll('_', '-')}`
@@ -14,12 +20,18 @@ function getComponent(type) {
 
 <template>
   <div :class="$route.params.slug">
+    <slices-project-hero
+      :project="doc?.project?.data"
+    />
+
     <component
       :is="getComponent(slice.slice_type)"
-      v-for="(slice, idx) in doc?.data?.body"
+      v-for="(slice, idx) in doc?.project?.data?.body"
       :key="idx"
       :slice="slice"
     />
+
+    <slices-project-footer />
   </div>
 </template>
 
