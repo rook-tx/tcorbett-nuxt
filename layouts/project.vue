@@ -39,4 +39,9 @@
   }
 }
 
+.full-content {
+  pad(1, 0)
+  max-width: $pwidth * 1.618rem;
+}
+
 </style>

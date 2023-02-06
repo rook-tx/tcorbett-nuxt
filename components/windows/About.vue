@@ -16,7 +16,7 @@ const { data: home } = await useAsyncData('home', () => client.getSingle('home')
       </div>
 
       <div
-        v-for="(slide, idx) in home.data.slide"
+        v-for="(slide, idx) in home?.data?.slide"
         :key="idx"
         ref="slides"
         :class="[ 'slide', { active: sidx === idx }]"
