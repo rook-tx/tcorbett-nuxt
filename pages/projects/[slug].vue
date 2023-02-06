@@ -7,17 +7,12 @@ const route = useRoute() // eslint-disable-line no-undef
 
 const slug = route.params.slug
 
-const { data } = await useLazyAsyncData(async () => { // eslint-disable-line no-undef
+const { data } = await useAsyncData(async () => { // eslint-disable-line no-undef
   const projects = await client.getAllByType('project')
   return {
     projects,
     project: projects.find((p) => p.uid === slug)
   }
-}, {
-  default: () => ({
-    projects: [],
-    project: null
-  })
 })
 
 function getComponent(type) {
@@ -44,7 +39,7 @@ function getComponent(type) {
 
     <slices-project-footer
       :current="slug"
-      :projects="data.projects"
+      :projects="data?.projects"
     />
 
     <project-footer />

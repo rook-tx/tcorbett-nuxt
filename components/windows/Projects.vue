@@ -1,6 +1,15 @@
 <script setup>
+import { isFilled } from '@prismicio/helpers'
+
 const { client } = usePrismic() // eslint-disable-line no-undef
-const { data: projects } = await useAsyncData('projects', () => client.getSingle('projects')) // eslint-disable-line no-undef
+const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects')) // eslint-disable-line no-undef
+
+defineProps({
+  active: {
+    type: Boolean,
+    default: false
+  }
+})
 </script>
 
 <template>
@@ -16,23 +25,27 @@ const { data: projects } = await useAsyncData('projects', () => client.getSingle
       </div> -->
 
       <prismic-rich-text
+        v-if="projects?.data?.blurb"
         class="blurb"
         :field="projects.data.blurb"
       />
 
-      <ol class="project-list">
+      <ol
+        v-if="projects?.data?.projects"
+        class="project-list"
+      >
         <li
           v-for="project in projects.data.projects"
           :key="project.project_link.url"
           class="project"
         >
-          <router-link
-            v-if="project.project && project.project.uid"
+          <nuxt-link
+            v-if="project?.project?.uid"
             :to="`/projects/${project.project.uid}`"
           >
-            <div
+            <prismic-text
               class="url"
-              v-html="$prismic.asText(project.project_title)"
+              :field="project.project_title"
             />
             <div
               v-if="project.project_thumb"
@@ -44,16 +57,16 @@ const { data: projects } = await useAsyncData('projects', () => client.getSingle
               class="info"
               v-html="`&mdash; ${'Senior Developer'}`"
             />
-          </router-link>
+          </nuxt-link>
           <a
             v-else-if="project.project_link"
             :href="project.project_link.url"
             target="_blank"
             rel="noopener"
           >
-            <div
+            <prismic-text
               class="url"
-              v-html="$prismic.asText(project.project_title)"
+              :field="project.project_title"
             />
             <div
               v-if="project.project_thumb && project.project_thumb.url"
@@ -64,13 +77,13 @@ const { data: projects } = await useAsyncData('projects', () => client.getSingle
           </a>
 
           <prismic-rich-text
-            v-if="project.role && $prismic.asText(project.role).length"
+            v-if="isFilled.richText(project.role)"
             class="role"
             :field="project.role"
           />
 
           <prismic-rich-text
-            v-if="project.notes && $prismic.asText(project.notes).length"
+            v-if="isFilled.richText(project.notes)"
             class="notes"
             :field="project.notes"
           />

@@ -11,13 +11,13 @@
 @import "../stylus/_variables"
 
 .lab-layout {
-  background #0c0911
   height 100%
-  color $bg
   overflow auto
 }
 
 .lab-page {
+  background #0c0911
+  color $bg
   pad(2, 0)
   min-height 100%
   position relative
