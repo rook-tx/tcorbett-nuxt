@@ -37,7 +37,7 @@ function getComponent(type) {
       :slice="slice"
     />
 
-    <slices-project-footer
+    <slices-project-pagination
       :current="slug"
       :projects="data?.projects"
     />

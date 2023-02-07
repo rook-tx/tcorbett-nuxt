@@ -14,6 +14,7 @@ const { data: labs } = await useLazyAsyncData(async () => { // eslint-disable-li
 <template>
   <div class="labs-list">
     <div class="content">
+      <h1>labs</h1>
       <ul>
         <li
           v-for="lab in labs"
@@ -35,6 +36,8 @@ const { data: labs } = await useLazyAsyncData(async () => { // eslint-disable-li
 @import "../stylus/_variables"
 
 .labs-list {
+  background #0c0911
+  color $bg
   pad(4, 0)
   min-height 100%
   overflow hidden
