@@ -1,6 +1,6 @@
 <script setup>
 const { client } = usePrismic() // eslint-disable-line no-undef
-const { data: projects } = await useAsyncData('projects', () => client.getSingle('projects')) // eslint-disable-line no-undef
+const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects')) // eslint-disable-line no-undef
 </script>
 
 <template>

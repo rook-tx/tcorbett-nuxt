@@ -7,7 +7,7 @@ const route = useRoute() // eslint-disable-line no-undef
 
 const slug = route.params.slug
 
-const { data } = await useAsyncData(async () => { // eslint-disable-line no-undef
+const { data } = await useLazyAsyncData(slug, async () => { // eslint-disable-line no-undef
   const projects = await client.getAllByType('project')
   return {
     projects,
