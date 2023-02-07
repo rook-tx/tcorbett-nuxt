@@ -36,7 +36,7 @@ defineProps({
 @import "../../stylus/_variables"
 
 .project-hero {
-  pad(4, 0)
+  pad(4, 0, 0)
 
   .title {
     border-bottom: 1px solid $prpl

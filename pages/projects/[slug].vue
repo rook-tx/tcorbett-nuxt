@@ -16,6 +16,7 @@ const { data } = await useLazyAsyncData(slug, async () => { // eslint-disable-li
 })
 
 function getComponent(type) {
+  console.log(type)
   return `${type.replaceAll('_', '-')}`
 }
 
@@ -50,11 +51,13 @@ function getComponent(type) {
 
 import BannerCopy from '@/components/slices/BannerCopy.vue'
 import BannerImage from '@/components/slices/BannerImage.vue'
+import BannerVideo from '@/components/slices/BannerVideo.vue'
 
 export default {
   components: {
     BannerCopy,
-    BannerImage
+    BannerImage,
+    BannerVideo
   },
 }
 

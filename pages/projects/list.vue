@@ -3,7 +3,7 @@ definePageMeta({ // eslint-disable-line no-undef
   layout: 'project'
 })
 const { client } = usePrismic() // eslint-disable-line no-undef
-const { data: projects } = await useLazyAsyncData(async () => { // eslint-disable-line no-undef
+const { data: projects } = await useLazyAsyncData('project-list', async () => { // eslint-disable-line no-undef
   const { results } = await client.getByType('project')
   return results
 })
@@ -12,6 +12,7 @@ const { data: projects } = await useLazyAsyncData(async () => { // eslint-disabl
 <template>
   <div class="projects-list">
     <div class="content">
+      <h1>Projects</h1>
       <ul>
         <li
           v-for="project in projects"
