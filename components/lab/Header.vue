@@ -13,7 +13,7 @@ const links = [
     label: 'T Corbett',
   },
   {
-    id: 'labs/list',
+    id: 'labs',
     label: 'Labs',
   }
 ]
