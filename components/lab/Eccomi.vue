@@ -1,13 +1,16 @@
 <script setup>
 
-import { init } from '../../js/fbx'
+import { init, animate, pause } from '../../js/fbx'
 
 // eslint-disable-next-line no-undef
 onMounted(() => {
-  // eslint-disable-next-line no-undef
-  nextTick(() => {
-    init()
-  })
+  init()
+  animate()
+})
+
+// eslint-disable-next-line no-undef
+onUnmounted(() => {
+  pause()
 })
 </script>
 

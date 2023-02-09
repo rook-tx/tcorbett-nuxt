@@ -6,7 +6,7 @@ import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
 
 let camera, scene, renderer
 
-let mi
+let mi, running
 
 export function init() {
 
@@ -91,7 +91,15 @@ export function init() {
 
   window.addEventListener( 'resize', onWindowResize )
 
+}
+
+export function animate() {
+  running = true
   render()
+}
+
+export function pause() {
+  running = false
 }
 
 function onWindowResize() {
@@ -106,6 +114,8 @@ function onWindowResize() {
 //
 
 function render() {
+
+  if (!running) { return }
 
   requestAnimationFrame( render )
 
