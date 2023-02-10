@@ -123,6 +123,7 @@ onMounted(() => {
 
   &-label {
     color $prpl
+    mgn(0, .5, 0, 0)
   }
 
   &-field {
@@ -130,7 +131,7 @@ onMounted(() => {
     border 1px solid $b
     outline 0
     pad(0, .5)
-    mgn(0, 0, 0, .5)
+    mgn(0, .5, 0, 0)
     background darken($blk, 50%)
     border-radius 8px
     transition background-color 200ms
@@ -149,7 +150,6 @@ onMounted(() => {
     cursor pointer
     font-weight 900
     pad(0, 1)
-    mgn(0, .5)
     transition background-color 200ms
 
     &:hover,
