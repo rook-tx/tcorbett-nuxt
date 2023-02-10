@@ -3,7 +3,6 @@ const animalInput = ref('')
 const result = ref('')
 
 async function onSubmit(event) {
-  event.preventDefault()
   try {
     const response = await fetch('/api/generate', {
       method: 'POST',
@@ -23,7 +22,7 @@ async function onSubmit(event) {
   } catch(error) {
     // Consider implementing your own error handling logic here
     console.error(error)
-    alert(error.message)
+    result.value = error.message
   }
 }
 
