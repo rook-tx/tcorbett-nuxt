@@ -11,7 +11,8 @@ export default defineNuxtConfig({ // eslint-disable-line no-undef
         { name: 'format-detection', content: 'telephone=no' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
-        { hid: 'description', name: 'description', content: 'Portfolio site of Tom Corbett, UI developer based in Toronto' }
+        { hid: 'description', name: 'description', content: 'Portfolio site of Tom Corbett, UI developer based in Toronto' },
+        { hid: 'og:image', property: 'og:image', content: '/apple-touch-icon.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
