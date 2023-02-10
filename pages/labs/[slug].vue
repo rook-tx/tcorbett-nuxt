@@ -27,7 +27,7 @@ const { data } = await useLazyAsyncData(slug, async () => { // eslint-disable-li
 <template>
   <div
     :key="slug"
-    :class="[ 'lab-page', `${slug}-page` ]"
+    :class="[ 'page', 'lab-page', `${slug}-page` ]"
   >
     <SlicesLabVimeo
       v-if="isFilled.keyText(data?.lab?.data?.vimeo_src)"

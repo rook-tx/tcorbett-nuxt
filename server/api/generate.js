@@ -14,19 +14,20 @@ export default defineEventHandler(async (event) => {
   }
 
   const body = await readBody(event)
-  const animal = body.animal || ''
-  if (animal.trim().length === 0) {
+  const topic = body.topic || ''
+  if (topic.trim().length === 0) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Please enter a valid animal',
+      statusMessage: 'Please enter a valid topic',
     })
   }
 
   try {
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: generatePrompt(animal),
+      prompt: generatePrompt(topic),
       temperature: 0.6,
+      max_tokens: 256
     })
     return {
       result: completion.data.choices[0].text,
@@ -49,15 +50,6 @@ export default defineEventHandler(async (event) => {
 
 })
 
-function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase()
-  return `Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`
+function generatePrompt(topic) {
+  return `Explain succinctly but humourously how ${topic} relates to Toronto-based web developer Tom Corbett`
 }
