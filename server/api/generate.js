@@ -24,7 +24,8 @@ export default defineEventHandler(async (event) => {
 
   try {
     const completion = await openai.createCompletion({
-      model: 'text-davinci-003',
+      // model: 'text-davinci-003',
+      model: 'text-babbage-001',
       prompt: generatePrompt(topic),
       temperature: 0.6,
       max_tokens: 256
@@ -51,5 +52,5 @@ export default defineEventHandler(async (event) => {
 })
 
 function generatePrompt(topic) {
-  return `Explain succinctly but humourously how ${topic} relates to Toronto-based web developer Tom Corbett`
+  return `Explain succinctly but humourously the relation between ${topic} and remote-working web developer Tom Corbett`
 }
