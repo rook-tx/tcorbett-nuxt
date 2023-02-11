@@ -19,7 +19,7 @@ const ext = [ 'labs-chat' ].includes(route.name)
 @import "../stylus/_variables"
 
 .lab-page {
-  background #0c0911
+  background $lab-bg
   color $bg
   pad(2, 0)
 }

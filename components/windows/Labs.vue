@@ -7,59 +7,23 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
 
 <template>
   <div class="labs">
-    <div
-      class="wrap"
-    >
+    <div class="wrap">
       <prismic-rich-text
         v-if="isFilled.richText(labs.data.blurb)"
         :field="labs.data.blurb"
+        class="blurb"
       />
 
-      <ol v-if="labs?.data">
+      <ol v-if="labs?.data?.labs">
         <li
           v-for="lab in labs.data.labs"
           :key="lab.lab_id"
           class="lab"
         >
           <a
-            v-if="lab.lab_link && lab.lab_link.link_type === 'Web'"
-            :href="lab.lab_link.url"
-            target="_blank"
-            rel="noopener"
-          >
-            <prismic-text
-              class="url"
-              :field="lab.lab_title"
-            />
-            <div
-              v-if="isFilled.image(lab.lab_thumb)"
-              class="thumb"
-            >
-              <prismic-image :field="lab.lab_thumb" />
-            </div>
-          </a>
-
-          <a
-            v-else-if="!lab.lab_id && isFilled.linkToMedia(lab.video)"
-            :href="lab.video.url"
-            target="_blank"
-            rel="noopener"
-          >
-            <prismic-text
-              class="url"
-              :field="lab.lab_title"
-            />
-            <div
-              v-if="isFilled.image(lab.lab_thumb)"
-              class="thumb"
-            >
-              <prismic-image :field="lab.lab_thumb" />
-            </div>
-          </a>
-
-          <a
-            v-else
-            :href="`/labs/${lab.lab_id}/`"
+            :href="isFilled.link(lab.lab_link) ? lab.lab_link.url :
+              !lab.lab_id && isFilled.linkToMedia(lab.video) ? lab.video.url :
+              `/labs/${lab.lab_id}/`"
             target="_blank"
             rel="noopener"
           >
@@ -70,7 +34,7 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
 
             <div
               v-if="isFilled.linkToMedia(lab.video)"
-              class="video"
+              class="video thumb"
             >
               <div class="video-wrap">
                 <video
@@ -106,12 +70,27 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
 @import "../../stylus/_variables"
 
 .labs.labs
-  background $b
-  color $w
+  background $lab-bg
+  color $bg
 
   ::selection
-    background $b
+    background $blk
     color $w
+
+  .blurb {
+    pad(3, 0, 0)
+
+    h2 {
+      fs(mp(1))
+      margin 0
+    }
+
+    p {
+      fs(mp(-1))
+      letter-spacing normal
+      margin 0
+    }
+  }
 
   .sec
     height 100%

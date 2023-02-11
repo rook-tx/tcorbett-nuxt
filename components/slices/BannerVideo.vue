@@ -18,12 +18,12 @@ defineProps({
   <div class="banner-video">
     <div :class="[ 'content', { 'full-content': slice.primary.full }]">
       <div
-        v-if="isFilled.link(slice?.primary?.video_asset)"
+        v-if="isFilled.linkToMedia(slice.primary.video_asset)"
         class="video"
       >
         <div class="video-wrap">
           <video
-            :src="slice.primary.video.url"
+            :src="slice.primary.video_asset.url"
             autoplay
             playsinline
             muted
@@ -34,7 +34,7 @@ defineProps({
       </div>
 
       <div
-        v-else-if="isFilled.keyText(slice?.primary?.vimeo_src)"
+        v-else-if="isFilled.keyText(slice.primary.vimeo_src)"
         style="padding:56.18% 0 0 0;position:relative;"
       >
         <iframe
