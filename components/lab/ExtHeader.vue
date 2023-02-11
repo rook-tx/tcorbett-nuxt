@@ -23,13 +23,13 @@ const links = [
             :key="link.id"
             :class="['mnav-li', `mnav-${link.id}`]"
           >
-            <nuxt-link
+            <a
               class="mnav-a"
-              :to="link.id === 'tcorb' ? '/' : `/${link.id}`"
+              :href="'https://tcorbett.co.uk' + (link.id === 'tcorb' ? '/' : `/${link.id}`)"
               @click.left="toggleTldr(false)"
             >
               {{ link.label }}
-            </nuxt-link>
+            </a>
           </li>
         </ul>
       </nav>

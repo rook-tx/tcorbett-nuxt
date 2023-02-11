@@ -1,6 +1,14 @@
+<script setup>
+const route = useRoute()
+
+const ext = [ 'labs-chat' ].includes(route.name)
+
+</script>
+
 <template>
   <div class="layout lab-layout">
-    <lab-header />
+    <lab-ext-header v-if="ext" />
+    <lab-header v-else />
     <slot class="page lab-page" />
     <app-tldr />
   </div>
