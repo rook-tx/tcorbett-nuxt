@@ -22,37 +22,38 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
           class="lab"
         >
           <a
-            v-if="lab.lab_link && lab.lab_link.link_type === 'Web' && lab.lab_link.target === '_blank'"
+            v-if="lab.lab_link && lab.lab_link.link_type === 'Web'"
             :href="lab.lab_link.url"
             target="_blank"
             rel="noopener"
           >
-            <div
+            <prismic-text
               class="url"
-              v-html="$prismic.asText(lab.lab_title)"
+              :field="lab.lab_title"
             />
             <div
-              v-if="lab.lab_thumb && lab.lab_thumb.url"
+              v-if="isFilled.image(lab.lab_thumb)"
               class="thumb"
             >
-              <img :src="lab.lab_thumb.url">
+              <prismic-image :field="lab.lab_thumb" />
             </div>
           </a>
 
           <a
-            v-else-if="!lab.lab_id && lab.video && lab.video.url"
+            v-else-if="!lab.lab_id && isFilled.linkToMedia(lab.video)"
             :href="lab.video.url"
             target="_blank"
+            rel="noopener"
           >
-            <div
+            <prismic-text
               class="url"
-              v-html="$prismic.asText(lab.lab_title)"
+              :field="lab.lab_title"
             />
             <div
-              v-if="lab.lab_thumb && lab.lab_thumb.url"
+              v-if="isFilled.image(lab.lab_thumb)"
               class="thumb"
             >
-              <img :src="lab.lab_thumb.url">
+              <prismic-image :field="lab.lab_thumb" />
             </div>
           </a>
 
@@ -62,15 +63,31 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
             target="_blank"
             rel="noopener"
           >
-            <div
+            <prismic-text
               class="url"
-              v-html="$prismic.asText(lab.lab_title)"
+              :field="lab.lab_title"
             />
+
             <div
-              v-if="lab.lab_thumb && lab.lab_thumb.url"
+              v-if="isFilled.linkToMedia(lab.video)"
+              class="video"
+            >
+              <div class="video-wrap">
+                <video
+                  :src="lab.video.url"
+                  autoplay
+                  playsinline
+                  muted
+                  loop
+                />
+              </div>
+            </div>
+
+            <div
+              v-else-if="isFilled.image(lab.lab_thumb)"
               class="thumb"
             >
-              <img :src="lab.lab_thumb.url">
+              <prismic-image :field="lab.lab_thumb" />
             </div>
           </a>
 
@@ -78,21 +95,6 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
             class="info"
             :field="lab.notes"
           />
-
-          <div
-            v-if="lab.video && lab.video.url"
-            class="video"
-          >
-            <div class="video-wrap">
-              <video
-                :src="lab.video.url"
-                autoplay
-                playsinline
-                muted
-                loop
-              />
-            </div>
-          </div>
         </li>
       </ol>
     </div>

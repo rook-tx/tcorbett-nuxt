@@ -27,6 +27,7 @@ defineProps({
             autoplay
             playsinline
             muted
+            controls
             loop
           />
         </div>
