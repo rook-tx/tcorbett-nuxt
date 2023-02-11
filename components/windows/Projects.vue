@@ -1,8 +1,8 @@
 <script setup>
 import { isFilled } from '@prismicio/helpers'
 
-const { client } = usePrismic() // eslint-disable-line no-undef
-const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects')) // eslint-disable-line no-undef
+const { client } = usePrismic()
+const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects'))
 
 defineProps({
   active: {

@@ -1,15 +1,15 @@
 <script setup>
 import { isFilled } from '@prismicio/helpers'
 
-definePageMeta({ // eslint-disable-line no-undef
+definePageMeta({
   layout: 'lab',
 })
-const { client } = usePrismic() // eslint-disable-line no-undef
-const route = useRoute() // eslint-disable-line no-undef
+const { client } = usePrismic()
+const route = useRoute()
 
 const slug = route.params.slug
 
-const { data } = await useLazyAsyncData(slug, async () => { // eslint-disable-line no-undef
+const { data } = await useLazyAsyncData(slug, async () => {
   const labs = await client.getAllByType('lab')
   return {
     labs,

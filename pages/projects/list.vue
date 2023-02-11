@@ -1,9 +1,9 @@
 <script setup>
-definePageMeta({ // eslint-disable-line no-undef
+definePageMeta({
   layout: 'project'
 })
-const { client } = usePrismic() // eslint-disable-line no-undef
-const { data: projects } = await useLazyAsyncData('project-list', async () => { // eslint-disable-line no-undef
+const { client } = usePrismic()
+const { data: projects } = await useLazyAsyncData('project-list', async () => {
   const { results } = await client.getByType('project')
   return results
 })

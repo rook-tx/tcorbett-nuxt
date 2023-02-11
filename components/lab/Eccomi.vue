@@ -2,13 +2,11 @@
 
 import { init, animate, pause } from '../../js/fbx'
 
-// eslint-disable-next-line no-undef
 onMounted(() => {
   init()
   animate()
 })
 
-// eslint-disable-next-line no-undef
 onUnmounted(() => {
   pause()
 })

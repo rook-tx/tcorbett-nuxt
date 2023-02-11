@@ -1,10 +1,10 @@
 <script setup>
-definePageMeta({ // eslint-disable-line no-undef
+definePageMeta({
   layout: 'lab'
 })
-const { client } = usePrismic() // eslint-disable-line no-undef
+const { client } = usePrismic()
 const { results } = await client.getByType('lab')
-const { data: labs } = await useLazyAsyncData(async () => { // eslint-disable-line no-undef
+const { data: labs } = await useLazyAsyncData(async () => {
   return results
 }, {
   default: () => []

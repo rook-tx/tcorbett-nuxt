@@ -11,11 +11,10 @@ const props = defineProps({
   }
 })
 
-// eslint-disable-next-line no-undef
 const idx = computed(() => props.projects.findIndex((project) => props.current === project.uid))
-// eslint-disable-next-line no-undef
+
 const prev = computed(() => idx.value > 0 && idx.value < props.projects.length  ? props.projects[idx.value - 1] : props.projects[props.projects.length - 1])
-// eslint-disable-next-line no-undef
+
 const next = computed(() => idx.value > -1 && idx.value < props.projects.length - 1 ? props.projects[idx.value + 1] : props.projects[0])
 
 </script>
