@@ -1,6 +1,8 @@
 <script setup>
+import { isFilled } from '@prismicio/helpers'
+
 const { client } = usePrismic()
-const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects'))
+const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('labs'))
 </script>
 
 <template>
@@ -8,13 +10,14 @@ const { data: projects } = await useLazyAsyncData('projects', () => client.getSi
     <div
       class="wrap"
     >
-      <div>
-        <p>Live. Lab. Love.<br>Creative coding for the interactive in-browser connoisseur.</p>
-      </div>
+      <prismic-rich-text
+        v-if="isFilled.richText(labs.data.blurb)"
+        :field="labs.data.blurb"
+      />
 
-      <ol v-if="projects?.data">
+      <ol v-if="labs?.data">
         <li
-          v-for="lab in projects.data.labs"
+          v-for="lab in labs.data.labs"
           :key="lab.lab_id"
           class="lab"
         >

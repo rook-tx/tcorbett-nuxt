@@ -52,5 +52,5 @@ export default defineEventHandler(async (event) => {
 })
 
 function generatePrompt(topic) {
-  return `Explain succinctly but humourously the relation between ${topic} and remote-working web developer Tom Corbett`
+  return `Explain succinctly but humorously the relation between ${topic} and remote-working web developer Tom Corbett`
 }
