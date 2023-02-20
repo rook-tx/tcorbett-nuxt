@@ -95,7 +95,7 @@ onMounted(() => {
           href="https://platform.openai.com/docs/models/gpt-3"
           target="_blank"
           rel="noopener"
-        >Babbage</a> model
+        >Curie</a> model
       </div>
     </div>
   </div>

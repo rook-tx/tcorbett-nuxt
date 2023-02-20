@@ -4,7 +4,7 @@
       <nav class="mnav fnav">
         <ul class="mnav-ul fnav-ul">
           <li class="mnav-li mnav-home">
-            <router-link
+            <nuxt-link
               class="mnav-a"
               to="/"
               title="Tom Corbett"
@@ -25,7 +25,7 @@
                   class="header-logo-path header-logo-path-right"
                 />
               </svg>
-            </router-link>
+            </nuxt-link>
           </li>
 
           <li class="mnav-li mnav-contact">

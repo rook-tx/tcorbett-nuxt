@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   try {
     const completion = await openai.createCompletion({
       // model: 'text-davinci-003',
-      model: 'text-babbage-001',
+      model: 'text-curie-001',
       prompt: generatePrompt(topic),
       temperature: 0.6,
       max_tokens: 256
