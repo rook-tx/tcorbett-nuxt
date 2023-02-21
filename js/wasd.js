@@ -2,10 +2,25 @@ import * as THREE from 'three'
 
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
+import PlaneMaterial from './planematerial'
 
 let camera, scene, renderer
 
 let mi, running
+
+const meshSettings = {
+  meshColor: 0xef00222,
+  speed: 0.06,
+  patternScale: 0.016,
+  meshHeight: 5.6,
+  dotScale: 2.0,
+  meshScale: 1.0,
+  posX: 30,
+  posY: 0,
+  posZ: 0
+}
+let floorMesh = null
+let floorMat = null
 
 export function init() {
 
@@ -61,6 +76,8 @@ export function init() {
 
   })
 
+  addMesh()
+
   renderer = new THREE.WebGLRenderer( { antialias: true } )
   renderer.setPixelRatio( window.devicePixelRatio )
   renderer.setSize( window.innerWidth, window.innerHeight )
@@ -78,6 +95,45 @@ export function init() {
 
   window.addEventListener( 'resize', onWindowResize )
 
+}
+
+function addMesh() {
+
+  if (!floorMesh) {
+    const floor = new THREE.PlaneGeometry(100, 280, 200, 280)
+
+    const sizes = []
+    const colors = []
+    for (let i = 0; i < 256 * 256; i++) {
+      sizes.push(Math.random())
+      for (let c = 0; c < 3; c++) {
+        colors.push(Math.random())
+      }
+    }
+
+    floor.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1))
+    floor.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
+
+    const newFloorMat = new PlaneMaterial({
+      color: meshSettings.meshColor,
+      roughness: 1,
+      map: new THREE.TextureLoader().load('/images/dot2.png')
+    })
+
+    const newFloorMesh = new THREE.Points(floor, newFloorMat)
+
+    newFloorMesh.position.x = meshSettings.posX
+    newFloorMesh.position.y = meshSettings.posY
+    newFloorMesh.position.z = meshSettings.posZ
+    newFloorMesh.rotation.x = Math.PI / -2
+
+    // this.cacheFloorMat(newFloorMat);
+    // this.cacheFloorMesh(floorMesh);
+    floorMat = newFloorMat
+    floorMesh = newFloorMesh
+  }
+
+  scene.add(floorMesh)
 }
 
 export function animate() {
@@ -100,11 +156,33 @@ function onWindowResize() {
 
 //
 
+function update () {
+
+  if (floorMesh) {
+    floorMat.uniforms.time.value = performance.now() / 1000
+    floorMat.uniforms.speed.value = meshSettings.speed
+    floorMat.uniforms.scale.value = meshSettings.patternScale
+    floorMat.uniforms.height.value = meshSettings.meshHeight
+    floorMat.uniforms.dotScale.value = meshSettings.dotScale
+    // floorMat.color = settings.meshColor;
+
+    // floorMesh.scale.x = meshSettings.meshScale;
+    // floorMesh.scale.y = meshSettings.meshScale;
+
+    floorMesh.position.x = meshSettings.posX
+    floorMesh.position.y = meshSettings.posY
+    floorMesh.position.z = meshSettings.posZ
+  }
+
+}
+
 function render() {
 
   if (!running) { return }
 
   requestAnimationFrame( render )
+
+  update()
 
   renderer.render( scene, camera )
 

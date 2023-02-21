@@ -8,7 +8,7 @@ function PlaneMaterial(parameters) {
   this.defines = { 'PHYSICAL': '' }
 
   parameters = { ...parameters }
-  THREE.MeshStandardMaterial.call(this)
+  new THREE.MeshStandardMaterial.call(this)
   this.uniforms = {
     ...THREE.ShaderLib.standard.uniforms,
     time: { type: 'f', value: 0 },
