@@ -1,4 +1,6 @@
 <script setup>
+import { asText, isFilled } from '@prismicio/helpers'
+
 definePageMeta({
   layout: 'lab',
 })
@@ -19,6 +21,11 @@ const { data } = await useLazyAsyncData(slug, async () => {
     labs: [],
     lab: null
   })
+})
+
+useHead({
+  title: asText(data.value.lab.data.lab_title),
+  meta: { hid: 'og:image', property: 'og:image', content: isFilled.image(data.value.lab.data.lab_thumb) ? data.value.lab.data.lab_thumb.url : '/apple-touch-icon.png' }
 })
 
 function getComponent(type) {

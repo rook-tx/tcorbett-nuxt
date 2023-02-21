@@ -16,8 +16,8 @@ export function init() {
   camera.position.set( 3, 4.5, 3 )
 
   scene = new THREE.Scene()
-  // scene.background = new THREE.Color( 0xa0a0a0 )
-  scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 )
+  scene.background = new THREE.Color( 0x0c0911 )
+  scene.fog = new THREE.Fog( 0x0c0911, 200, 1000 )
 
   const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 )
   hemiLight.position.set( 0, 200, 0 )
@@ -32,37 +32,14 @@ export function init() {
   dirLight.shadow.camera.right = 120
   scene.add( dirLight )
 
-  // scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
-
-  // ground
-  // const mesh = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) )
-  // mesh.rotation.x = - Math.PI / 2
-  // mesh.receiveShadow = true
-  // scene.add( mesh )
-
-  // model
-
-  // const loader = new GLTFLoader().setPath( '/models/' )
-  // loader.load( 'eccomidec.glb', function ( gltf ) {
-
-  //   scene.add( gltf.scene )
-
-  //   render()
-
-  // } )
-  // const texture = new THREE.TextureLoader().load( '/models/TomRC_Model2_u1_v1.png' )
-
   const loader = new FBXLoader()
   loader.load('/models/eccomidec.fbx', function(object) {
 
     object.traverse( function (child) {
       if (child.isMesh) {
-
         child.material.wireframe = true
         child.castShadow = true
         child.receiveShadow = true
-        // child.material.map = texture // assign your diffuse texture here
-
       }
     })
 
@@ -111,8 +88,6 @@ function onWindowResize() {
 
 }
 
-//
-
 function render() {
 
   if (!running) { return }
@@ -120,7 +95,7 @@ function render() {
   requestAnimationFrame( render )
 
   if (mi) {
-    mi.rotation.y += 0.01
+    mi.rotation.y += 0.005
   }
 
   renderer.render( scene, camera )
