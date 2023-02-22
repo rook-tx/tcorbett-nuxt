@@ -241,6 +241,7 @@ export default {
 
   &-label
     color $w
+    font-weight 600
     text-shadow 0 0 1px rgba($b, .4)
     mgn(.25, .5)
 

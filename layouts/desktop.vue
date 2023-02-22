@@ -1,3 +1,12 @@
+<script setup>
+useHead({
+  htmlAttrs: {
+    class: 'desktop-app'
+  }
+})
+
+</script>
+
 <template>
   <div class="desktop-layout">
     <app-header />
@@ -17,6 +26,10 @@
 <style lang="stylus">
 
 @import "../stylus/_variables"
+
+.desktop-app {
+  overflow hidden
+}
 
 .header, .footer {
   position fixed
