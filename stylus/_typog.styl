@@ -2,81 +2,102 @@
 // Core type
 // ----------
 
-h1, h2, h3, h4, h5, p
-	mgn(1, 0)
-	max-width $pwidth*1em
+h1, h2, h3, h4, h5, p {
+  mgn(1, 0)
+  max-width $pwidth*1em
+}
 
-h1, h3
-	font-family $lato
-	font-weight 300
+h1, h2, h3, h4, h5 {
+  font-weight normal
+}
 
-	strong
-		font-weight 400
+h1, h3 {
+  font-family $lato
+  font-weight 300
+}
 
-h1
-	color $prpl
-	fs(mp(5))
-	letter-spacing -.02em
+h1 {
+  color $prpl
+  fs(mp(5))
+  letter-spacing -.02em
 
-	span
-		background-image -webkit-linear-gradient(315deg, $prpl, $blu)
-		color $prpl
-		display inline-block
-		-webkit-background-clip text
-		-webkit-text-fill-color transparent
+  span {
+    background-image -webkit-linear-gradient(315deg, $prpl, $blu)
+    color $prpl
+    display inline-block
+    -webkit-background-clip text
+    -webkit-text-fill-color transparent
+  }
 
-	+above($tablet)
-		&.title
-			.body-home &
-				mgn(8,0,4)
+  +above($tablet) {
+    fs(mp(8))
 
-	+above($tablet)
-		fs(mp(8))
-		mgn(4,0)
+    &.title {
+      .body-home & {
+        mgn(8,0,4)
+      }
+    }
+  }
 
-		&.title
-			.body-home &
-				mgn(8,0,4)
+  +above($laptop) {
+    fs(mp(9))
+  }
+}
 
-	+above($laptop)
-		fs(mp(9))
+h2 {
+  font-family $merriweather
+  fs(mp(3))
+  font-weight 300
+}
 
-h2
-	font-family $merriweather
-	fs(mp(3))
-	font-weight 300
+h3 {
+  fs(mp(2))
 
-h3
-	fs(mp(2))
+  .cta {
+    background-image -webkit-linear-gradient(135deg, $blu, $prpl)
+    color $prpl
+    font-weight 400
+    display inline-block
+    -webkit-background-clip text
+    -webkit-text-fill-color transparent
+  }
+}
 
-	.cta
-		background-image -webkit-linear-gradient(135deg, $blu, $prpl)
-		color $prpl
-		font-weight 400
-		display inline-block
-		-webkit-background-clip text
-		-webkit-text-fill-color transparent
+h4 {
+  fs(mp(1))
+}
 
-h4
-	fs(mp(1))
-	mgn(1,0)
+h5 {
+  color $bgry
+  fs($p)
+  font-weight 400
+  letter-spacing .1em
+  mgn(1, 0, 3)
+  text-align right
+  text-transform uppercase
+}
 
-h5
-	color $bgry
-	fs($p)
-	font-weight 400
-	letter-spacing .1em
-	mgn(1, 0, 3)
-	text-align right
-	text-transform uppercase
+h6 {
+  color $bgry
+  font-family $lato
+  fs(mp(-2))
+  font-weight 400
+  letter-spacing .2em
+  text-transform uppercase
+}
 
-h6
-	color $bgry
-	font-family $lato
-	fs(mp(-2))
-	font-weight 400
-	letter-spacing .2em
-	text-transform uppercase
+
+// ----------
+// Generic
+// ----------
+
+.caption {
+  font-family $lato
+  fs(mp(-3))
+  font-weight 400
+  letter-spacing $ls
+  text-transform uppercase
+}
 
 
 // ----------
@@ -84,12 +105,12 @@ h6
 // ----------
 
 strong, b
-	font-weight 700
-	letter-spacing normal
+  font-weight 700
+  letter-spacing normal
 
 em, i
-	font-style italic
+  font-style italic
 
 sup
-	font-size smaller
-	vertical-align top
+  font-size smaller
+  vertical-align top

@@ -23,23 +23,31 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
   <div class="project-footer">
     <section class="sec pagination">
       <div class="pag-wrap index-pag">
-        <h3>Projects</h3>
-        <ul>
-          <li
-            v-for="project in projects"
-            :key="project.uid"
-          >
-            <nuxt-link :to="`/projects/${project.uid}`">
-              <prismic-text
-                :field="project.data.project_title"
-              />
-            </nuxt-link>
-          </li>
-        </ul>
-        <a
-          href="/projects/list"
-          class="pag"
-        >All projects</a>
+        <div class="list-content">
+          <h3 class="caption list-heading">
+            Projects
+          </h3>
+          <ul>
+            <li
+              v-for="project in projects"
+              :key="project.uid"
+            >
+              <nuxt-link
+                :to="`/projects/${project.uid}`"
+                class="list-link"
+              >
+                <prismic-text
+                  class="caption"
+                  :field="project.data.project_title"
+                />
+              </nuxt-link>
+            </li>
+          </ul>
+          <a
+            href="/projects/list"
+            class="list-link caption"
+          >All projects</a>
+        </div>
       </div>
 
       <div class="pag-wrap prev-wrap">
@@ -77,25 +85,31 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
 
 @import "../../stylus/_variables"
 
-.pagination
+.pagination {
   border-top: 1px solid $nw
   padding: 0
   display flex
-  mgn(0, 0, 3)
+  mgn(3, 0)
+}
 
-.pag-wrap
-  width: 30%
+.pag-wrap {
   min-height: 1em
 
-  +above($mobile)
+  +above($mobile) {
     border-bottom: 1px solid $nw
-
-.index-pag {
-  width: 40%
-  border-left: 1px solid $nw
-  border-right: 1px solid $nw
+  }
 
   +above($tablet) {
+    width: 30%
+  }
+}
+
+.index-pag {
+  +above($tablet) {
+    pad(1, 1)
+    border-left: 1px solid $nw
+    border-right: 1px solid $nw
+    width: 40%
     order 2
   }
 }
@@ -112,7 +126,7 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
   }
 }
 
-.pag
+.pag {
   width: 100%
   height: 100%
   text-align: center
@@ -121,19 +135,39 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
   background: rgba($nw,.1)
   transition .5s all ease-out
 
-  &:hover
+  &:hover {
     box-shadow: inset 0 3px 13px rgba($blk,.05)
     background: rgba($blk,.03)
     transition .2s all ease-out
+  }
 
-  .index-pag &
+  .index-pag & {
     padding: $let*2em 0
 
-    +above($mobile)
+    +above($mobile) {
       padding: $let*1em 0
+    }
+  }
+}
 
-// .pag-arrow
-//   font-size: ($h2/$p)*1em
-//   line-height: ($p/$h2)
+.list-content {
+  mgn(1, auto)
+  max-width $pwidth*.62rem
+}
+
+.list-heading {
+  border-bottom 1px solid $bgry
+  color $dgry
+}
+
+.list-link {
+  &:hover {
+    color $prpl
+  }
+}
+
+.router-link-exact-active {
+  color $bgry
+}
 
 </style>

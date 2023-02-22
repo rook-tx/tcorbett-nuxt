@@ -154,6 +154,7 @@ export default {
 
   h1
     letter-spacing -.04em
+    mgn(4,0)
 
     +below($mobile)
       fs(mp(6))
@@ -161,6 +162,7 @@ export default {
   h2
     fs(mp(3) - 4, 40)
     letter-spacing -.01em
+    mgn(4, 0)
 
   h3
     fs(mp(2), 40)

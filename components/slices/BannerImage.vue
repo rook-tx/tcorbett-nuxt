@@ -2,7 +2,7 @@
 
 import { isFilled } from '@prismicio/helpers'
 
-defineProps( {
+defineProps({
   slice: {
     type: Object,
     default: null
@@ -32,7 +32,7 @@ function showCaption(item) {
         />
         <div
           v-if="showCaption(item)"
-          class="content caption"
+          class="content content-caption"
         >
           <prismic-rich-text
             :field="item.caption"
@@ -65,7 +65,7 @@ function showCaption(item) {
     }
   }
 
-  .caption {
+  .content-caption {
     mgn(0, auto)
     text-align right
 

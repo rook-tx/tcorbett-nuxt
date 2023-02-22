@@ -22,7 +22,7 @@ defineProps({
       />
       <h2
         v-if="project.launch_date"
-        class="date"
+        class="date caption"
       >
         {{ dayjs(project.launch_date).format('MMMM') }}
         <span>{{ dayjs(project.launch_date).format('YY') }}</span>
@@ -54,11 +54,6 @@ defineProps({
   }
 
   .date {
-    font-family $lato
-    fs(mp(-3))
-    font-weight 400
-    letter-spacing .15em
-    text-transform uppercase
     text-align right
     mgn(1, 0, 2)
     max-width 100%

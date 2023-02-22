@@ -7,7 +7,7 @@
       class="window-header"
     >
       <h2
-        class="window-label"
+        class="window-label caption"
         v-html="data.title"
       />
 
@@ -241,13 +241,8 @@ export default {
 
   &-label
     color $w
-    font-family $lato
-    text-shadow 0 0 1px rgba($b, .5)
-    fs(mp(-3))
-    font-weight 700
-    letter-spacing .2em
+    text-shadow 0 0 1px rgba($b, .4)
     mgn(.25, .5)
-    text-transform uppercase
 
   &.active
     bottom $let * 2em
