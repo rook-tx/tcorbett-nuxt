@@ -48,16 +48,13 @@ defineProps({
               :field="project.project_title"
             />
             <div
-              v-if="project.project_thumb"
+              v-if="isFilled.image(project.project_thumb)"
               class="thumb"
             >
-              <img :src="project.project_thumb.url">
+              <prismic-image :field="project.project_thumb" />
             </div>
-            <div
-              class="info"
-              v-html="`&mdash; ${'Senior Developer'}`"
-            />
           </nuxt-link>
+
           <a
             v-else-if="project.project_link"
             :href="project.project_link.url"
@@ -69,10 +66,10 @@ defineProps({
               :field="project.project_title"
             />
             <div
-              v-if="project.project_thumb && project.project_thumb.url"
+              v-if="isFilled.image(project.project_thumb)"
               class="thumb"
             >
-              <img :src="project.project_thumb.url">
+              <prismic-image :field="project.project_thumb" />
             </div>
           </a>
 
