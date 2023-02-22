@@ -5,13 +5,13 @@ useHead({
 })
 
 definePageMeta({
-  title: 'me spin',
   layout: 'lab'
 })
+
 </script>
 
 <template>
   <div class="test">
-    <lab-eccomi />
+    <lab-me-spin />
   </div>
 </template>

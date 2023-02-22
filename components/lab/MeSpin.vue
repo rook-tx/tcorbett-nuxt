@@ -1,16 +1,15 @@
+<script setup>
 import * as THREE from 'three'
 
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
-// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 let camera, scene, renderer
-
 let mi, running
 
-export function init() {
+function init() {
 
-  const container = document.getElementsByClassName('eccomi')[0]
+  const container = document.getElementsByClassName('me-spin')[0]
 
   camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 )
   camera.position.set( 3, 4.5, 3 )
@@ -32,48 +31,32 @@ export function init() {
   dirLight.shadow.camera.right = 120
   scene.add( dirLight )
 
-  // scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
-
-  // ground
-  // const mesh = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) )
-  // mesh.rotation.x = - Math.PI / 2
-  // mesh.receiveShadow = true
-  // scene.add( mesh )
-
-  // model
-
-  // const loader = new GLTFLoader().setPath( '/models/' )
-  // loader.load( 'eccomidec.glb', function ( gltf ) {
-
-  //   scene.add( gltf.scene )
-
-  //   render()
-
-  // } )
-  // const texture = new THREE.TextureLoader().load( '/models/TomRC_Model2_u1_v1.png' )
+  // const texture = new THREE.TextureLoader().load( '/models/TomRC_Model2lo_u1_v1.png' )
 
   const loader = new FBXLoader()
-  loader.load('/models/eccomidec.fbx', function(object) {
+  loader.load('/models/eccomidec-a.fbx', function(object) {
 
     object.traverse( function (child) {
       if (child.isMesh) {
+        // child.material.wireframe = true
+        // child.castShadow = true
+        // child.receiveShadow = true
 
-        child.material.wireframe = true
-        child.castShadow = true
-        child.receiveShadow = true
-        // child.material.map = texture // assign your diffuse texture here
+        // console.log(child.geometry.attributes.uv)
 
+        // child.material.map = texture
+        child.material.needsUpdate = true
       }
     })
 
-    object.scale.multiplyScalar(0.01)
+    // object.scale.multiplyScalar(0.01)
+    object.scale.set(0.01, 0.01, 0.01)
 
     mi = object
 
     scene.add( object )
 
   })
-
   renderer = new THREE.WebGLRenderer( { antialias: true } )
   renderer.setPixelRatio( window.devicePixelRatio )
   renderer.setSize( window.innerWidth, window.innerHeight )
@@ -93,12 +76,12 @@ export function init() {
 
 }
 
-export function animate() {
+function animate() {
   running = true
   render()
 }
 
-export function pause() {
+function pause() {
   running = false
 }
 
@@ -110,8 +93,6 @@ function onWindowResize() {
   renderer.setSize( window.innerWidth, window.innerHeight )
 
 }
-
-//
 
 function render() {
 
@@ -126,3 +107,29 @@ function render() {
   renderer.render( scene, camera )
 
 }
+
+onMounted(() => {
+  init()
+  animate()
+})
+
+onUnmounted(() => {
+  pause()
+})
+
+</script>
+
+<template>
+  <div class="me-spin" />
+</template>
+
+<style lang="stylus">
+
+.me-spin, canvas {
+  height 100%
+  position relative
+  width 100%
+}
+
+</style>
+

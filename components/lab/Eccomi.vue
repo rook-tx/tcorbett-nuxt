@@ -10,6 +10,7 @@ onMounted(() => {
 onUnmounted(() => {
   pause()
 })
+
 </script>
 
 <template>
