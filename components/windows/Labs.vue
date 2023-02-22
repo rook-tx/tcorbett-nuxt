@@ -9,7 +9,7 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
   <div class="labs">
     <div class="wrap">
       <prismic-rich-text
-        v-if="isFilled.richText(labs.data.blurb)"
+        v-if="isFilled.richText(labs?.data?.blurb)"
         :field="labs.data.blurb"
         class="blurb"
       />

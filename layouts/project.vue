@@ -15,9 +15,10 @@ const links = [
 
 <template>
   <div class="project-layout">
-    <app-header 
-    :line="true"
-    :links="links" />
+    <app-header
+      :line="true"
+      :links="links"
+    />
     <slot />
     <app-tldr />
   </div>

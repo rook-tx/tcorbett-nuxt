@@ -1,30 +1,34 @@
 <script setup>
 
 defineProps({
+  line: {
+    type: Boolean,
+    default: false
+  },
   links: {
     type: Array,
-    default: () => {
-      [
-        {
-          id: 'tcorb',
-          label: 'T Corbett',
-        },
-        {
-          id: 'about',
-          label: 'About',
-        },
-        {
-          id: 'projects',
-          label: 'Projects',
-        },
-        {
-          id: 'labs',
-          label: 'Labs',
-        }
-      ]
-    }
+    default: () => [
+      {
+        id: 'tcorb',
+        label: 'T Corbett',
+      },
+      {
+        id: 'about',
+        label: 'About',
+      },
+      {
+        id: 'projects',
+        label: 'Projects',
+      },
+      {
+        id: 'labs',
+        label: 'Labs',
+      }
+    ]
   }
 })
+
+const pct = 0
 
 </script>
 
@@ -49,7 +53,20 @@ defineProps({
         </ul>
       </nav>
 
-      <slot />
+      <div
+        v-if="line"
+        class="header-line"
+      >
+        <div
+          class="header-line-inner js-hline"
+          :style="{ transform: `translate3d(${pct - 100}%,0,0)` }"
+        >
+          Progress - <span
+            class="header-line-span js-hlspan"
+            v-html="Math.round(pct)"
+          />%
+        </div>
+      </div>
 
       <div class="mnav-li">
         <button

@@ -74,11 +74,11 @@ export default {
   watch: {
     $route: {
       immediate: true,
-      handler({ params }) {
+      handler({ params, name }) {
 
         const { slug } = params
 
-        this.activeWindowIdx = this.windows.findIndex((win) => win.id === slug)
+        this.activeWindowIdx = this.windows.findIndex((win) => win.id === name || win.id === slug)
 
         this.activeWindow = this.activeWindowIdx > -1
 
