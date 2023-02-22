@@ -1,6 +1,10 @@
 <script setup>
 
 defineProps({
+  line: {
+    type: Boolean,
+    default: false
+  },
   progress: {
     type: Number,
     default: 0
@@ -41,7 +45,7 @@ const links = [
         </ul>
       </nav>
 
-      <div class="header-line">
+      <div class="header-line" v-if="line">
         <div
           class="header-line-inner js-hline"
           :style="{ transform: `translate3d(${pct - 100}%,0,0)` }"

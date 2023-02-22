@@ -48,8 +48,8 @@ function showCaption(item) {
 @import "../../stylus/_variables"
 
 .banner-image {
-  .item {
-    mgn(1, 0)
+  .item + .item {
+    mgn(1, 0, 0)
   }
 
   .content {

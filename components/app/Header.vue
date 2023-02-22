@@ -1,23 +1,30 @@
 <script setup>
 
-const links = [
-  {
-    id: 'tcorb',
-    label: 'T Corbett',
-  },
-  {
-    id: 'about',
-    label: 'About',
-  },
-  {
-    id: 'projects',
-    label: 'Projects',
-  },
-  {
-    id: 'labs',
-    label: 'Labs',
+defineProps({
+  links: {
+    type: Array,
+    default: () => {
+      [
+        {
+          id: 'tcorb',
+          label: 'T Corbett',
+        },
+        {
+          id: 'about',
+          label: 'About',
+        },
+        {
+          id: 'projects',
+          label: 'Projects',
+        },
+        {
+          id: 'labs',
+          label: 'Labs',
+        }
+      ]
+    }
   }
-]
+})
 
 </script>
 
@@ -41,6 +48,8 @@ const links = [
           </li>
         </ul>
       </nav>
+
+      <slot />
 
       <div class="mnav-li">
         <button

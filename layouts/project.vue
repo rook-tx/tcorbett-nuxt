@@ -1,6 +1,23 @@
+<script setup>
+
+const links = [
+  {
+    id: 'tcorb',
+    label: 'T Corbett',
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+  }
+]
+
+</script>
+
 <template>
   <div class="project-layout">
-    <project-header />
+    <app-header 
+    :line="true"
+    :links="links" />
     <slot />
     <app-tldr />
   </div>

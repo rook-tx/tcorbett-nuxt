@@ -1,12 +1,22 @@
 <script setup>
-// const route = useRoute()
-// const ext = [ 'labs-chat' ].includes(route.name)
+const links = [
+  {
+    id: 'tcorb',
+    label: 'T Corbett',
+  },
+  {
+    id: 'labs',
+    label: 'Labs',
+  }
+]
 </script>
 
 <template>
   <div class="layout lab-layout">
     <!-- <lab-ext-header v-if="ext" /> -->
-    <lab-header />
+    <app-header
+      :links="links"
+    />
     <slot class="page lab-page" />
     <app-tldr />
   </div>

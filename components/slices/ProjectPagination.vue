@@ -86,14 +86,17 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
 @import "../../stylus/_variables"
 
 .pagination {
-  border-top: 1px solid $nw
-  padding: 0
-  display flex
+  border-top 1px solid $nw
   mgn(3, 0)
+  display flex
+
+  +below($tablet) {
+    flex-wrap wrap
+  }
 }
 
 .pag-wrap {
-  min-height: 1em
+  width 50%
 
   +above($mobile) {
     border-bottom: 1px solid $nw
@@ -105,8 +108,10 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
 }
 
 .index-pag {
+  pad(1, 1)
+  width 100%
+
   +above($tablet) {
-    pad(1, 1)
     border-left: 1px solid $nw
     border-right: 1px solid $nw
     width: 40%

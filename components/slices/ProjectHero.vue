@@ -43,13 +43,9 @@ defineProps({
     pad(1, 0)
 
     h1 {
-      fs(mp(7))
+      fs(mp(7), $lh * 4)
       font-weight 100
       margin: 0
-    }
-
-    +below($mobile) {
-      pad(1, 1)
     }
   }
 
