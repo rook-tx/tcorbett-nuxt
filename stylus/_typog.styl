@@ -2,6 +2,10 @@
 // Core type
 // ----------
 
+h1, h2, h3, h4, h5, p
+	mgn(1, 0)
+	max-width $pwidth*1em
+
 h1, h3
 	font-family $lato
 	font-weight 300
@@ -13,7 +17,6 @@ h1
 	color $prpl
 	fs(mp(5))
 	letter-spacing -.02em
-	mgn(2,0)
 
 	span
 		background-image -webkit-linear-gradient(315deg, $prpl, $blu)
@@ -41,15 +44,10 @@ h1
 h2
 	font-family $merriweather
 	fs(mp(3))
-	font-weight: 300
-	mgn(4,0,2)
-
-	+above($tablet)
-		mgn(5,0,4)
+	font-weight 300
 
 h3
 	fs(mp(2))
-	mgn(4,0)
 
 	.cta
 		background-image -webkit-linear-gradient(135deg, $blu, $prpl)
@@ -79,12 +77,6 @@ h6
 	font-weight 400
 	letter-spacing .2em
 	text-transform uppercase
-
-p
-	mgn(2, 0)
-
-h1, h2, h3, h4, h5, p
-	max-width $pwidth*1em
 
 
 // ----------

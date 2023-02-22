@@ -20,11 +20,11 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
           :key="lab.lab_id"
           class="lab"
         >
-          <a
-            :href="isFilled.link(lab.lab_link) ? lab.lab_link.url :
+          <nuxt-link
+            :to="isFilled.link(lab.lab_link) ? lab.lab_link.url :
               !lab.lab_id && isFilled.linkToMedia(lab.video) ? lab.video.url :
               `/labs/${lab.lab_id}/`"
-            target="_blank"
+            :target="isFilled.link(lab.lab_link) ? '_blank' : ''"
             rel="noopener"
           >
             <prismic-text
@@ -53,7 +53,7 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
             >
               <prismic-image :field="lab.lab_thumb" />
             </div>
-          </a>
+          </nuxt-link>
 
           <prismic-rich-text
             class="info"

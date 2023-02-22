@@ -25,6 +25,7 @@ function showCaption(item) {
       <div
         v-for="(item, idx) in slice.items"
         :key="idx"
+        class="item"
       >
         <prismic-image
           :field="item.image"
@@ -47,10 +48,14 @@ function showCaption(item) {
 @import "../../stylus/_variables"
 
 .banner-image {
+  .item {
+    mgn(1, 0)
+  }
 
   .content {
     .caption {
-      pad(0, 0, 1)
+      padding 0
+      overflow hidden
     }
   }
 

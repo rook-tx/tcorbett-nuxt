@@ -57,7 +57,7 @@ defineProps({
     font-family $lato
     fs(mp(-3))
     font-weight 400
-    letter-spacing .2em
+    letter-spacing .15em
     text-transform uppercase
     text-align right
     mgn(1, 0, 2)

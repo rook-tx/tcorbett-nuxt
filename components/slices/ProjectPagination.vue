@@ -22,7 +22,27 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
 <template>
   <div class="project-footer">
     <section class="sec pagination">
-      <div class="pag-wrap">
+      <div class="pag-wrap index-pag">
+        <h3>Projects</h3>
+        <ul>
+          <li
+            v-for="project in projects"
+            :key="project.uid"
+          >
+            <nuxt-link :to="`/projects/${project.uid}`">
+              <prismic-text
+                :field="project.data.project_title"
+              />
+            </nuxt-link>
+          </li>
+        </ul>
+        <a
+          href="/projects/list"
+          class="pag"
+        >All projects</a>
+      </div>
+
+      <div class="pag-wrap prev-wrap">
         <nuxt-link
           v-if="prev"
           :to="`/projects/${prev.uid}`"
@@ -36,14 +56,7 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
         </nuxt-link>
       </div>
 
-      <div class="pag-wrap index-pag">
-        <a
-          href="/projects/list"
-          class="pag"
-        >All projects</a>
-      </div>
-
-      <div class="pag-wrap">
+      <div class="pag-wrap next-wrap">
         <nuxt-link
           v-if="next"
           :to="`/projects/${next.uid}`"
@@ -71,19 +84,33 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
   mgn(0, 0, 3)
 
 .pag-wrap
-  width: 40%
+  width: 30%
   min-height: 1em
 
-.index-pag
-  width: 20%
+  +above($mobile)
+    border-bottom: 1px solid $nw
+
+.index-pag {
+  width: 40%
   border-left: 1px solid $nw
   border-right: 1px solid $nw
 
-.pag-wrap
-  +above($mobile)
-    width: 100%
-    border-bottom: 1px solid $nw
-    border-width: 0 0 1px
+  +above($tablet) {
+    order 2
+  }
+}
+
+.prev-wrap {
+  +above($tablet) {
+    order 1
+  }
+}
+
+.next-wrap {
+  +above($tablet) {
+    order 3
+  }
+}
 
 .pag
   width: 100%

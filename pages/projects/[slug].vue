@@ -18,8 +18,8 @@ const { data } = await useLazyAsyncData(slug, async () => {
 })
 
 useHead({
-  title: asText(data?.value?.project.data.project_title),
-  meta: { hid: 'og:image', property: 'og:image', content: isFilled.image(data?.value?.project.data.project_image) ? data.value.project.data.project_image.url : '/apple-touch-icon.png' }
+  title: asText(data?.value?.project?.data.project_title),
+  meta: { hid: 'og:image', property: 'og:image', content: isFilled.image(data?.value?.project?.data.project_image) ? data.value.project.data.project_image.url : '/apple-touch-icon.png' }
 })
 
 function getComponent(type) {
