@@ -12,8 +12,6 @@
 
 .project-layout {
   height 100%
-  // overflow-y auto
-  // overflow-x hidden
 }
 
 .project-page {
