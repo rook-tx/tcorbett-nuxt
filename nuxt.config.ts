@@ -45,10 +45,15 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Lato: [ 100, 300, 400, 700, 900 ],
-      Merriweather: [ 300, 400 ],
+      Lato: {
+        wght: [ 100, 300, 400, 700, 900 ],
+        ital: [ 300, 400 ]
+      },
+      Merriweather: {
+        wght: [ 300, 400 ],
+        ital: [ 300, 400 ]
+      },
     },
-    // subsets: 'latin'
   },
 
   prismic: {

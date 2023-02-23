@@ -53,7 +53,7 @@ defineProps({
 
 .lab-page {
   .pagination {
-    border-top-color 1px solid $nw
+    border-top 1px solid lighten($lab-bg, 8%)
     mgn(3, 0)
     display flex
 
@@ -131,13 +131,13 @@ defineProps({
   }
 
   .list-link {
+    &.router-link-exact-active {
+      color $prpl
+    }
+
     &:hover {
       color $blu
     }
-  }
-
-  .router-link-exact-active {
-    color $prpl
   }
 }
 
