@@ -45,6 +45,9 @@ function getComponent(type) {
       :key="idx"
       :slice="slice"
     />
+    <slices-lab-pagination
+      :labs="data?.labs"
+    />
   </div>
 </template>
 

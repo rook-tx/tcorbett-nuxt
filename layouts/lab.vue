@@ -37,8 +37,17 @@ const links = [
 }
 
 .lab-page {
-  color $bg
+  font-family $lato
+  color $gry
   pad(2, 0)
+
+  p {
+    letter-spacing $ls * 0.1
+  }
+
+  strong {
+    font-weight 700
+  }
 }
 
 </style>

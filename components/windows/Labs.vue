@@ -71,7 +71,8 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
 
 .labs.labs
   background $lab-bg
-  color $bg
+  font-family $lato
+  color $gry
 
   ::selection
     background $blk
@@ -87,7 +88,7 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
 
     p {
       fs(mp(-1))
-      letter-spacing normal
+      letter-spacing $ls * 0.1
       margin 0
     }
   }
@@ -141,11 +142,16 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
 
     p, li
       fs(mp(-3))
-      font-family $lato
       font-weight 400
-      letter-spacing ($ls / 3)
+      letter-spacing $ls * 0.5
       margin 0
       text-transform lowercase
+
+    a
+      border-bottom 1px solid $prpl
+
+      &:hover
+        color $prpl
 
   .video
     max-width 100%

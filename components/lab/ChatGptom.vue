@@ -98,6 +98,39 @@ onMounted(() => {
 
 @import "../../stylus/_variables"
 
+.chat-gptom {
+  h1 {
+    fs(mp(0))
+    color $dgry
+    font-weight 600
+    mgn(2, 0, 1)
+  }
+
+  .credit {
+    color $blk
+    fs(mp(-4))
+    pad(1, 0)
+
+    a {
+      border-bottom 1px solid
+    }
+
+    svg {
+      display inline-block
+      fill $blk
+      height 1rem
+      width 1rem
+      vertical-align middle
+      margin-right 1em
+    }
+
+    +below($mobile) {
+      display block
+      white-space wrap
+    }
+  }
+}
+
 .chat-input {
   font-family $lato
   fs(mp(1))

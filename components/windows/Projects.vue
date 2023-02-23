@@ -18,12 +18,6 @@ defineProps({
       v-if="projects?.data"
       class="wrap"
     >
-      <!-- <div class="blurb">
-        <nuxt-link to="/projects/list">
-          See all projects
-        </nuxt-link>
-      </div> -->
-
       <prismic-rich-text
         v-if="projects?.data?.blurb"
         class="blurb"
@@ -116,6 +110,7 @@ defineProps({
   .blurb {
     font-family $lato
     fs(mp(-1))
+    mgn(2, 0, 0)
   }
 
   .project {

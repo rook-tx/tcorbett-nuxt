@@ -1,6 +1,12 @@
 <script setup>
+import { asText, isFilled } from '@prismicio/helpers'
+
+const { client } = usePrismic()
+const { data } = await useLazyAsyncData('chat', () => client.getByUID('lab', 'chat'))
+
 useHead({
-  title: 'Chat GPTom'
+  title: asText(data?.value?.data?.lab_title),
+  meta: { hid: 'og:image', property: 'og:image', content: isFilled.image(data?.value?.data.lab_thumb) ? data.value.data.lab_thumb.url : '/apple-touch-icon.png' }
 })
 
 definePageMeta({
@@ -21,40 +27,9 @@ definePageMeta({
 @import "../../stylus/_variables"
 
 .chat-page {
-  h1 {
-    fs(mp(0))
-    color $dgry
-    font-weight 600
-    mgn(2, 0, 1)
-  }
-
   .content {
     max-width $pwidth * 1.382rem
-    pad(1, 1)
-  }
-
-  .credit {
-    color $blk
-    fs(mp(-4))
-    pad(1, 0)
-
-    a {
-      border-bottom 1px solid
-    }
-
-    svg {
-      display inline-block
-      fill $blk
-      height 1rem
-      width 1rem
-      vertical-align middle
-      margin-right 1em
-    }
-
-    +below($mobile) {
-      display block
-      white-space wrap
-    }
+    pad(1, 2, 1, 1)
   }
 
   .eccomi {

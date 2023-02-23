@@ -1,4 +1,5 @@
 <script setup>
+
 useHead({
   htmlAttrs: {
     class: 'desktop-app'
