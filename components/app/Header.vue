@@ -1,10 +1,16 @@
 <script setup>
 
-defineProps({
+const props = defineProps({
   line: {
     type: Boolean,
     default: false
   },
+
+  progress: {
+    type: Number,
+    default: 0
+  },
+
   links: {
     type: Array,
     default: () => [
@@ -28,7 +34,7 @@ defineProps({
   }
 })
 
-const pct = 0
+const pct = computed(() => props.progress * 100)
 
 </script>
 
@@ -40,7 +46,7 @@ const pct = 0
           <li
             v-for="link in links"
             :key="link.id"
-            :class="['mnav-li', `mnav-${link.id}`]"
+            :class="[ 'mnav-li', `mnav-${link.id}` ]"
           >
             <nuxt-link
               class="mnav-a"

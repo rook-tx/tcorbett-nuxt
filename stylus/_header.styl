@@ -40,31 +40,16 @@
     &::before, &::after
       content none
 
-// .mnav-home
-//   .mnav-a
-//     padding ((($lh *2.5) - 21)*.5px) 0 0 $gut * 1rem
-//     // pad(0, 1, 0, 2)
-
-//     +above($mobile)
-//       padding ((($lh*2.5) - 14)*.5px) $gut * 1rem 0 $gut * 2rem
-
 .header
   &-line
-    background $nw
-    // bottom ($lh/2)*1px
+    background rgba($b, .05)
     height 1px
     flex-grow 1
-    // left $gut*3em
     overflow hidden
     position relative
     mgn(1,0,1,1)
     margin-bottom: $let + .28em
-    // right $gut*1em
     z-index 1
-
-    // +above($mobile)
-    //   bottom ($lh - 2)*1px
-    //   left $gut*4em
 
     &-inner
       background-image linear-gradient(90deg, $blu, $prpl)

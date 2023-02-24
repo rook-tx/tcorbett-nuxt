@@ -3,9 +3,7 @@
     :class="[ 'window', { active: active }]"
     :style="pos"
   >
-    <div
-      class="window-header"
-    >
+    <div class="window-header">
       <h2
         class="window-label caption"
         v-html="data.title"
@@ -16,7 +14,7 @@
           v-if="active"
           class="close"
         >
-          <router-link
+          <nuxt-link
             to="/"
             @click.stop=""
           >
@@ -31,13 +29,13 @@
               <path d="M1 1l28 28" />
               <path d="M29 1L1 29" />
             </svg>
-          </router-link>
+          </nuxt-link>
         </div>
         <div
           v-else
           class="expand"
         >
-          <router-link
+          <nuxt-link
             :to="`/${data.id}`"
             @click.stop=""
           >
@@ -55,7 +53,7 @@
               <path d="M333 132.2h-10.6V77.5h-54.8V66.8H333v65.4zM231.6 239.3l7.6-7.6 92.3 92.4-7.6 7.6z" />
               <path d="M333 333.2h-65.4v-10.7h54.8v-54.7H333v65.4z" />
             </svg>
-          </router-link>
+          </nuxt-link>
         </div>
       </div>
     </div>
