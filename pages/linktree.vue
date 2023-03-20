@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Linktree'
+})
 definePageMeta({
   layout: 'linktree',
 })
