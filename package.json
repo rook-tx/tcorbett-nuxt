@@ -8,18 +8,18 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/google-fonts": "^3.0.0-1",
+    "@nuxtjs/google-fonts": "^3.0.0",
     "@nuxtjs/prismic": "^3.0.0-rc.2",
-    "eslint": "^8.36.0",
+    "eslint": "^8.40.0",
     "eslint-plugin-nuxt": "^4.0.0",
-    "nuxt": "^3.3.1",
+    "nuxt": "^3.4.3",
     "stylus": "^0.59.0"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.4.7",
+    "@pinia/nuxt": "^0.4.10",
     "dayjs": "^1.11.7",
     "openai": "^3.2.1",
-    "pinia": "^2.0.33",
+    "pinia": "^2.0.36",
     "three": "^0.149.0"
   }
 }

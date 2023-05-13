@@ -43,6 +43,15 @@
               class="mnav-a"
             >LinkedIn</a>
           </li>
+
+          <li class="mnav-li mnav-linkedin">
+            <a
+              href="https://blog.tcorbett.co.uk"
+              target="_blank"
+              rel="noopener"
+              class="mnav-a"
+            >Tumblr</a>
+          </li>
         </ul>
       </nav>
       <span class="credit">&copy; 2023 <strong>T Corbett</strong></span>
