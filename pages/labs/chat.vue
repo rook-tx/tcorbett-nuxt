@@ -1,5 +1,5 @@
 <script setup>
-import { asText, isFilled } from '@prismicio/helpers'
+import { asText, isFilled } from '@prismicio/client'
 
 const { client } = usePrismic()
 const { data } = await useLazyAsyncData('chat', () => client.getByUID('lab', 'chat'))

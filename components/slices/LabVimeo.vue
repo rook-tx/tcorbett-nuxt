@@ -1,5 +1,5 @@
 <script setup>
-import { asText } from '@prismicio/helpers'
+import { asText } from '@prismicio/client'
 
 defineProps({
   lab: {

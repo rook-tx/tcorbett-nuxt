@@ -1,5 +1,5 @@
 <script setup>
-import { isFilled } from '@prismicio/helpers'
+import { isFilled } from '@prismicio/client'
 
 const { client } = usePrismic()
 const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects'))

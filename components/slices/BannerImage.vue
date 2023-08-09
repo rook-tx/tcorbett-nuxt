@@ -1,6 +1,6 @@
 <script setup>
 
-import { isFilled } from '@prismicio/helpers'
+import { isFilled } from '@prismicio/client'
 
 defineProps({
   slice: {
