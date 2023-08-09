@@ -126,8 +126,7 @@ export default {
           transform: `translateX(${this.mobile ? 10 : this.win.x * 0.382}px) translateY(50px) translateZ(0)`,
           zIndex: this.z
         }
-      } else
-      if (this.data.pos) {
+      } else if (this.data.pos) {
         const { x, y } = this.data.pos
 
         return this.data.id === 'about' ? {
