@@ -1,0 +1,28 @@
+{
+  "id": "banner_copy",
+  "type": "SharedSlice",
+  "name": "BannerCopy",
+  "description": "BannerCopy",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading1,heading2,heading3,heading4,strong,em,hyperlink,list-item,o-list-item,image"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
