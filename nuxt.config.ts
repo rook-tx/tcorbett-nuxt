@@ -57,7 +57,7 @@ export default defineNuxtConfig({
   },
 
   prismic: {
-    endpoint: 'tcorbett',
+    endpoint: 'tcorbett-sm',
     preview: false,
     toolbar: false,
     linkResolver: '~/js/prismicLinkResolver.js'

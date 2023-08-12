@@ -38,7 +38,7 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
               >
                 <prismic-text
                   class="caption"
-                  :field="project.data.project_title"
+                  :field="project.data.title"
                 />
               </nuxt-link>
             </li>
@@ -59,7 +59,7 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
           <span class="pag-arrow">&laquo;</span><br>
           Previous:<br>
           <strong>
-            <prismic-text :field="prev.data.project_title" />
+            <prismic-text :field="prev.data.title" />
           </strong>
         </nuxt-link>
       </div>
@@ -73,7 +73,7 @@ const next = computed(() => idx.value > -1 && idx.value < props.projects.length 
           <span class="pag-arrow">&raquo;</span><br>
           Next:<br>
           <strong>
-            <prismic-text :field="next.data.project_title" />
+            <prismic-text :field="next.data.title" />
           </strong>
         </nuxt-link>
       </div>

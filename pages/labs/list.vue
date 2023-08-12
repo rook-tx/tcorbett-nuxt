@@ -22,7 +22,7 @@ const { data: labs } = await useLazyAsyncData(async () => {
         >
           <NuxtLink :to="`/labs/${lab.uid}`">
             <prismic-text
-              :field="lab.data.lab_title"
+              :field="lab.data.title"
             />
           </NuxtLink>
         </li>

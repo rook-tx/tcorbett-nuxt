@@ -5,14 +5,17 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "slicemachine": "start-slicemachine"
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.0.2",
     "@nuxtjs/prismic": "^3.0.1",
+    "@slicemachine/adapter-nuxt": "^0.3.10",
     "eslint": "^8.46.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "nuxt": "^3.6.5",
+    "slice-machine-ui": "^1.8.0",
     "stylus": "^0.59.0"
   },
   "dependencies": {

@@ -3,6 +3,7 @@
 definePageMeta({
   layout: 'desktop'
 })
+
 </script>
 
 <template>

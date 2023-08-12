@@ -20,7 +20,7 @@ const { data: projects } = await useLazyAsyncData('project-list', async () => {
         >
           <NuxtLink :to="`/projects/${project.uid}`">
             <prismic-text
-              :field="project.data.project_title"
+              :field="project.data.title"
             />
           </NuxtLink>
         </li>

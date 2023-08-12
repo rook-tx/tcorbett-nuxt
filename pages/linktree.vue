@@ -13,9 +13,9 @@ const { data: doc } = await useLazyAsyncData('linktree', () => client.getSingle(
   <div class="linktree-page">
     <div class="content">
       <div class="profile">
+        <!-- v-if="isFilled.image(doc.data.image)" -->
         <prismic-image
-          v-if="doc.data?.profile"
-          :field="doc.data.profile"
+          :field="doc.data?.image"
           width="120"
           height="120"
         />
@@ -25,7 +25,7 @@ const { data: doc } = await useLazyAsyncData('linktree', () => client.getSingle(
 
       <ul>
         <modules-tree-link
-          v-for="(link, idx) in doc.data.link"
+          v-for="(link, idx) in doc.data.links"
           :key="idx"
           :link="link"
         />

@@ -32,15 +32,17 @@ defineProps({
               >
                 <prismic-text
                   class="caption"
-                  :field="lab.data.lab_title"
+                  :field="lab.data.title"
                 />
               </nuxt-link>
             </li>
           </ul>
-          <a
-            href="/labs/list"
+          <nuxt-link
+            to="/labs/list"
             class="list-link caption"
-          >All labs</a>
+          >
+            All labs
+          </nuxt-link>
         </div>
       </div>
     </section>
