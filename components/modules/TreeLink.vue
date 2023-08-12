@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import { isFilled } from '@prismicio/client'
 
@@ -7,7 +7,7 @@ defineProps({
     type: Object,
     default: () => ({
       image: null,
-      label: [],
+      label: '',
       url: null,
     })
   }
