@@ -1,5 +1,7 @@
 <script setup>
 
+import { isFilled } from '@prismicio/client'
+
 defineProps({
   link: {
     type: Object,
@@ -23,6 +25,7 @@ defineProps({
       <div class="link-btn">
         <div class="link-btn-image">
           <prismic-image
+            v-if="isFilled.image(link.image)"
             :field="link.image"
             class="link-image"
             width="60"
@@ -30,11 +33,7 @@ defineProps({
           />
         </div>
         <div class="link-btn-label">
-          <!-- <prismic-text
-            :field="link.label" -->
-          <span
-            class="link-label"
-          >{{ link.label }}</span>
+          <span class="link-label">{{ link.label }}</span>
         </div>
       </div>
     </a>

@@ -51,6 +51,14 @@
                 "select": null
               }
             },
+            "project": {
+              "type": "Link",
+              "config": {
+                "label": "Project",
+                "placeholder": "",
+                "select": null
+              }
+            },
             "launch_date": {
               "type": "Date",
               "config": { "label": "Launch date", "placeholder": "" }

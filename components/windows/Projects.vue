@@ -1,5 +1,5 @@
 <script setup>
-import { isFilled } from '@prismicio/client'
+import { isFilled, asText } from '@prismicio/client'
 
 const { client } = usePrismic()
 const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects'))
@@ -19,51 +19,51 @@ defineProps({
       class="wrap"
     >
       <prismic-rich-text
-        v-if="projects?.data?.blurb"
+        v-if="projects.data?.blurb"
         class="blurb"
         :field="projects.data.blurb"
       />
 
       <ol
-        v-if="projects?.data?.projects"
+        v-if="projects.data?.projects"
         class="project-list"
       >
         <li
           v-for="project in projects.data.projects"
-          :key="project.project_link.url"
+          :key="asText(project.title)"
           class="project"
         >
           <nuxt-link
-            v-if="project?.project?.uid"
+            v-if="isFilled.link(project.project)"
             :to="`/projects/${project.project.uid}`"
           >
             <prismic-text
               class="url"
-              :field="project.project_title"
+              :field="project.title"
             />
             <div
-              v-if="isFilled.image(project.project_thumb)"
+              v-if="isFilled.image(project.image)"
               class="thumb"
             >
-              <prismic-image :field="project.project_thumb" />
+              <prismic-image :field="project.image" />
             </div>
           </nuxt-link>
 
           <a
-            v-else-if="project.project_link"
-            :href="project.project_link.url"
+            v-else-if="isFilled.link(project.link)"
+            :href="project.link.url"
             target="_blank"
             rel="noopener"
           >
             <prismic-text
               class="url"
-              :field="project.project_title"
+              :field="project.title"
             />
             <div
-              v-if="isFilled.image(project.project_thumb)"
+              v-if="isFilled.image(project.image)"
               class="thumb"
             >
-              <prismic-image :field="project.project_thumb" />
+              <prismic-image :field="project.image" />
             </div>
           </a>
 

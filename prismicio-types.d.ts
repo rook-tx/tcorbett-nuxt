@@ -677,6 +677,16 @@ export interface ProjectsDocumentDataProjectsItem {
   link: prismic.LinkField;
 
   /**
+   * Project field in *Projects → Projects*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.projects[].project
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  project: prismic.LinkField;
+
+  /**
    * Launch date field in *Projects → Projects*
    *
    * - **Field Type**: Date
