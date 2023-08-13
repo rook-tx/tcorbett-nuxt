@@ -151,13 +151,13 @@ interface LabDocumentData {
   /**
    * Title field in *Lab*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: lab.title
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  title: prismic.RichTextField;
+  title: prismic.TitleField;
 
   /**
    * Image field in *Lab*
@@ -264,16 +264,6 @@ export type LabDocument<Lang extends string = string> =
  */
 export interface LabsDocumentDataLabsItem {
   /**
-   * ID field in *Labs → Labs*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: labs.labs[].lab_id
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  lab_id: prismic.KeyTextField;
-
-  /**
    * Title field in *Labs → Labs*
    *
    * - **Field Type**: Title
@@ -284,6 +274,16 @@ export interface LabsDocumentDataLabsItem {
   title: prismic.TitleField;
 
   /**
+   * ID field in *Labs → Labs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: labs.labs[].lab_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lab_id: prismic.KeyTextField;
+
+  /**
    * Image field in *Labs → Labs*
    *
    * - **Field Type**: Image
@@ -292,6 +292,16 @@ export interface LabsDocumentDataLabsItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Video field in *Labs → Labs*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: labs.labs[].video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField;
 
   /**
    * Link field in *Labs → Labs*
@@ -543,7 +553,10 @@ export type LinktreeDocument<Lang extends string = string> =
     Lang
   >;
 
-type ProjectDocumentDataSlicesSlice = BannerCopySlice | BannerImageSlice;
+type ProjectDocumentDataSlicesSlice =
+  | BannerCopySlice
+  | BannerImageSlice
+  | BannerVideoSlice;
 
 /**
  * Content for Project documents

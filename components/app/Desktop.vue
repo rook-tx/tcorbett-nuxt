@@ -76,9 +76,9 @@ export default {
       immediate: true,
       handler({ params, name }) {
 
-        const { slug } = params
+        const { uid } = params
 
-        this.activeWindowIdx = this.windows.findIndex((win) => win.id === name || win.id === slug)
+        this.activeWindowIdx = this.windows.findIndex((win) => win.id === name || win.id === uid)
 
         this.activeWindow = this.activeWindowIdx > -1
 
@@ -179,6 +179,14 @@ export default {
   overflow hidden
   transform translateZ(0)
   z-index 1
+}
+
+.item-index {
+  position absolute
+
+  &:focus-within {
+    z-index 3
+  }
 }
 
 </style>

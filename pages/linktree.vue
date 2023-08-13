@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { isFilled } from '@prismicio/client'
 useHead({
   title: 'Linktree'
@@ -12,7 +12,10 @@ const { data: doc } = await useLazyAsyncData('linktree', () => client.getSingle(
 
 <template>
   <div class="linktree-page">
-    <div class="content">
+    <div
+      v-if="doc"
+      class="content"
+    >
       <div class="profile">
         <prismic-image
           v-if="isFilled.image(doc.data.image)"

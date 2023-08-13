@@ -29,10 +29,6 @@
         "config": {
           "label": "Labs",
           "fields": {
-            "lab_id": {
-              "type": "Text",
-              "config": { "label": "ID", "placeholder": "" }
-            },
             "title": {
               "type": "StructuredText",
               "config": {
@@ -42,9 +38,21 @@
                 "single": "heading3"
               }
             },
+            "lab_id": {
+              "type": "Text",
+              "config": { "label": "ID", "placeholder": "" }
+            },
             "image": {
               "type": "Image",
               "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+            },
+            "video": {
+              "type": "Link",
+              "config": {
+                "label": "Video",
+                "placeholder": "",
+                "select": "media"
+              }
             },
             "link": {
               "type": "Link",

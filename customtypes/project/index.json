@@ -33,7 +33,8 @@
         "config": {
           "choices": {
             "banner_copy": { "type": "SharedSlice" },
-            "banner_image": { "type": "SharedSlice" }
+            "banner_image": { "type": "SharedSlice" },
+            "banner_video": { "type": "SharedSlice" }
           }
         }
       }
