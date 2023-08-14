@@ -40,17 +40,17 @@ useHead({
     :class="[ 'project-page', `${uid}-page` ]"
   >
     <slices-project-hero
-      :project="data?.project?.data"
+      :project="data.project?.data"
     />
 
     <slice-zone
-      :slices="data.project.data.slices"
+      :slices="data.project?.data.slices"
       :components="components"
     />
 
     <slices-project-pagination
       :current="uid"
-      :projects="data?.projects"
+      :projects="data.projects"
     />
 
     <project-footer />

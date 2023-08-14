@@ -17,7 +17,7 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
         class="blurb"
       />
 
-      <ol v-if="labs?.data?.labs">
+      <ol v-if="labs.data?.labs">
         <li
           v-for="lab in labs.data.labs"
           :key="String(lab.lab_id)"

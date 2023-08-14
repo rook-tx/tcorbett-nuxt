@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { isFilled, asText } from '@prismicio/client'
 
 const { client } = usePrismic()
@@ -15,7 +15,7 @@ defineProps({
 <template>
   <div class="projects">
     <div
-      v-if="projects?.data"
+      v-if="projects"
       class="wrap"
     >
       <prismic-rich-text
@@ -35,7 +35,7 @@ defineProps({
         >
           <nuxt-link
             v-if="isFilled.link(project.project)"
-            :to="`/projects/${project.project.uid}`"
+            :to="`/projects/${project.project.slug}`"
           >
             <prismic-text
               class="url"
