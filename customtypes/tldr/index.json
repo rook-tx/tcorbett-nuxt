@@ -15,10 +15,59 @@
           "single": "heading1"
         }
       },
+      "projects": {
+        "type": "Group",
+        "config": {
+          "label": "Projects",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "role": {
+              "type": "Text",
+              "config": {
+                "label": "Role",
+                "placeholder": ""
+              }
+            },
+            "url": {
+              "type": "Link",
+              "config": {
+                "label": "URL",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "skills": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Skills",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading4,list-item,o-list-item,strong,em,hyperlink"
+        }
+      },
+      "contact_email": {
+        "type": "Link",
+        "config": {
+          "label": "Contact email",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": { "choices": {} }
+        "config": {
+          "choices": {}
+        }
       }
     },
     "SEO & Metadata": {
@@ -31,7 +80,10 @@
       },
       "meta_image": {
         "config": {
-          "constraint": { "height": 1260, "width": 2400 },
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
           "label": "Meta Image",
           "thumbnails": []
         },

@@ -11,7 +11,7 @@ const uid = route.params.uid
 
 const { client } = usePrismic()
 
-const { data } = await useLazyAsyncData(uid, async () => {
+const { data } = await useAsyncData(uid, async () => {
   const labs = await client.getAllByType('lab')
   return {
     labs,

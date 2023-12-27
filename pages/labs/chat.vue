@@ -2,7 +2,7 @@
 import { asText, isFilled } from '@prismicio/client'
 
 const { client } = usePrismic()
-const { data } = await useLazyAsyncData('chat', () => client.getByUID('lab', 'chat'))
+const { data } = await useAsyncData('chat', () => client.getByUID('lab', 'chat'))
 
 useHead({
   title: asText(data?.value?.data?.lab_title),

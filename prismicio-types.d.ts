@@ -4,12 +4,48 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Item in *About → Slides*
+ */
+export interface AboutDocumentDataSlidesItem {
+  /**
+   * Image field in *About → Slides*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.slides[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Copy field in *About → Slides*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.slides[].copy
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  copy: prismic.RichTextField;
+}
+
 type AboutDocumentDataSlicesSlice = never;
 
 /**
  * Content for About documents
  */
 interface AboutDocumentData {
+  /**
+   * Slides field in *About*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.slides[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  slides: prismic.GroupField<Simplify<AboutDocumentDataSlidesItem>>;
+
   /**
    * Slice Zone field in *About*
    *
@@ -19,8 +55,7 @@ interface AboutDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice> /**
    * Meta Description field in *About*
    *
    * - **Field Type**: Text
@@ -92,8 +127,7 @@ interface HomeDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
    * Meta Description field in *Home*
    *
    * - **Field Type**: Text
@@ -212,8 +246,7 @@ interface LabDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<LabDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<LabDocumentDataSlicesSlice> /**
    * Meta Description field in *Lab*
    *
    * - **Field Type**: Text
@@ -372,8 +405,7 @@ interface LabsDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<LabsDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<LabsDocumentDataSlicesSlice> /**
    * Meta Description field in *Labs*
    *
    * - **Field Type**: Text
@@ -502,8 +534,7 @@ interface LinktreeDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<LinktreeDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<LinktreeDocumentDataSlicesSlice> /**
    * Meta Description field in *Linktree*
    *
    * - **Field Type**: Text
@@ -604,8 +635,7 @@ interface ProjectDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice> /**
    * Meta Title field in *Project*
    *
    * - **Field Type**: Text
@@ -778,8 +808,7 @@ interface ProjectsDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<ProjectsDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<ProjectsDocumentDataSlicesSlice> /**
    * Meta Description field in *Projects*
    *
    * - **Field Type**: Text
@@ -829,6 +858,41 @@ export type ProjectsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *TLDR → Projects*
+ */
+export interface TldrDocumentDataProjectsItem {
+  /**
+   * Title field in *TLDR → Projects*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tldr.projects[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Role field in *TLDR → Projects*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tldr.projects[].role
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  role: prismic.KeyTextField;
+
+  /**
+   * URL field in *TLDR → Projects*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tldr.projects[].url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  url: prismic.LinkField;
+}
+
 type TldrDocumentDataSlicesSlice = never;
 
 /**
@@ -847,6 +911,39 @@ interface TldrDocumentData {
   title: prismic.TitleField;
 
   /**
+   * Projects field in *TLDR*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tldr.projects[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  projects: prismic.GroupField<Simplify<TldrDocumentDataProjectsItem>>;
+
+  /**
+   * Skills field in *TLDR*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tldr.skills
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  skills: prismic.RichTextField;
+
+  /**
+   * Contact email field in *TLDR*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tldr.contact_email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  contact_email: prismic.LinkField;
+
+  /**
    * Slice Zone field in *TLDR*
    *
    * - **Field Type**: Slice Zone
@@ -855,8 +952,7 @@ interface TldrDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<TldrDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<TldrDocumentDataSlicesSlice> /**
    * Meta Description field in *TLDR*
    *
    * - **Field Type**: Text
@@ -1108,7 +1204,7 @@ declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig
+      options?: prismic.ClientConfig,
     ): prismic.Client<AllDocumentTypes>;
   }
 
@@ -1116,6 +1212,7 @@ declare module "@prismicio/client" {
     export type {
       AboutDocument,
       AboutDocumentData,
+      AboutDocumentDataSlidesItem,
       AboutDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
@@ -1125,18 +1222,22 @@ declare module "@prismicio/client" {
       LabDocumentDataSlicesSlice,
       LabsDocument,
       LabsDocumentData,
+      LabsDocumentDataLabsItem,
       LabsDocumentDataSlicesSlice,
       LinktreeDocument,
       LinktreeDocumentData,
+      LinktreeDocumentDataLinksItem,
       LinktreeDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataSlicesSlice,
       ProjectsDocument,
       ProjectsDocumentData,
+      ProjectsDocumentDataProjectsItem,
       ProjectsDocumentDataSlicesSlice,
       TldrDocument,
       TldrDocumentData,
+      TldrDocumentDataProjectsItem,
       TldrDocumentDataSlicesSlice,
       AllDocumentTypes,
       BannerCopySlice,

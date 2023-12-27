@@ -7,7 +7,7 @@ definePageMeta({
   layout: 'linktree',
 })
 const { client } = usePrismic()
-const { data: doc } = await useLazyAsyncData('linktree', () => client.getSingle('linktree'))
+const { data: doc } = await useAsyncData('linktree', () => client.getSingle('linktree'))
 </script>
 
 <template>

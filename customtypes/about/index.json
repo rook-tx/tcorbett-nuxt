@@ -6,10 +6,38 @@
   "status": true,
   "json": {
     "Main": {
+      "slides": {
+        "type": "Group",
+        "config": {
+          "label": "Slides",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "copy": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Copy",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "labels": ["trigger", "about"],
+                "multi": "paragraph,heading2,heading3,heading4,strong,em,hyperlink,list-item,o-list-item,embed"
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": { "choices": {} }
+        "config": {
+          "choices": {}
+        }
       }
     },
     "SEO & Metadata": {
@@ -22,7 +50,10 @@
       },
       "meta_image": {
         "config": {
-          "constraint": { "height": 1260, "width": 2400 },
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
           "label": "Meta Image",
           "thumbnails": []
         },

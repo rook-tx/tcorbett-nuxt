@@ -2,7 +2,7 @@
 import { isFilled, asText } from '@prismicio/client'
 
 const { client } = usePrismic()
-const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects'))
+const { data: projects } = await useAsyncData('projects', () => client.getSingle('projects'))
 
 defineProps({
   active: {
@@ -35,7 +35,7 @@ defineProps({
         >
           <nuxt-link
             v-if="isFilled.link(project.project)"
-            :to="`/projects/${project.project.slug}`"
+            :to="`/projects/${project.project.uid}`"
           >
             <prismic-text
               class="url"

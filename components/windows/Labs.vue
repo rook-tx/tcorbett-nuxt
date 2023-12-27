@@ -2,7 +2,7 @@
 import { isFilled } from '@prismicio/client'
 
 const { client } = usePrismic()
-const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('labs'))
+const { data: labs } = await useAsyncData('labs', () => client.getSingle('labs'))
 </script>
 
 <template>

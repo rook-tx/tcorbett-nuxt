@@ -11,7 +11,7 @@ const uid = route.params.uid
 
 const { client } = usePrismic()
 
-const { data } = await useLazyAsyncData(uid, async () => {
+const { data } = await useAsyncData(uid, async () => {
   const projects = await client.getAllByType('project')
   return {
     projects,
@@ -20,7 +20,7 @@ const { data } = await useLazyAsyncData(uid, async () => {
 })
 
 useHead({
-  title: isFilled.keyText(data.value?.project.meta_title) ? data.value?.project.meta_title : asText(data?.value?.project?.data.title),
+  title: isFilled.keyText(data.value?.project?.meta_title) ? data.value?.project.meta_title : asText(data?.value?.project?.data.title),
   meta: [
     {
       name: 'description',
