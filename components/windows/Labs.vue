@@ -65,6 +65,7 @@ const { data: labs } = await useAsyncData('labs', () => client.getSingle('labs')
         </li>
       </ol>
     </div>
+    <modules-list type="lab" />
   </div>
 </template>
 

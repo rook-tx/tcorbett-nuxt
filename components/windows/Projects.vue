@@ -81,6 +81,8 @@ defineProps({
         </li>
       </ol>
     </div>
+
+    <modules-list />
   </div>
 </template>
 

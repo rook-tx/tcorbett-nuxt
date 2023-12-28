@@ -32,6 +32,7 @@
             <a
               href="mailto:twcorb@gmail.com"
               class="mnav-a"
+              target="_blank"
             >twcorb@gmail.com</a>
           </li>
 

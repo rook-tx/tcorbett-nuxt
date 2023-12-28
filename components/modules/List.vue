@@ -3,9 +3,7 @@ const props = defineProps({
   type: {
     type: String,
     default: 'project',
-    validator: (prop) => {
-      return [ 'project', 'lab' ].includes(prop)
-    }
+    validator: (prop) => [ 'project', 'lab' ].includes(prop)
   }
 })
 const { client } = usePrismic()

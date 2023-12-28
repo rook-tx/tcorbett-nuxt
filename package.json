@@ -21,7 +21,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "dayjs": "^1.11.10",
-    "openai": "^3.3.0",
+    "openai": "^4.24.1",
     "pinia": "^2.1.7",
     "three": "^0.149.0"
   }

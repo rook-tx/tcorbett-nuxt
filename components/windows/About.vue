@@ -94,8 +94,8 @@ export default {
     sidx: {
       handler(sidx) {
         const newSrc = this.thumbnail ?
-          this.pageData.slide[sidx].image.Tablet.url :
-          this.pageData.slide[sidx].image.url
+          this.pageData.slides[sidx].image.Tablet.url :
+          this.pageData.slides[sidx].image.url
 
         if (newSrc && this.frameSrc !== newSrc) {
           this.frameSrc = newSrc
@@ -110,7 +110,7 @@ export default {
 
   methods: {
     getContent() {
-      this.$prismic.client.getSingle('home')
+      this.$prismic.client.getSingle('about')
         .then((document) => {
           this.pageData = document.data
         })

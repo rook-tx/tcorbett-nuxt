@@ -17,7 +17,7 @@ definePageMeta({
 
 <template>
   <div class="page lab-page chat-page">
-    <lab-chat-gptom />
+    <lab-gpt-four />
     <lab-eccomi />
   </div>
 </template>

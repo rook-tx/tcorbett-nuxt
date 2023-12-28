@@ -1,16 +1,17 @@
-import OpenAI from 'openai'
+import { Configuration, OpenAIApi } from 'openai'
 
-const openai = new OpenAI({
+const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 })
+const openai = new OpenAIApi(configuration)
 
 export default defineEventHandler(async (event) => {
-  // if (!openai.apiKey) {
-  //   throw createError({
-  //     statusCode: 500,
-  //     statusMessage: 'OpenAI API key not configured, please follow instructions in README.md',
-  //   })
-  // }
+  if (!configuration.apiKey) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'OpenAI API key not configured, please follow instructions in README.md',
+    })
+  }
 
   const body = await readBody(event)
   const topic = body.topic || ''
@@ -22,18 +23,15 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        {
-          role: 'user',
-          content: generatePrompt(topic),
-        }
-      ]
-      // max_tokens: 256
+    const completion = await openai.createCompletion({
+      // model: 'text-davinci-003',
+      model: 'text-curie-001',
+      prompt: generatePrompt(topic),
+      temperature: 0.6,
+      max_tokens: 256
     })
     return {
-      result: completion.choices[0].message.content,
+      result: completion.data.choices[0].text,
     }
   } catch(error) {
     if (error.response) {
