@@ -7,7 +7,7 @@ const props = defineProps({
   }
 })
 const { client } = usePrismic()
-const { data: items } = await useAsyncData(`${props.type}-list`, async () => {
+const { data: items } = await useLazyAsyncData(`${props.type}-list`, async () => {
   const { results } = await client.getByType(props.type)
   return results
 })
