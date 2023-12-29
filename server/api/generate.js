@@ -13,24 +13,18 @@ export default defineEventHandler(async (event) => {
   // }
 
   const body = await readBody(event)
-  const topic = body.topic || ''
-  if (topic.trim().length === 0) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Please enter a valid topic',
-    })
-  }
+  const messages = body.messages || []
+  // if (messages.length === 0) {
+  //   throw createError({
+  //     statusCode: 400,
+  //     statusMessage: 'Please enter a valid message',
+  //   })
+  // }
 
   try {
     const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        {
-          role: 'user',
-          content: generatePrompt(topic),
-        }
-      ]
-      // max_tokens: 256
+      model: 'ft:gpt-3.5-turbo-1106:personal::8bE4EUwv',
+      messages
     })
     return {
       result: completion.choices[0].message.content,
@@ -52,7 +46,3 @@ export default defineEventHandler(async (event) => {
   }
 
 })
-
-function generatePrompt(topic) {
-  return `Explain succinctly but humorously the relation between ${topic} and remote-working web developer Tom Corbett`
-}
