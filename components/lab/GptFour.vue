@@ -37,10 +37,7 @@ async function onSubmit() {
 
     messages.value = [
       ...newMessages,
-      {
-        role: 'assistant',
-        content: data.result
-      }
+      data.result
     ]
   } catch(error) {
     // Consider implementing your own error handling logic here

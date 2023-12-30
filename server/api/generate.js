@@ -24,10 +24,11 @@ export default defineEventHandler(async (event) => {
   try {
     const completion = await openai.chat.completions.create({
       model: 'ft:gpt-3.5-turbo-1106:personal::8bE4EUwv',
+      temperature: 0.1,
       messages
     })
     return {
-      result: completion.choices[0].message.content,
+      result: completion.choices[0].message,
     }
   } catch(error) {
     if (error.response) {
