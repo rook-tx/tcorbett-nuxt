@@ -1,6 +1,6 @@
 <script setup>
 const { client } = usePrismic()
-const { data: home } = await useLazyAsyncData('home', () => client.getSingle('home'))
+const { data: about } = await useLazyAsyncData('about', () => client.getSingle('about'))
 </script>
 
 <template>
@@ -16,19 +16,18 @@ const { data: home } = await useLazyAsyncData('home', () => client.getSingle('ho
       </div>
 
       <div
-        v-for="(slide, idx) in home?.data?.slide"
+        v-for="(slide, idx) in about?.data?.slides"
         :key="idx"
         ref="slides"
         :class="[ 'slide', { active: sidx === idx }]"
       >
         <prismic-rich-text
-          :field="slide.slide_copy"
+          :field="slide.copy"
         />
-        <img
-          :src="slide.slide_image.url"
-          :alt="slide.slide_image.alt"
+        <prismic-image
+          :field="slide.image"
           class="intro-img"
-        >
+        />
       </div>
 
       <slices-tldr />
@@ -95,8 +94,8 @@ export default {
     sidx: {
       handler(sidx) {
         const newSrc = this.thumbnail ?
-          this.pageData.slide[sidx].slide_image.Tablet.url :
-          this.pageData.slide[sidx].slide_image.url
+          this.pageData.slides[sidx].image.Tablet.url :
+          this.pageData.slides[sidx].image.url
 
         if (newSrc && this.frameSrc !== newSrc) {
           this.frameSrc = newSrc
@@ -111,7 +110,7 @@ export default {
 
   methods: {
     getContent() {
-      this.$prismic.client.getSingle('home')
+      this.$prismic.client.getSingle('about')
         .then((document) => {
           this.pageData = document.data
         })
@@ -191,10 +190,11 @@ export default {
   max-width 100%
   width 100%
 
-.trigger
+em
   border-bottom 1px solid lighten($bgry,60%)
   color $dblk
   font-weight 400
+  font-style normal
   position relative
   white-space nowrap
 

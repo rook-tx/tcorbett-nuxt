@@ -1,3 +1,20 @@
+<script setup lang="ts">
+
+import { isFilled } from '@prismicio/client'
+
+defineProps({
+  link: {
+    type: Object,
+    default: () => ({
+      image: null,
+      label: '',
+      url: null,
+    })
+  }
+})
+
+</script>
+
 <template>
   <li class="tree-link">
     <a
@@ -7,8 +24,8 @@
     >
       <div class="link-btn">
         <div class="link-btn-image">
-
           <prismic-image
+            v-if="isFilled.image(link.image)"
             :field="link.image"
             class="link-image"
             width="60"
@@ -16,34 +33,12 @@
           />
         </div>
         <div class="link-btn-label">
-          <prismic-rich-text
-            :field="link.label"
-            class="link-label"
-          />
+          <span class="link-label">{{ link.label }}</span>
         </div>
       </div>
     </a>
   </li>
 </template>
-
-<script>
-
-export default {
-
-  props: {
-    link: {
-      type: Object,
-      default: () => ({
-        image: null,
-        label: [],
-        url: null,
-      })
-    }
-  }
-
-}
-
-</script>
 
 <style lang="stylus">
 

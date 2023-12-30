@@ -1,0 +1,40 @@
+{
+  "id": "banner_video",
+  "type": "SharedSlice",
+  "name": "BannerVideo",
+  "description": "BannerVideo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "video_asset": {
+          "type": "Link",
+          "config": {
+            "label": "Video asset",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "vimeo_src": {
+          "type": "Text",
+          "config": { "label": "Vimeo src", "placeholder": "" }
+        },
+        "full": {
+          "type": "Boolean",
+          "config": {
+            "label": "Full",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

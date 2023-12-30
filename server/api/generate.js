@@ -1,37 +1,34 @@
-import { Configuration, OpenAIApi } from 'openai'
+import OpenAI from 'openai'
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
-const openai = new OpenAIApi(configuration)
 
 export default defineEventHandler(async (event) => {
-  if (!configuration.apiKey) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: 'OpenAI API key not configured, please follow instructions in README.md',
-    })
-  }
+  // if (!openai.apiKey) {
+  //   throw createError({
+  //     statusCode: 500,
+  //     statusMessage: 'OpenAI API key not configured, please follow instructions in README.md',
+  //   })
+  // }
 
   const body = await readBody(event)
-  const topic = body.topic || ''
-  if (topic.trim().length === 0) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Please enter a valid topic',
-    })
-  }
+  const messages = body.messages || []
+  // if (messages.length === 0) {
+  //   throw createError({
+  //     statusCode: 400,
+  //     statusMessage: 'Please enter a valid message',
+  //   })
+  // }
 
   try {
-    const completion = await openai.createCompletion({
-      // model: 'text-davinci-003',
-      model: 'text-curie-001',
-      prompt: generatePrompt(topic),
-      temperature: 0.6,
-      max_tokens: 256
+    const completion = await openai.chat.completions.create({
+      model: 'ft:gpt-3.5-turbo-1106:personal::8bE4EUwv',
+      temperature: 0.1,
+      messages
     })
     return {
-      result: completion.data.choices[0].text,
+      result: completion.choices[0].message,
     }
   } catch(error) {
     if (error.response) {
@@ -50,7 +47,3 @@ export default defineEventHandler(async (event) => {
   }
 
 })
-
-function generatePrompt(topic) {
-  return `Explain succinctly but humorously the relation between ${topic} and remote-working web developer Tom Corbett`
-}

@@ -18,7 +18,7 @@ defineProps({
     <div class="content">
       <prismic-rich-text
         class="title"
-        :field="project.project_title"
+        :field="project.title"
       />
       <h2
         v-if="project.launch_date"

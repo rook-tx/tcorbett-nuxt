@@ -3,9 +3,14 @@
 definePageMeta({
   layout: 'desktop'
 })
+
 </script>
 
 <template>
-  <div :class="$route.params.slug" />
+  <div class="projects">
+    <div class="item-index">
+      <modules-list />
+    </div>
+  </div>
 </template>
 

@@ -30,7 +30,7 @@ export default defineNuxtConfig({
             gtag('config', 'G-DJ7TPKG1GE');`
         }
       ]
-    }
+    },
   },
 
   css: [
@@ -57,7 +57,7 @@ export default defineNuxtConfig({
   },
 
   prismic: {
-    endpoint: 'tcorbett',
+    endpoint: 'tcorbett-sm',
     preview: false,
     toolbar: false,
     linkResolver: '~/js/prismicLinkResolver.js'

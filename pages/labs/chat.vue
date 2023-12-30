@@ -17,7 +17,7 @@ definePageMeta({
 
 <template>
   <div class="page lab-page chat-page">
-    <lab-chat-gptom />
+    <lab-gpt-four />
     <lab-eccomi />
   </div>
 </template>
@@ -27,14 +27,20 @@ definePageMeta({
 @import "../../stylus/_variables"
 
 .chat-page {
+
+  +above($tablet) {
+    display flex
+    align-items flex-end
+  }
+
   .content {
-    max-width $pwidth * 1.382rem
-    pad(1, 2, 1, 1)
+    max-width $pwidth * 1rem
+    pad(1, 1, 1, 1)
   }
 
   .eccomi {
     +above($tablet) {
-      position absolute
+      position fixed
       left -25%
       top 0
       width 50%
@@ -47,6 +53,9 @@ definePageMeta({
       left 38%
       width 62%
       position relative
+      top 0
+      height 100%
+      overflow scroll
       z-index 1
     }
   }

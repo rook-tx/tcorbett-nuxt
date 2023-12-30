@@ -1,11 +1,11 @@
 <script setup>
 const { client } = usePrismic()
-const { data: home } = await useLazyAsyncData('home', () => client.getSingle('home'))
+const { data: tldr } = await useLazyAsyncData('tldr', () => client.getSingle('tldr'))
 </script>
 
 <template>
   <div
-    v-if="home"
+    v-if="tldr"
     class="tldr-content"
   >
     <h2 class="tldr-title">
@@ -18,27 +18,27 @@ const { data: home } = await useLazyAsyncData('home', () => client.getSingle('ho
 
     <ol>
       <li
-        v-for="link in home.data.project"
-        :key="link.project_url.url"
+        v-for="link in tldr.data.projects"
+        :key="link.url.url"
       >
         <a
-          :href="link.project_url.url"
+          :href="link.url.url"
           target="_blank"
           rel="noopener"
         >
           <span
             class="url"
-          >{{ $prismic.asText(link.project_title) }}</span>
+          >{{ link.title }}</span>
           <span
             class="info"
-          >&mdash; {{ $prismic.asText(link.role) }}</span>
+          >&mdash; {{ link.role }}</span>
         </a>
       </li>
     </ol>
 
     <prismic-rich-text
       class="tldr-skills"
-      :field="home.data.skills"
+      :field="tldr.data.skills"
     />
 
     <div class="email-icon">

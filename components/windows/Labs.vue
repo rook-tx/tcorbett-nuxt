@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { isFilled } from '@prismicio/client'
 
 const { client } = usePrismic()
@@ -7,29 +7,32 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
 
 <template>
   <div class="labs">
-    <div class="wrap">
+    <div
+      v-if="labs"
+      class="wrap"
+    >
       <prismic-rich-text
         v-if="isFilled.richText(labs?.data?.blurb)"
         :field="labs.data.blurb"
         class="blurb"
       />
 
-      <ol v-if="labs?.data?.labs">
+      <ol v-if="labs.data?.labs">
         <li
           v-for="lab in labs.data.labs"
-          :key="lab.lab_id"
+          :key="String(lab.lab_id)"
           class="lab"
         >
           <nuxt-link
-            :to="isFilled.link(lab.lab_link) ? lab.lab_link.url :
+            :to="isFilled.link(lab.link) ? lab.link.url :
               !lab.lab_id && isFilled.linkToMedia(lab.video) ? lab.video.url :
               `/labs/${lab.lab_id}/`"
-            :target="isFilled.link(lab.lab_link) ? '_blank' : ''"
+            :target="isFilled.link(lab.link) ? '_blank' : ''"
             rel="noopener"
           >
             <prismic-text
               class="url"
-              :field="lab.lab_title"
+              :field="lab.title"
             />
 
             <div
@@ -48,10 +51,10 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
             </div>
 
             <div
-              v-else-if="isFilled.image(lab.lab_thumb)"
+              v-else-if="isFilled.image(lab.image)"
               class="thumb"
             >
-              <prismic-image :field="lab.lab_thumb" />
+              <prismic-image :field="lab.image" />
             </div>
           </nuxt-link>
 
@@ -62,6 +65,7 @@ const { data: labs } = await useLazyAsyncData('labs', () => client.getSingle('la
         </li>
       </ol>
     </div>
+    <modules-list type="lab" />
   </div>
 </template>
 

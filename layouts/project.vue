@@ -14,11 +14,11 @@ const links = [
 const progress = ref(0)
 let height = 800
 
-function handleScroll(e) {
+const handleScroll = (e) => {
   progress.value = e.target.scrollingElement.scrollTop / height
 }
 
-function resize() {
+const resize = () => {
   height = document.scrollingElement.scrollHeight - window.innerHeight
 }
 
