@@ -159,7 +159,7 @@ export default {
 .window
   background $prpl
   background linear-gradient(135deg,$prpl,$blu,$blk)
-  border-radius 10px
+  border-radius 8px
   box-shadow 1vh 1vh rgba($blk,.038)
   height 85%
   max-height 0.618 * 61.8vw
@@ -200,7 +200,7 @@ export default {
     right 2px
     bottom 2px
     top $let * 2rem
-    border-radius 9px
+    border-radius 6px
 
     ::-webkit-scrollbar
       width 16px
