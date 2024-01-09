@@ -10,8 +10,8 @@ const route = useRoute()
 const uid = route.params.uid
 
 const { client } = usePrismic()
-const { data } = await useAsyncData(uid, () => {
-  const projects = client.getAllByType('project')
+const { data } = await useAsyncData(uid, async () => {
+  const projects = await client.getAllByType('project')
   return {
     projects,
     project: projects.find((p) => p.uid === uid)
