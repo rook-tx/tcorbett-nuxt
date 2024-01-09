@@ -1,12 +1,11 @@
-<script setup lang="ts">
-import { Content, isFilled } from '@prismicio/client'
+<script setup>
+import { isFilled } from '@prismicio/client'
 
-defineProps(getSliceComponentProps<Content.BannerImageSlice>([]))
+defineProps(getSliceComponentProps([ 'slice', 'index', 'slices', 'context' ]))
 
 const showCaption = (item) => {
   return isFilled.richText(item.caption)
 }
-
 </script>
 
 <template>

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { Content } from '@prismicio/client'
-
-defineProps(getSliceComponentProps<Content.BannerCopySlice>([]))
+defineProps(getSliceComponentProps([ 'slice', 'index', 'slices', 'context' ]))
 </script>
 
 <template>

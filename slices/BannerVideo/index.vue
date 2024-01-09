@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import { Content, asText, isFilled } from '@prismicio/client'
+<script setup>
+import { asText, isFilled } from '@prismicio/client'
 
-defineProps(getSliceComponentProps<Content.BannerVideoSlice>([]))
+defineProps(getSliceComponentProps([ 'slice', 'index', 'slices', 'context' ]))
 </script>
 
 <template>
