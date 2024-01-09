@@ -10,8 +10,14 @@ const route = useRoute()
 const uid = route.params.uid
 
 const { client } = usePrismic()
-const { data: projects } = await useAsyncData(uid, () => client.getAllByType('project'))
-const project = projects.value.find((p) => p.uid === uid)
+const { data } = await useAsyncData(uid, () => {
+  const projects = client.getAllByType('project')
+  return {
+    projects,
+    project: projects.find((p) => p.uid === uid)
+  }
+})
+const { projects, project } = data.value
 
 useHead({
   title: isFilled.keyText(project?.meta_title) ? project.meta_title : asText(project?.data.title),
