@@ -7,7 +7,7 @@ const props = defineProps({
   }
 })
 const { client } = usePrismic()
-const { data: items } = await useLazyAsyncData(`${props.type}-list`, async () => {
+const { data: items } = await useAsyncData(`${props.type}-list`, async () => {
   const { results } = await client.getByType(props.type)
   return results
 })
@@ -16,7 +16,6 @@ const { data: items } = await useLazyAsyncData(`${props.type}-list`, async () =>
 <template>
   <div :class="[ 'items-list', `${type}s-list` ]">
     <div class="content">
-      <h1>{{ `${type}s` }}</h1>
       <ul>
         <li
           v-for="item in items"

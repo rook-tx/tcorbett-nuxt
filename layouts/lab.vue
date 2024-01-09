@@ -1,28 +1,14 @@
 <script setup>
-
 useHead({
   htmlAttrs: {
     class: 'lab-app'
   }
 })
-
-const links = [
-  {
-    id: 'tcorb',
-    label: 'T Corbett',
-  },
-  {
-    id: 'labs',
-    label: 'Labs',
-  }
-]
 </script>
 
 <template>
   <div class="layout lab-layout">
-    <app-header
-      :links="links"
-    />
+    <app-header />
     <slot class="page lab-page" />
     <app-tldr />
   </div>

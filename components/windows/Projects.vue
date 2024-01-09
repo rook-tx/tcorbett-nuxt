@@ -2,7 +2,7 @@
 import { isFilled, asText } from '@prismicio/client'
 
 const { client } = usePrismic()
-const { data: projects } = await useLazyAsyncData('projects', () => client.getSingle('projects'))
+const { data: projects } = await useAsyncData('projects', () => client.getSingle('projects'))
 
 defineProps({
   active: {

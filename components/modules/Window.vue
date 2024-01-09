@@ -159,7 +159,7 @@ export default {
 .window
   background $prpl
   background linear-gradient(135deg,$prpl,$blu,$blk)
-  border-radius 6px
+  border-radius 10px
   box-shadow 1vh 1vh rgba($blk,.038)
   height 85%
   max-height 0.618 * 61.8vw
@@ -176,14 +176,11 @@ export default {
 
   +above($tablet)
     height 90%
-    // max-height 0.618 * 33vw
     max-height 21vw
     width 33vw
 
   +above($laptop)
-    // min-height 24 * 0.618em
     min-height 13.5em
-    // max-height 22vw
     min-width 24em
 
   .dragging &
@@ -203,7 +200,7 @@ export default {
     right 2px
     bottom 2px
     top $let * 2rem
-    border-radius 4px
+    border-radius 9px
 
     ::-webkit-scrollbar
       width 16px

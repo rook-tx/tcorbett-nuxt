@@ -11,25 +11,20 @@ const uid = route.params.uid
 
 const { client } = usePrismic()
 
-const { data } = await useLazyAsyncData(uid, async () => {
-  const labs = await client.getAllByType('lab')
-  return {
-    labs,
-    lab: labs.find((p) => p.uid === uid)
-  }
-})
+const { data: labs } = await useAsyncData(uid, () => client.getAllByType('lab'))
+const lab = labs.value.find((p) => p.uid === uid)
 
 useHead({
-  title: isFilled.keyText(data.value?.lab.meta_title) ? data.value?.lab.meta_title : asText(data?.value?.lab?.data.title),
+  title: isFilled.keyText(lab.meta_title) ? lab.meta_title : asText(lab?.data.title),
   meta: [
     {
       name: 'description',
-      content: data.value?.lab.meta_description,
+      content: lab.meta_description,
     },
     {
       hid: 'og:image',
       property: 'og:image',
-      content: isFilled.image(data?.value?.lab?.data.image) ? data.value.lab.data.image.url : '/apple-touch-icon.png'
+      content: isFilled.image(lab?.data.image) ? lab.data.image.url : '/apple-touch-icon.png'
     }
   ]
 })
@@ -42,12 +37,13 @@ useHead({
     :class="[ 'page', 'lab-page', `${uid}-page` ]"
   >
     <slice-zone
+      v-if="lab.data.slices"
       wrapper="main"
-      :slices="data?.lab.data.slices ?? []"
+      :slices="lab.data.slices"
       :components="components"
     />
     <slices-lab-pagination
-      :labs="data?.labs"
+      :labs="labs"
     />
   </div>
 </template>

@@ -1,16 +1,5 @@
 <script setup>
 
-const links = [
-  {
-    id: 'tcorb',
-    label: 'T Corbett',
-  },
-  {
-    id: 'projects',
-    label: 'Projects',
-  }
-]
-
 const progress = ref(0)
 let height = 800
 
@@ -40,7 +29,6 @@ onBeforeUnmount(() => {
     <app-header
       :line="true"
       :progress="progress"
-      :links="links"
     />
     <slot />
     <app-tldr />

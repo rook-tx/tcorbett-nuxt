@@ -10,24 +10,18 @@ const route = useRoute()
 const uid = route.params.uid
 
 const { client } = usePrismic()
-
-const { data } = await useLazyAsyncData(uid, async () => {
-  const projects = await client.getAllByType('project')
-  return {
-    projects,
-    project: projects.find((p) => p.uid === uid)
-  }
-})
+const { data: projects } = await useAsyncData(uid, () => client.getAllByType('project'))
+const project = projects.value.find((p) => p.uid === uid)
 
 useHead({
-  title: isFilled.keyText(data.value?.project?.meta_title) ? data.value?.project.meta_title : asText(data?.value?.project?.data.title),
+  title: isFilled.keyText(project?.meta_title) ? project.meta_title : asText(project?.data.title),
   meta: [
     {
       name: 'description',
-      content: data.value?.project.meta_description,
+      content: project.meta_description,
     },
     {
-      hid: 'og:image', property: 'og:image', content: isFilled.image(data?.value?.project?.data.image) ? data.value.project.data.image.url : '/apple-touch-icon.png'
+      hid: 'og:image', property: 'og:image', content: isFilled.image(project?.data.image) ? project.data.image.url : '/apple-touch-icon.png'
     }
   ]
 })
@@ -40,17 +34,18 @@ useHead({
     :class="[ 'project-page', `${uid}-page` ]"
   >
     <slices-project-hero
-      :project="data.project?.data"
+      :project="project?.data"
     />
 
     <slice-zone
-      :slices="data.project?.data.slices"
+      v-if="project?.data.slices"
+      :slices="project.data.slices"
       :components="components"
     />
 
     <slices-project-pagination
       :current="uid"
-      :projects="data.projects"
+      :projects="projects"
     />
 
     <project-footer />

@@ -1,6 +1,6 @@
 <script setup>
 const { client } = usePrismic()
-const { data: tldr } = await useLazyAsyncData('tldr', () => client.getSingle('tldr'))
+const { data: tldr } = await useAsyncData('tldr', () => client.getSingle('tldr'))
 </script>
 
 <template>
