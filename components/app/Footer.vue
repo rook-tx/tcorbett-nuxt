@@ -33,7 +33,7 @@
               href="mailto:twcorb@gmail.com"
               class="mnav-a"
               target="_blank"
-            >twcorb@gmail.com</a>
+            >Email</a>
           </li>
 
           <li class="mnav-li mnav-linkedin">
@@ -55,7 +55,7 @@
           </li>
         </ul>
       </nav>
-      <span class="credit">&copy; 2023 <strong>T Corbett</strong></span>
+      <span class="credit">&copy; 2024 <strong>T Corbett</strong></span>
     </div>
   </footer>
 </template>

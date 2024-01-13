@@ -22,6 +22,7 @@ const showCaption = (item) => {
       >
         <prismic-image
           :field="item.image"
+          class="item-image"
         />
         <div
           v-if="showCaption(item)"
@@ -41,8 +42,14 @@ const showCaption = (item) => {
 @import "../../stylus/_variables"
 
 .banner-image {
-  .item + .item {
-    mgn(1, 0, 0)
+  .item {
+    + .item {
+      mgn(1, 0, 0)
+    }
+
+    &-image {
+      width 100%
+    }
   }
 
   .content {
