@@ -17,6 +17,14 @@ const { data } = await useAsyncData(uid, async () => {
     project: projects.find((p) => p.uid === uid)
   }
 })
+
+if (!data.value.project) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Not Found',
+  })
+}
+
 const { projects, project } = data.value
 
 useHead({
@@ -24,7 +32,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: project.meta_description,
+      content: isFilled.keyText(project.meta_description) ? project.meta_description : '',
     },
     {
       hid: 'og:image', property: 'og:image', content: isFilled.image(project?.data.image) ? project.data.image.url : '/apple-touch-icon.png'
