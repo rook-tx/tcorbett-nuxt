@@ -70,7 +70,7 @@ const { data: tldr } = await useAsyncData('tldr', () => client.getSingle('tldr')
       top ($lh*2.5)*1px
 
   background $b
-  border-radius 6px
+  border-radius 14px
   background linear-gradient(-45deg, $prpl, $blu, $blk)
   transition opacity .3s linear, transform .3s $easeInExpo
   opacity 1
@@ -105,7 +105,7 @@ const { data: tldr } = await useAsyncData('tldr', () => client.getSingle('tldr')
   &-content
     .tldr &
       background $w
-      border-radius 4px
+      border-radius 12px
       bottom 2px
       left 2px
       overflow hidden
@@ -272,11 +272,9 @@ const { data: tldr } = await useAsyncData('tldr', () => client.getSingle('tldr')
     border 1px solid
     cursor pointer
     font-family $lato
-    // font-size ($pc/$p)*1em
     fs(mp(-3))
     font-weight 700
     letter-spacing .2em
-    // line-height $letc
     max-width 100%
     mgn(1,0)
     outline 0
