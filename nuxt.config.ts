@@ -62,4 +62,6 @@ export default defineNuxtConfig({
     toolbar: false,
     linkResolver: '~/js/prismicLinkResolver.js'
   },
+
+  compatibilityDate: '2024-10-14',
 })

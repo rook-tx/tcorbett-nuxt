@@ -200,7 +200,7 @@ export default {
     right 2px
     bottom 2px
     top $let * 2rem
-    border-radius 6px
+    border-radius 4px 4px 6px 6px
 
     ::-webkit-scrollbar
       width 16px
