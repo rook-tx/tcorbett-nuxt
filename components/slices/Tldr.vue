@@ -70,7 +70,7 @@ const { data: tldr } = await useAsyncData('tldr', () => client.getSingle('tldr')
       top ($lh*2.5)*1px
 
   background $b
-  border-radius 14px
+  border-radius 20px
   background linear-gradient(-45deg, $prpl, $blu, $blk)
   transition opacity .3s linear, transform .3s $easeInExpo
   opacity 1
@@ -83,7 +83,6 @@ const { data: tldr } = await useAsyncData('tldr', () => client.getSingle('tldr')
     opacity 0
     transform scale(1.05)
 
-  // &.tldr-open
   &.v-enter-active
     transition opacity .4s linear, transform .5s $easeOutBack
 
@@ -105,7 +104,7 @@ const { data: tldr } = await useAsyncData('tldr', () => client.getSingle('tldr')
   &-content
     .tldr &
       background $w
-      border-radius 12px
+      border-radius 18px
       bottom 2px
       left 2px
       overflow hidden

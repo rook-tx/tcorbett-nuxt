@@ -1,9 +1,12 @@
 <template>
   <div
-    :class="[ 'window', { active: active }]"
+    :class="[ 'window', { active: active, image: image }]"
     :style="pos"
   >
-    <div class="window-header">
+    <div
+      v-if="!image"
+      class="window-header"
+    >
       <h2
         class="window-label caption"
         v-html="data.title"
@@ -63,6 +66,7 @@
         :is="data.id"
         :active="active"
       />
+      <slot />
     </div>
   </div>
 </template>
@@ -103,6 +107,11 @@ export default {
     },
 
     active: {
+      type: Boolean,
+      default: false
+    },
+
+    image: {
       type: Boolean,
       default: false
     }
@@ -172,6 +181,7 @@ export default {
   transition-property left, top, transform, width, max-height, opacity
   max-width $pwidth * 1.618 * 1rem
   width 61.8vw
+  pointer-events auto
   z-index 0
 
   +above($tablet)
@@ -294,5 +304,15 @@ export default {
     svg
       height 14px
       width 14px
+
+  &.image
+    height auto
+    max-height 100%
+    padding $let * 1.5rem 2px 2px
+
+    .window-body
+      position relative
+      left 0
+      top 0
 
 </style>

@@ -29,7 +29,7 @@
           </li>
         </ul>
       </nav>
-      <span class="credit">&copy; 2023 <strong>T Corbett</strong></span>
+      <span class="credit">&copy; 2024 <strong>T Corbett</strong></span>
     </div>
   </footer>
 </template>

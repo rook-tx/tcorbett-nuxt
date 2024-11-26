@@ -1,7 +1,7 @@
-<script setup>
+<!-- <script setup>
 const { client } = usePrismic()
 const { data: about } = await useAsyncData('about', () => client.getSingle('about'))
-</script>
+</script> -->
 
 <template>
   <div
@@ -16,7 +16,7 @@ const { data: about } = await useAsyncData('about', () => client.getSingle('abou
       </div>
 
       <div
-        v-for="(slide, idx) in about?.data?.slides"
+        v-for="(slide, idx) in slides"
         :key="idx"
         ref="slides"
         :class="[ 'slide', { active: sidx === idx }]"
@@ -37,10 +37,20 @@ const { data: about } = await useAsyncData('about', () => client.getSingle('abou
         class="intro-frame"
       >
         <div
-          class="frame-display"
-          :style="{ backgroundImage: `url(${frameSrc})` }"
-        />
-        <div class="frame-credit" />
+          v-for="(slide, idx) in slides"
+          :key="idx"
+        >
+          <modules-window
+            v-if="sidx > idx"
+            :data="{ id: idx, pos: windowPositions[idx].pos }"
+            image
+          >
+            <prismic-image
+              :field="slide.image"
+              class="frame-window"
+            />
+          </modules-window>
+        </div>
       </div>
     </div>
   </div>
@@ -74,8 +84,14 @@ export default {
 
   computed: {
     ...mapState(useDeviceStore, [
-      'win'
+      'win',
+      'winWidth',
+      'winHeight'
     ]),
+
+    slides() {
+      return this.pageData?.slides || []
+    },
 
     thumbnail() {
       return this.win.x < 600
@@ -87,6 +103,12 @@ export default {
 
     slideTops() {
       return this.$refs.slides ? this.$refs.slides.map((slide) => slide.offsetTop) : []
+    },
+
+    windowPositions() {
+      return this.slides.map(() => ({
+        pos: this.randomPos()
+      }))
     }
   },
 
@@ -116,13 +138,16 @@ export default {
         })
     },
 
+    randomPos() {
+      return {
+        x: Math.round(Math.random() * (this.winWidth * 0.382 / 3)),
+        y: Math.round(Math.random() * (this.winHeight * 0.618 / 3))
+      }
+    },
+
     frameScroll(e) {
       const scroll = e.target.scrollTop
-
-      // this.$emit('progress', scroll / (this.$el.scrollHeight - this.halfHeight * 2))
-
       const imSelected = this.slideTops.findIndex((slideTop) => scroll + this.halfHeight < slideTop) - 1
-
       if (imSelected !== this.sidx) {
         this.sidx = imSelected
       }
@@ -247,9 +272,14 @@ em
     right -1px
     top -1px
 
+  .open &
+    .window:not(.active)
+      opacity .94
+
+.frame-window
+  object-fit cover
+
 .frame-display
-  background url(/images/cushions.jpg) no-repeat center
-  background-size cover
   bottom 0
   transition background .2s, transform 1s $easeOutCubic
   position absolute
