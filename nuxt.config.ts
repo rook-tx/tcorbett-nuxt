@@ -37,11 +37,7 @@ export default defineNuxtConfig({
     '@/stylus/main.styl'
   ],
 
-  modules: [
-    '@nuxtjs/google-fonts',
-    '@nuxtjs/prismic',
-    '@pinia/nuxt'
-  ],
+  modules: [ '@nuxtjs/google-fonts', '@nuxtjs/prismic', '@pinia/nuxt', '@nuxt/image' ],
 
   googleFonts: {
     families: {
