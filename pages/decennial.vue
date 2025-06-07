@@ -24,6 +24,7 @@ useHead({
       <nuxt-img
         src="/images/dec-banner.png"
         alt="Decennial Image"
+        sizes="660"
       />
       <h1>Decennial Caniversary</h1>
       <h2 class="bungee">
@@ -38,7 +39,9 @@ useHead({
       <h4 class="tagline">
         Celebrating 10 Years of Immigration Paperwork
       </h4>
+
       <hr>
+
       <h2 class="bungee">
         Location
       </h2>
@@ -51,6 +54,7 @@ useHead({
           <nuxt-img
             src="/images/lil-beach.png"
             alt="Little Beach Location"
+            sizes="660"
           />
         </a>
       </p>
@@ -68,6 +72,42 @@ useHead({
         If the clouds come and/or when the sun sets, we’ll move to
         <strong>99 Dowling</strong> for the remainder of the festivities.
       </p>
+
+      <hr>
+
+      <h2 class="bungee">
+        BYOB & BYOS
+      </h2>
+      <p>
+        Bring your own beverages and snacks to share!
+      </p>
+
+      <hr>
+
+      <h2 class="bungee">
+        Dress Code
+      </h2>
+      <h3 class="bungee">
+        Canadian Tuxedo
+      </h3>
+      <p>
+        Denim on denim, or any other Canadian attire you can think of.
+        <strong>Red & White</strong> is also encouraged.
+      </p>
+      <h3 class="bungee">
+        Red & White
+      </h3>
+      <p>
+        Show your Canadian pride by wearing red and white!
+      </p>
+
+      <hr>
+
+      <nuxt-img
+        src="/images/fall.jpg"
+        alt="99 Dowling Location"
+        sizes="660"
+      />
     </div>
   </div>
 </template>
