@@ -81,19 +81,22 @@ useHead({
       <h2 class="bungee">
         Day
       </h2>
-      <p>Arrive after 3<sup>pm</sup> at the beach for hangs, music, drinks and snacks. We’ll be posted up and easy to spot. We welcome:</p>
+      <p>Come down to the beach after 3<sup>pm</sup> for hangs, music, drinks and snacks. We’ll be posted up and easy to spot. We welcome:</p>
       <ul>
         <li>✓ friends and +1s ✓</li>
         <li>✓ small animals ✓</li>
         <li>✓ small people ✓</li>
         <li>✓ outdoor games ✓</li>
       </ul>
-      <p>Feel free to drop in for a hi & bye any time in the afternoon!</p>
+      <p>Feel free to drop in for a hi & bye any time in the afternoon.</p>
       <h2 class="bungee">
         Evening
       </h2>
       <p>
-        When the sun sets and/or the weather turns, we’ll move to <strong>99&nbsp;Dowling</strong> for the remainder of the festivities. Pizza will be ordered and there will be drinks in the fridge. DJ Bucky Fresh will be playing a set for the grown-ups in the wee hours.
+        When the sun sets and/or the weather turns, we’ll move to <strong>99&nbsp;Dowling</strong> for the remainder of the festivities. Pizza will be ordered and there will be drinks in the fridge.
+      </p>
+      <p>
+        The party will continue into the night and you’re welcome to come direct for this phase! DJ Bucky Fresh will be playing a set for the grown-ups in the wee hours.
       </p>
 
       <hr>
@@ -102,7 +105,7 @@ useHead({
         BYOB & BYOS
       </h2>
       <p>
-        Bring your own booze and snacks! We’ll have some drinks and “Canadian classic” snacks available &mdash; please feel inspired to bring your own to share.
+        Bring your own booze and snacks! We’ll have some drinks and “Canadian classic” snacks available &mdash; please feel inspired to bring your own favourites to share.
       </p>
 
       <hr>
@@ -121,7 +124,7 @@ useHead({
         height="502"
       />
       <p>
-        Denim on denim, the classic Canadian look.
+        Denim on denim, the truly classic look.
       </p>
       <h2 class="bungee">
         &middot; OR &middot;
@@ -145,7 +148,6 @@ useHead({
       <h2 class="bungee">
         See you there!
       </h2>
-
       <nuxt-img
         src="/images/fall.jpg"
         alt="99 Dowling Location"
@@ -153,7 +155,6 @@ useHead({
         width="792"
         height="542"
       />
-
       <svg-canada class="icon-large" />
     </div>
   </div>
