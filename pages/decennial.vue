@@ -29,6 +29,8 @@ useHead({
         src="/images/dec-banner.png"
         alt="Decennial Image"
         sizes="1068"
+        width="1584"
+        height="1224"
       />
     </div>
     <div class="decennial-content">
@@ -58,6 +60,8 @@ useHead({
             src="/images/lil-beach.png"
             alt="Little Beach Location"
             sizes="660"
+            width="1822"
+            height="1040"
           />
         </a>
       </p>
@@ -113,6 +117,8 @@ useHead({
         src="/images/canadiantuxedo.jpg"
         alt="99 Dowling Location"
         sizes="660"
+        width="956"
+        height="502"
       />
       <p>
         Denim on denim, the classic Canadian look.
@@ -127,6 +133,8 @@ useHead({
         src="/images/red-white.jpg"
         alt="99 Dowling Location"
         sizes="660"
+        width="800"
+        height="800"
       />
       <p>
         Show your Canadian pride by wearing red and white!
@@ -142,6 +150,8 @@ useHead({
         src="/images/fall.jpg"
         alt="99 Dowling Location"
         sizes="660"
+        width="792"
+        height="542"
       />
 
       <svg-canada class="icon-large" />
