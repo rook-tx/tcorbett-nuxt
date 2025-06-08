@@ -28,7 +28,7 @@ useHead({
       <nuxt-img
         src="/images/dec-banner.png"
         alt="Decennial Image"
-        sizes="1068"
+        sizes="(max-with:1068px) 100vw, 1068px"
         width="1584"
         height="1224"
       />
@@ -36,14 +36,14 @@ useHead({
     <div class="decennial-content">
       <h1>Decennial Caniversary</h1>
       <h2 class="bungee">
-        Sat 21<sup>st</sup> June &middot; 3<sup>pm</sup>&ndash;Late
+        Sat 21<sup>st</sup> June
       </h2>
+      <h3 class="bungee">
+        3<sup>pm</sup>&ndash;Late
+      </h3>
       <h3 class="bungee">
         Little Beach, Lakeshore
       </h3>
-      <h4 class="bungee">
-        Drop-ins welcome
-      </h4>
 
       <hr>
 
@@ -66,14 +66,11 @@ useHead({
         </a>
       </p>
       <p>
-        We’ll gather at
-        <a
+        We’ll gather at <a
           href="https://maps.app.goo.gl/oQCSYfwLRQVqZYMB7"
           target="_blank"
           rel="noopener"
-        >Little Beach</a>
-        on the Lakeshore, just West of the Legion building. Best accessed by the
-        footbridge at the bottom of Dowling Ave.
+        >Little Beach</a> on the Lakeshore path, just West of the Legion building. Best access is the footbridge from the bottom of Dowling Ave and across the Gardiner.
       </p>
 
       <hr>
@@ -81,7 +78,7 @@ useHead({
       <h2 class="bungee">
         Day
       </h2>
-      <p>Come down to the beach after 3<sup>pm</sup> for hangs, music, drinks and snacks. We’ll be posted up and easy to spot. We welcome:</p>
+      <p>Come down to the beach after 3<sup>pm</sup> for hangs, music, drinks and memories. We’ll be posted up and easy to spot. We welcome:</p>
       <ul>
         <li>✓ friends and +1s ✓</li>
         <li>✓ small animals ✓</li>
@@ -93,10 +90,10 @@ useHead({
         Evening
       </h2>
       <p>
-        When the sun sets and/or the weather turns, we’ll move to <strong>99&nbsp;Dowling</strong> for the remainder of the festivities. Pizza will be ordered and there will be drinks in the fridge.
+        When the sun sets and/or the weather turns, we’ll move to <strong>99&nbsp;Dowling</strong> for the next chapter of festivities. Pizza will be ordered and there will be drinks in the fridge(s).
       </p>
       <p>
-        The party will continue into the night and you’re welcome to come direct for this phase! DJ Bucky Fresh will be playing a set for the grown-ups in the wee hours.
+        The party will continue into the night and you’re welcome to come direct for this phase! <strong>DJ Bucky Fresh</strong> will play a set for the grown-ups in the wee hours.
       </p>
 
       <hr>
@@ -105,7 +102,7 @@ useHead({
         BYOB & BYOS
       </h2>
       <p>
-        Bring your own booze and snacks! We’ll have some drinks and “Canadian classic” snacks available &mdash; please feel inspired to bring your own favourites to share.
+        Bring your own booze and snacks! We’ll have some drinks and <strong>“Canadian classic” snacks</strong> available &mdash; please feel inspired to bring your own favourites to share.
       </p>
 
       <hr>
@@ -118,13 +115,13 @@ useHead({
       </h3>
       <nuxt-img
         src="/images/canadiantuxedo.jpg"
-        alt="99 Dowling Location"
+        alt="Canadian Tuxedo gang"
         sizes="660"
         width="956"
         height="502"
       />
       <p>
-        Denim on denim, the truly classic look.
+        Denim on denim, the quintessential look.
       </p>
       <h2 class="bungee">
         &middot; OR &middot;
@@ -134,13 +131,13 @@ useHead({
       </h3>
       <nuxt-img
         src="/images/red-white.jpg"
-        alt="99 Dowling Location"
+        alt="Sports"
         sizes="660"
         width="800"
         height="800"
       />
       <p>
-        Show your Canadian pride by wearing red and white!
+        Show your pride for the flag by sporting all red and white! Points for creativity.
       </p>
 
       <hr>
